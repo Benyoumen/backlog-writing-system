@@ -15,8 +15,9 @@ Acme Field Sales Assistant drafts the follow-up email after a customer meeting a
 | 03-02 | w10 | Spec approved | [prd.md](prd.md) |
 | 03-04 | w10 | Eval cases v1.0; thresholds agreed per risk tier | [eval-cases.md](eval-cases.md) |
 | 03-05 | w10 | Decomposition into seven vertical slices | [decomposition.md](decomposition.md) |
-| 03-06 | w10 | Execution plan approved | [execution-plan.md](execution-plan.md) |
-| 03-09 | w11 | Build starts; Epic, Features and Stories loaded into the tracker | [epic.md](epic.md), [feature.md](feature.md), [user-story-1.md](user-story-1.md), [user-story-2.md](user-story-2.md) |
+| 03-05 | w10 | Now / Next / Later board v1.0: the chain puts the meeting list first | [prioritization.md](prioritization.md) |
+| 03-06 | w10 | Execution plan approved; the readable spec page generated for the tech lead, QA and the sponsor | [execution-plan.md](execution-plan.md), [spec-preview-notes.md](spec-preview-notes.md) |
+| 03-09 | w11 | Build starts; Epic, Features and Stories loaded into the tracker; capacity simulation run at sprint planning | [epic.md](epic.md), [feature.md](feature.md), [user-story-1.md](user-story-1.md), [user-story-2.md](user-story-2.md), [capacity-plan.md](capacity-plan.md) |
 | 03-12 | w11 | Agent brief for the CRM write path | [agent-brief.md](agent-brief.md) |
 | 03-27 | w13 | Phase 1 exit: see and draft. Evals pass on 40 cases | |
 | 03-30 | w14 | Pilot starts with 12 reps; weekly snapshots and sponsor reviews start | |
@@ -35,14 +36,17 @@ Acme Field Sales Assistant drafts the follow-up email after a customer meeting a
 | 0 Frame | [frame.md](frame.md) | The problem in a rep's words, the number (80 percent within 2 hours), the appetite (six weeks of two people), the not-doing list |
 | 1 Discover | [prototype-notes.md](prototype-notes.md) | What a one-week prototype settled, what it could not, and the silent assumptions it carried |
 | 2 Decide | [prd.md](prd.md) | The spec: capability map, goal with a number, Always / Ask first / Never, sources of truth, evals plan, out of scope |
-| 3 Slice | [decomposition.md](decomposition.md) | Seven vertical slices with sizes, dependencies, verification per slice and checkpoints |
-| 3 Slice | [execution-plan.md](execution-plan.md) | Three phases, a schedule derived from dependencies, plain summaries, glossary, findings from the artifact check |
+| 3 Slice and sequence | [decomposition.md](decomposition.md) | Seven vertical slices with sizes, dependencies, verification per slice and checkpoints |
+| 3 Slice and sequence | [prioritization.md](prioritization.md) | The Now / Next / Later board with ROI impact scores, the enabling chain drawn, wave 1 in order, weekly demonstrables, the review log and what was removed |
+| 3 Slice and sequence | [execution-plan.md](execution-plan.md) | Three phases, a schedule derived from dependencies, plain summaries, glossary, findings from the artifact check |
+| 4 Write | [spec-preview-notes.md](spec-preview-notes.md) | The data behind the readable spec page: one plain sentence per item, the six summary metrics, the glossary, the touchpoints and the generator's gates |
 | 4 Write | [epic.md](epic.md) | The Epic: outcome, metrics with baseline and window, scope, rules, risks |
 | 4 Write | [feature.md](feature.md) | The draft Feature, 15 sections, six acceptance criteria, evaluation criteria pointing to the eval cases |
 | 4 Write | [user-story-1.md](user-story-1.md) | A Functional story: show the facts behind each draft, with four acceptance cases |
 | 4 Write | [user-story-2.md](user-story-2.md) | An Enabler story with no persona: one write path to the CRM |
 | 4 Write | [eval-cases.md](eval-cases.md) | The golden set, risk tiers, thresholds, never-cases, baseline and log for the two probabilistic behaviors |
 | 4 Write | [agent-brief.md](agent-brief.md) | The write-path story prepared for a coding agent: checks, commands, Never list, inputs, return, stop-and-ask |
+| 5 Build and verify | [capacity-plan.md](capacity-plan.md) | The sprint simulation: a fictional team of four with weekly capacities, ten stories with Fibonacci points and relations, the derived schedule, load per person per week, the critical path and four what-ifs |
 | 6 Learn | [bug-report.md](bug-report.md) | A bug card that describes the symptom, asks for the data origin, and never asserts a cause |
 | 6 Learn | [weekly-snapshot.md](weekly-snapshot.md) | Snapshot w16: schedule, KPIs with deltas, feedback triage, what was added and what was removed |
 | 6 Learn | [review-meeting-outline.md](review-meeting-outline.md) | The sponsor review w16: last week's commitments with a status each, topics, what we cut, schedule, next steps |
@@ -65,4 +69,4 @@ The plan keeps slice ids (US01 to US07). The tracker keeps codes. The numbering 
 | US07 Show the manager what was sent, applied and ignored | ACME-E01-F04-US01 | |
 | Added after review | ACME-E01-F02-US04 Store each draft until the rep approves or discards it | Enabler, from the rewrite in before-after.md |
 
-Seven slices, ten stories. Features: ACME-E01-F01 Meetings and notes, F02 Follow-up draft and send, F03 CRM write-back, F04 Activity trail. A fifth Feature, F05 Manager weekly digest, was created from feedback in w16 and is not in the first release.
+Seven slices, ten stories. Features: ACME-E01-F01 Meetings and notes, F02 Follow-up draft and send, F03 CRM write-back, F04 Activity trail. A fifth Feature, F05 Manager weekly digest, was created from feedback in w16 and sits in Next. F06 Drafts in a second language is Later, and F07 Schedule the next meeting has no stories and sits in "to refine"; both appear only on the board.

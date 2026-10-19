@@ -1,0 +1,225 @@
+{
+  "meta": {
+    "title": "Acme Field Sales Assistant: follow-up after customer meetings",
+    "short": "Acme Field Sales Assistant",
+    "version": "1",
+    "approved": "2026-03-06",
+    "start": "2026-03-09",
+    "sources": ["the spec (prd.md)", "the decomposition (decomposition.md)", "the appetite from the frame (frame.md)"],
+    "appetite": "Six weeks of two people. 21 effort days over two tracks fits inside it.",
+    "tracks": 2,
+    "budget_days": 21,
+    "in_thirty_seconds": "Reps first see their finished meetings with drafted follow-ups and a CRM update preview. Then they send and apply them with their own approval. The manager gets a weekly view last.",
+    "method_note": "Every date on this page is derived from the start date and the dependencies. Nothing is typed into a card. Durations are declared by the engineering lead, not measured: Acme has no tracker history yet.",
+    "fictional": "Fictional example. Acme is not a real company; every person, number, date and system is invented to show the method."
+  },
+  "epic": {
+    "code": "Epic 1",
+    "title": "Follow-up after customer meetings",
+    "plain": "After a customer meeting, the rep reviews a drafted follow-up and a proposed CRM update instead of writing both from scratch.",
+    "sections": [
+      ["Why it exists", "Late follow-ups are the most common reason deals go quiet, and reps lose time writing the same email and CRM note after every meeting."],
+      ["Goal", "Reps send a reviewed follow-up quickly, and the CRM stays current without manual entry."],
+      ["Metrics", ["Share of follow-ups sent within 2 hours of the meeting end.", "Share of finished meetings with a current CRM update.", "Share of drafts the rep sends without rewriting the facts."]],
+      ["In scope", ["Finished meeting list", "Draft", "Send", "CRM preview", "CRM apply", "Manager view"]],
+      ["Out of scope", ["Customer success meetings", "Scheduling the next meeting", "Editing another rep's records"]],
+      ["Risks", ["Risk: drafts contain unsourced facts. Mitigation: eval set with a 100 percent pass mark on never-cases before phase 1 exit.", "Risk: the CRM changes between preview and apply. Mitigation: re-read before write and stop on change.", "Risk: reps ignore the list. Mitigation: show it as the first screen they open."]]
+    ]
+  },
+  "features": [
+    {
+      "code": "F1.1",
+      "title": "Meetings and notes",
+      "plain": "The rep sees which meetings just ended and what was noted in each.",
+      "sections": [
+        ["Behavior", ["List finished meetings of the day.", "Show end time and attendees.", "Show a note excerpt.", "Refresh on open."]],
+        ["Acceptance", ["A finished meeting appears within 15 minutes of its end (finding A2).", "A meeting with no notes is marked as such."]]
+      ]
+    },
+    {
+      "code": "F1.2",
+      "title": "Follow-up draft and send",
+      "plain": "The rep gets a drafted follow-up, edits it and sends it from their own mailbox.",
+      "sections": [
+        ["Behavior", ["Draft from notes.", "Show the facts used.", "Edit.", "Send from the rep's mailbox."]],
+        ["Acceptance", ["No fact outside the notes and the CRM.", "Send only after an explicit rep action."]]
+      ]
+    },
+    {
+      "code": "F1.3",
+      "title": "CRM write-back",
+      "plain": "The assistant proposes the CRM update, shows it, and applies it only when the rep approves.",
+      "sections": [
+        ["Behavior", ["Build a preview.", "Show old and new values with sources.", "Apply after approval.", "Stop if the record changed."]],
+        ["Acceptance", ["No write without approval.", "Every write re-reads the record first."]]
+      ]
+    },
+    {
+      "code": "F1.4",
+      "title": "Activity trail",
+      "plain": "The manager sees what the assistant suggested and what the reps did with it.",
+      "sections": [
+        ["Behavior", ["Record every suggestion, send, apply and ignore with a timestamp.", "Show counts per rep per week."]],
+        ["Acceptance", ["Counts reconcile with the trail for one week of test data."]]
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "id": "US01", "feature": "F1.1", "phase": 1, "size": "M", "days": 3, "deps": [],
+      "title": "Show today's finished meetings with their notes",
+      "plain": "Each morning and after each meeting, the rep sees what happened in their meetings without opening three tools.",
+      "sections": [
+        ["Statement", "As an account executive, I want to see my finished meetings with their notes so that I can review them in one place."],
+        ["Why it exists", "Without this list the assistant has nothing to draft from, and the rep keeps switching tools."],
+        ["Demo", "The rep opens the list and sees today's meetings with notes."],
+        ["Acceptance", ["Each finished meeting appears with end time, attendees and a note excerpt.", "A meeting without notes is flagged.", "Only the rep's own meetings appear."]],
+        ["Exceptions", ["Calendar unreachable: show the last good list with its timestamp."]],
+        ["Traceability", "Spec, capability meeting-intake."]
+      ]
+    },
+    {
+      "id": "US02", "feature": "F1.2", "phase": 1, "size": "M", "days": 3, "deps": ["US01"],
+      "title": "Draft a follow-up email from the meeting notes",
+      "plain": "After a meeting, the rep finds a ready draft of the follow-up email with the facts it used listed beside it.",
+      "sections": [
+        ["Statement", "As an account executive, I want a drafted follow-up so that I review instead of write."],
+        ["Why it exists", "The draft is the main time saving, and listing the facts is how the rep trusts it."],
+        ["Demo", "Open a finished meeting and read its draft with the sources shown."],
+        ["Acceptance", ["A draft exists for each meeting with notes.", "Each fact is listed with its source.", "No fact has no source."]],
+        ["Exceptions", ["Notes too short: show a message instead of a draft."]],
+        ["Traceability", "Spec, capability follow-up-draft. Eval cases E01 to E06."]
+      ]
+    },
+    {
+      "id": "US03", "feature": "F1.2", "phase": 2, "size": "M", "days": 3, "deps": ["US02"],
+      "title": "Send the follow-up after the rep edits it",
+      "plain": "The rep edits the draft and sends it, and nothing is ever sent without that action.",
+      "sections": [
+        ["Statement", "As an account executive, I want to send the follow-up from my own mailbox so that the customer hears from me."],
+        ["Why it exists", "This is the one action that reaches the customer, so it is the autonomy boundary that matters most."],
+        ["Demo", "Edit a draft, send it, and see it in the sent folder."],
+        ["Acceptance", ["Send runs only after an explicit rep action.", "The email leaves the rep's mailbox.", "The sent email id is stored in the trail."]],
+        ["Exceptions", ["Mailbox error: keep the draft and show the error."]],
+        ["Traceability", "Spec, autonomy boundary \"Ask first: send an email\"."]
+      ]
+    },
+    {
+      "id": "US04", "feature": "F1.3", "phase": 1, "size": "M", "days": 3, "deps": ["US01"],
+      "title": "Show a CRM update preview for a finished meeting",
+      "plain": "After a meeting, the rep sees exactly which CRM fields would change and why.",
+      "sections": [
+        ["Statement", "As an account executive, I want a CRM update preview so that I can approve changes quickly."],
+        ["Why it exists", "The preview is what makes a write safe, and without it reps would not allow writes."],
+        ["Demo", "Open a finished meeting and see each field with old and new values."],
+        ["Acceptance", ["Each field shows old value, new value and source.", "Nothing is written."]],
+        ["Exceptions", ["Record locked: show a message."]],
+        ["Traceability", "Spec, capability crm-writeback."]
+      ]
+    },
+    {
+      "id": "US05", "feature": "F1.3", "phase": 2, "size": "L", "days": 5, "deps": ["US04"],
+      "title": "Apply the CRM update the rep approved",
+      "plain": "When the rep approves a preview, the CRM is updated, and if the record changed in the meantime the update stops.",
+      "sections": [
+        ["Statement", "As an account executive, I want my approved update applied so that I do not retype it."],
+        ["Why it exists", "This closes the loop and proves the autonomy contract holds when the system writes."],
+        ["Demo", "Approve a preview and see the CRM change."],
+        ["Acceptance", ["Apply runs only after approval.", "The record is re-read before the write.", "The apply stops if the record changed since the preview.", "The result is recorded in the trail."]],
+        ["Exceptions", ["CRM unavailable: keep the preview and retry later."]],
+        ["Traceability", "Spec, autonomy boundary \"Ask first: write any field to the CRM\". Built through the single write path described in the agent brief."]
+      ]
+    },
+    {
+      "id": "US06", "feature": "F1.3", "phase": 2, "size": "S", "days": 2, "deps": ["US04"],
+      "title": "Block the update when the contact has no CRM match",
+      "plain": "If a meeting attendee is not a contact on the deal, the assistant does not propose an update and says why.",
+      "sections": [
+        ["Statement", "As an account executive, I want the assistant to refuse unmatched contacts so that it never changes the wrong record."],
+        ["Why it exists", "Writing to the wrong deal is the failure reps fear most."],
+        ["Demo", "Open a meeting with an unknown attendee and see the reason shown."],
+        ["Acceptance", ["With no matching contact on the deal, no preview is offered.", "The reason is shown."]],
+        ["Exceptions", ["More than one possible match: ask the rep to choose."]],
+        ["Traceability", "Spec, autonomy boundary \"Never: contact anyone who is not already a contact on the deal\"."]
+      ]
+    },
+    {
+      "id": "US07", "feature": "F1.4", "phase": 3, "size": "S", "days": 2, "deps": ["US03", "US05"],
+      "title": "Show the manager what was sent, applied and ignored",
+      "plain": "The sales manager sees per rep, per week, how many suggestions were sent, applied or ignored.",
+      "sections": [
+        ["Statement", "As a sales manager, I want a weekly activity view so that I can coach follow-up habits."],
+        ["Why it exists", "It is the measurement of the success criterion and the source for coaching."],
+        ["Demo", "Pick a week and see counts per rep."],
+        ["Acceptance", ["Counts per rep for sent, applied and ignored.", "Counts reconcile with the trail."]],
+        ["Exceptions", ["A week with no data shows zero, not an error."]],
+        ["Traceability", "Spec, capability activity-trail."]
+      ]
+    }
+  ],
+  "phases": [
+    {
+      "n": 1, "name": "See and draft",
+      "goes_live": "The rep opens a daily list of finished meetings, reads a drafted follow-up and sees a CRM update preview. Nothing is sent and nothing is written.",
+      "why": "It proves the data and the draft quality with no customer risk.",
+      "exit_gate": "A rep sees a draft and a preview for a real meeting, and the evals for \"no invented facts\" pass.",
+      "decisions": ["D1"]
+    },
+    {
+      "n": 2, "name": "Send and write back",
+      "goes_live": "The rep edits and sends the follow-up from their mailbox, and approves a CRM update that is then applied.",
+      "why": "These are the two actions that touch the outside world, so they come after the drafts are trusted.",
+      "exit_gate": "Probes confirm no send and no CRM write without approval, and the success measurement runs on the trail.",
+      "decisions": ["D2"]
+    },
+    {
+      "n": 3, "name": "Manager view",
+      "goes_live": "The sales manager sees sent, applied and ignored counts per rep per week.",
+      "why": "It reads the trail that phases 1 and 2 produce.",
+      "exit_gate": "Counts reconcile with the trail for one week of test data.",
+      "decisions": ["D3"]
+    }
+  ],
+  "cadence": [
+    {"week": 1, "demonstrable": "The daily list of finished meetings with notes."},
+    {"week": 2, "demonstrable": "Drafts and CRM previews for real meetings; the rep sends a follow-up."},
+    {"week": 3, "demonstrable": "Approving a preview writes to the CRM, and the manager sees the week."}
+  ],
+  "exists": [
+    {"material": "Calendar API access for reps", "saves": "No new integration work for US01"},
+    {"material": "CRM sandbox", "saves": "Safe testing of US04, US05, US06"}
+  ],
+  "touchpoints": [
+    {"touchpoint": "Daily list and drafts", "who": "Account executive", "channel": "Web screen", "built_here": "Yes", "depends": "No"},
+    {"touchpoint": "Sent follow-up", "who": "Customer", "channel": "Rep mailbox", "built_here": "Send action only", "depends": "Mail admin must allow send as the rep"},
+    {"touchpoint": "Weekly activity view", "who": "Sales manager", "channel": "Web screen", "built_here": "Yes", "depends": "No"}
+  ],
+  "glossary": [
+    {"term": "CRM", "definition": "The system where deals and contacts are recorded.", "appears": "All"},
+    {"term": "Draft", "definition": "An email written by the assistant that the rep has not sent.", "appears": "US02, US03"},
+    {"term": "Preview", "definition": "A list of CRM changes shown before anything is written.", "appears": "US04, US05"},
+    {"term": "Trail", "definition": "The record of what was suggested, sent, applied and ignored.", "appears": "US03, US05, US07"},
+    {"term": "Critical path", "definition": "The longest chain of dependent stories, which sets the minimum duration.", "appears": "Chapter 3"},
+    {"term": "Phase", "definition": "A group of stories that goes to production together, with its own exit gate.", "appears": "Chapter 2"},
+    {"term": "Exit gate", "definition": "The check a phase must pass before the next phase starts.", "appears": "Chapter 2"},
+    {"term": "Autonomy boundary", "definition": "A written limit on what the assistant may do without asking.", "appears": "Spec, US03, US05, US06"},
+    {"term": "Eval", "definition": "A test of a probabilistic behavior against a set of real cases, scored as a pass rate.", "appears": "Phase 1 exit, US02"},
+    {"term": "Track", "definition": "One of the parallel lines of work in the schedule. A schedule assumption, not a staffing promise.", "appears": "Chapter 3"}
+  ],
+  "open": {
+    "decisions": [
+      {"id": "D1", "decision": "Can the assistant read transcripts as well as typed notes?", "who": "Sales operations", "needed_by": "Phase 1 exit"},
+      {"id": "D2", "decision": "Is a read receipt acceptable on follow-ups?", "who": "Sales manager", "needed_by": "Phase 2"},
+      {"id": "D3", "decision": "How long is the trail kept?", "who": "Legal", "needed_by": "Phase 3"}
+    ],
+    "findings": [
+      {"id": "A1", "finding": "The CRM has two fields for deal value, and the spec names only one.", "where": "CRM sandbox, field list", "effect": "US02 and US04 must read the field the spec names. Confirm with sales operations before US02 starts."},
+      {"id": "A2", "finding": "The notes tool returns notes up to 10 minutes after a meeting ends.", "where": "Notes tool test", "effect": "The \"appears within 5 minutes\" criterion in F1.1 changed to \"within 15 minutes\" unless the notes tool is faster in production."}
+    ],
+    "decided": [
+      "The email is sent from the rep's own mailbox.",
+      "Customer success meetings are out of this slice."
+    ]
+  },
+  "tracker_order": "The epic, then Features F1.1 to F1.4, then US01 to US07, then the dependency links, then the iteration assignment by phase. The tracker assigns its own codes at creation; the mapping from these ids to tracker codes is kept in the numbering register."
+}

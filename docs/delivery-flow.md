@@ -3,30 +3,20 @@
 How the process skills connect, from an idea to a closed bug.
 
 ```mermaid
-flowchart TD
-    A0[Frame: the number and the appetite<br/>skills/frame-the-problem] --> A1[Prototype notes: settled, cannot settle,<br/>silent assumptions<br/>skills/prototype-to-spec]
-    A1 --> A[Confirmed intent from stakeholder interviews] --> B{Does the request bundle<br/>separately testable capabilities?}
-    B -- yes --> C[Capability map<br/>skills/write-prd, phase 0]
-    B -- no --> D
-    C --> G1{{PM reviews the map}}
-    G1 --> D[Specify<br/>goal, numeric success criterion,<br/>Always / Ask first / Never,<br/>sources, verification, scope]
-    D --> G2{{PM reviews the spec}}
-    G2 --> E[Decompose into vertical slices<br/>skills/decompose-spec]
-    E --> G3{{Checkpoint review}}
-    G3 --> F[Execution plan<br/>phases, schedule, cadence, open decisions<br/>skills/execution-plan]
-    F --> H[Backlog in the tracker<br/>Epic, Feature, Story, dependency links<br/>eval cases for AI behavior, agent briefs]
-    H --> I[Build and verify each slice<br/>eval threshold met, never-cases zero]
-    I --> J{Symptom found?}
-    J -- no --> K[Phase exit gate and demo]
-    J -- yes --> L[Bug report<br/>skills/bug-report<br/>parent is the story where it appears]
-    L --> M[Investigate: first question is<br/>which source did the run read?]
-    M --> N{Spec or plan wrong?}
-    N -- yes --> D
-    N -- no --> I
-    K --> O{More phases?}
-    O -- yes --> I
-    O -- no --> P[Success criterion measured<br/>against the spec]
+flowchart LR
+    A["Frame the problem<br/>the number and the time budget"] --> B["Learn with a prototype"]
+    B --> C["Write the spec"]
+    C --> D["Slice and sequence<br/>Now / Next / Later"]
+    D --> E["Write the items"]
+    E --> F["Build and check each slice"]
+    F --> G["Measure the result"]
+    G -. "a defect becomes a card and a test" .-> E
+    G -. "a wrong assumption goes back to the spec" .-> C
 ```
+
+*Seven steps, each ending with a review by the product manager before the next starts. Two loops: a defect found in use becomes a card linked to the story it broke, and a test before it becomes a fix; a defect that shows the spec was wrong goes back to the spec, not straight to a fix. The success criterion is read against the spec when the last phase ships.*
+
+Inside the spec step, a request that bundles several separately testable capabilities gets a capability map first, reviewed before anything is specified. Inside the sequence step, the Now / Next / Later board pulls each valuable Feature's prerequisites into Now and sets the order; the capacity simulation turns that order into landing weeks once the team is known.
 
 ## Where each artifact lives
 
@@ -36,7 +26,10 @@ flowchart TD
 | Prototype notes | `prototype-to-spec` | A prototype's assumptions are not requirements until the spec says so |
 | Spec | `write-prd` | One owner per fact, updated the day a decision changes |
 | Plan with the dependency graph | `decompose-spec` | Holds an index of card ids, never a second task list |
+| Now / Next / Later board | `prioritize-now-next-later` | Three questions per Feature; a Now Feature pulls its chain into Now; items move only at the weekly review, with a reason |
+| Capacity plan | `capacity-simulation` | The simulation is the conversation, the tracker is the record; only the start date is typed |
 | Execution plan | `execution-plan` | Only the start date is typed, every other date is derived |
+| Readable spec page | `spec-preview-html` | One plain sentence per item, every term in the glossary, generated and never hand-edited |
 | Cards | `backlog-standard` | The tracker is the list of record |
 | Eval cases | `eval-cases` | A threshold on a distribution; a production failure becomes a case before a fix |
 | Agent brief | `agent-brief` | Checks, commands, Never list; standing conventions live in `AGENTS.md` |
@@ -51,4 +44,4 @@ flowchart TD
 
 ## Worked example
 
-The files in `examples/acme-sales-assistant/` follow this flow end to end: `frame.md`, then `prototype-notes.md`, then `prd.md`, `decomposition.md` and `execution-plan.md`, then the items (`epic.md`, `feature.md`, `user-story-1.md`, `user-story-2.md`) with `eval-cases.md` and `agent-brief.md`, then `bug-report.md` for a defect found in the pilot. The index with dates is in that folder's `README.md`.
+The files in `examples/acme-sales-assistant/` follow this flow end to end: `frame.md`, then `prototype-notes.md`, then `prd.md`, `decomposition.md`, `prioritization.md` and `execution-plan.md`, then the items (`epic.md`, `feature.md`, `user-story-1.md`, `user-story-2.md`) with `eval-cases.md`, `agent-brief.md` and `spec-preview-notes.md`, then `capacity-plan.md` at sprint planning, then `bug-report.md` for a defect found in the pilot. The index with dates is in that folder's `README.md`.

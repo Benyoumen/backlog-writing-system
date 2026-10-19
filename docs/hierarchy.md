@@ -4,21 +4,21 @@ A three-level backlog, with one fixed parent rule and clear places for effort, d
 
 ```mermaid
 flowchart TD
-    E["Epic<br/>Business outcome<br/>11 sections"]
-    F1["Feature<br/>Deliverable capability<br/>15 sections"]
-    F2["Feature<br/>Deliverable capability<br/>15 sections"]
-    S1["User Story<br/>Testable behavior<br/>9 sections"]
-    S2["User Story<br/>Testable behavior<br/>9 sections"]
-    S3["User Story (Enabler)<br/>No persona<br/>9 sections"]
-
+    E["Epic<br/>what changes for the business"]
+    F1["Feature<br/>what a person can newly do"]
+    F2["Feature<br/>what a person can newly do"]
+    S1["Story<br/>one behavior we can test"]
+    S2["Story<br/>one behavior we can test"]
+    S3["Groundwork story<br/>no persona, something the product needs"]
     E --> F1
     E --> F2
     F1 --> S1
     F1 --> S2
     F2 --> S3
-
-    S3 -. "Predecessor / Successor" .-> S2
+    S3 -. "must be done first" .-> S2
 ```
+
+*Three levels, one parent each. The dotted line is a dependency: the groundwork story must finish before the other one starts. The Epic has 11 sections, a Feature 15, a Story 9.*
 
 ## Rules the diagram shows
 
@@ -31,15 +31,12 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    A["Why it exists, scope, rules"] --> D["Description"]
-    B["Effort"] --> P["Story Points field<br/>(Epic, Feature: effort field)"]
-    C["Dependencies"] --> R["Predecessor / Successor relation"]
-    G["Acceptance criteria<br/>(Story)"] --> N["Native Acceptance Criteria field"]
-    H["Acceptance criteria<br/>(Epic, Feature)"] --> D
-    I["Definition of Done"] --> T["Team standard, inherited"]
-    J["Eval cases<br/>(AI behavior)"] --> V["Eval file, linked from the<br/>Acceptance Criteria field"]
-    K["Agent brief<br/>(story an agent builds)"] --> W["Brief file, linked from<br/>Technical notes"]
+    A["Why it exists, scope, rules"] --> D["The card's text"]
+    B["How big it is"] --> P["A number field, so it can be added up"]
+    C["What must be done first"] --> R["A link between the two cards"]
 ```
+
+*Three things never live in prose: the size goes in a number field, a dependency is a link between cards, and the Definition of Done is the team's standard, inherited by every card. Acceptance criteria go in the tracker's own field on a Story and in the text on an Epic or Feature. For AI behavior, the acceptance criteria are the eval file linked from the card; for a story a coding agent builds, the brief is linked from the technical notes.*
 
 ## What each level answers
 
@@ -54,11 +51,10 @@ flowchart LR
 ```mermaid
 flowchart LR
     A["Read the source"] --> B["Draw the tree"]
-    B --> C["Reserve codes"]
-    C --> D["Write one family at a time"]
-    D --> E["Harmonize across families"]
-    E --> F["Validate structure and register"]
-    F --> G["Human review, item by item"]
-    G --> H["Upload one card, check render"]
-    H --> I["Upload the batch, record decisions"]
+    B --> C["Write one family at a time"]
+    C --> D["A person reviews every item"]
+    D --> E["Upload one card and look at it"]
+    E --> F["Upload the rest, record the decisions"]
 ```
+
+*Nothing generated goes to the board unread. Codes are reserved before writing, vocabulary is harmonized across families, and the one card uploaded first is checked on the screen before the batch follows.*

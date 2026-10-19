@@ -42,15 +42,15 @@ Each principle gives the rule, the failure it prevents, where it lives in this m
 
 **Who is saying it.** Linear writes plain-language issues and calls user stories an anti-pattern; the shared point is clarity for the reader. Spec-driven development makes the spec the agent's persistent context.
 
-## 5. Vertical slices; appetite before estimate
+## 5. Sequence by the chain, not by the score
 
-**Rule.** Every slice crosses the stack (collect, decide, show, write) and ships behavior a person can verify. Decide the appetite, the time you are willing to spend, before you estimate. Above size L you split; you do not estimate.
+**Rule.** Every slice crosses the stack (collect, decide, show, write) and ships behavior a person can verify. Decide the appetite before you estimate; above size L you split. Then place Features in Now / Next / Later, score them by ROI impact, and pull every prerequisite of a Now Feature into Now with an explicit inherited priority. The go-live set, in dependency order, is wave 1, and every week has something demonstrable.
 
-**Prevents.** Layers that ship nothing. Estimates that become promises.
+**Prevents.** The most valuable feature at the top of a list that cannot be built, because its two unglamorous prerequisites sit at the bottom. Layers that ship nothing. Estimates that become promises. A team that never finds its pace.
 
-**In this method.** [`decompose-spec`](../skills/decompose-spec/SKILL.md), [`execution-plan`](../skills/execution-plan/SKILL.md).
+**In this method.** [`decompose-spec`](../skills/decompose-spec/SKILL.md), [`prioritize-now-next-later`](../skills/prioritize-now-next-later/SKILL.md), [`execution-plan`](../skills/execution-plan/SKILL.md), [`capacity-simulation`](../skills/capacity-simulation/SKILL.md). The full method, with the worked example: [prioritization.md](prioritization.md).
 
-**Who is saying it.** Basecamp's Shape Up (appetite, scope hammering). DORA's findings on small batches. Cagan's building-to-earn phase expects commercial quality per slice, not a demo.
+**Who is saying it.** Basecamp's Shape Up (appetite, scope hammering). The Now / Next / Later roadmap, popularized by Janna Bastow at ProdPad, as the alternative to dated roadmaps. DORA's findings on small batches. Cagan's building-to-earn phase expects commercial quality per slice, not a demo.
 
 ## 6. Structure serves navigation, not ceremony
 

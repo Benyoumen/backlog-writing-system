@@ -34,9 +34,9 @@ It sits between `write-prd` (what and why), `decompose-spec` (how to cut tasks) 
 2. Close the effort budget against the appetite. If no estimate exists, write one, and justify each number by comparison with a component already estimated. The estimate is an input to the plan, not a consequence of the deadline. If the number overruns the appetite or the roadmap window, the document states the gap instead of hiding it.
 3. Decompose (see `decompose-spec`). Epic per component, Feature per deliverable capability, Story per behavior a developer can test. Acceptance review and deploy do not become stories: they run per phase, in parallel. An Enabler story does not pretend to have a persona.
 4. Declare dependencies item by item and check that none crosses into a later phase.
-5. Cut into phases: a first usable release, then later phases, each with demonstrable value, a checkpoint and a go-live. The first release depends on nothing owned by a third party. Every week has something demonstrable. If a week comes out empty, the queue is cut wrong.
+5. Cut into phases: a first usable release, then later phases, each with demonstrable value, a checkpoint and a go-live. The first phase is the go-live set from the Now / Next / Later board (`prioritize-now-next-later`): the smallest set of Features that makes the first valuable outcome usable, in the order the enabling chain dictates, with low-value prerequisites scheduled first and their inherited priority written. The first release depends on nothing owned by a third party. Every week has something demonstrable. If a week comes out empty, the queue is cut wrong.
 6. Write the plain summaries and the glossary for everything. This is the dual-reader rule, not an extra.
-7. Derive the schedule. No date is typed except the start date. Every other date is computed from sizes and dependencies.
+7. Derive the schedule. No date is typed except the start date. Every other date is computed from sizes and dependencies. When the team is known, derive it with `capacity-simulation`: points per person per week, the chain, the reserve for enabling work, and the what-ifs the sponsor will ask for.
 8. Run the artifact check: open the spreadsheet, the live CRM, the catalog and the board to test whether the spec's assumptions are true. Record each finding with an id, where it appeared, and its effect on the plan.
 9. Run the gates (Rules). Then read the result: the headline metrics, one whole phase, one critical story and the glossary.
 
@@ -144,6 +144,6 @@ The plan is done when a tech lead can load every item into the tracker in the st
 
 ## Related
 
-- Before: [`write-prd`](../write-prd/SKILL.md), [`decompose-spec`](../decompose-spec/SKILL.md). After: [`backlog-standard`](../backlog-standard/SKILL.md), [`sprint-planning`](../sprint-planning/SKILL.md), [`roadmap-status`](../roadmap-status/SKILL.md).
-- Why: [principle 5, vertical slices, appetite before estimate](../../docs/principles.md#5-vertical-slices-appetite-before-estimate); [principle 10, a roadmap is a dated photo](../../docs/principles.md#10-a-roadmap-is-a-dated-photo-not-a-promise); [the delivery flow](../../docs/delivery-flow.md).
+- Before: [`write-prd`](../write-prd/SKILL.md), [`decompose-spec`](../decompose-spec/SKILL.md), [`prioritize-now-next-later`](../prioritize-now-next-later/SKILL.md). After: [`capacity-simulation`](../capacity-simulation/SKILL.md), [`backlog-standard`](../backlog-standard/SKILL.md), [`spec-preview-html`](../spec-preview-html/SKILL.md), [`sprint-planning`](../sprint-planning/SKILL.md), [`roadmap-status`](../roadmap-status/SKILL.md).
+- Why: [principle 5, sequence by the chain, not by the score](../../docs/principles.md#5-sequence-by-the-chain-not-by-the-score); [principle 10, a roadmap is a dated photo](../../docs/principles.md#10-a-roadmap-is-a-dated-photo-not-a-promise); [the prioritization method](../../docs/prioritization.md); [the delivery flow](../../docs/delivery-flow.md).
 - Template: [`execution-plan.md`](../../templates/execution-plan.md). Example: [`execution-plan.md`](../../examples/acme-sales-assistant/execution-plan.md).

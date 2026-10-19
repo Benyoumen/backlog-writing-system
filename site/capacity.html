@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capacity simulation, Backlog Writing System</title>
+<meta name="description" content="A live sprint simulation: the team by name, each person's weekly capacity in points, the stories with their Fibonacci points and dependencies, and the week the Epic lands. Change anything and the date moves.">
+<link rel="canonical" href="https://benyoumen.github.io/backlog-writing-system/capacity.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Capacity simulation, Backlog Writing System">
+<meta property="og:description" content="The sprint, simulated: named people, weekly capacity, Fibonacci points, dependencies, and the week the Epic lands.">
+<meta property="og:url" content="https://benyoumen.github.io/backlog-writing-system/capacity.html">
+<meta property="og:image" content="https://benyoumen.github.io/backlog-writing-system/workflow-map.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F4F7F1'/%3E%3Crect x='7' y='4' width='3' height='24' fill='%23B4372F'/%3E%3Crect x='14' y='9' width='12' height='2.5' fill='%231B2621'/%3E%3Crect x='14' y='15' width='12' height='2.5' fill='%231B2621'/%3E%3Crect x='14' y='21' width='8' height='2.5' fill='%231B2621'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="tools.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip" href="#result">Skip to the plan</a>
+
+<header class="hero tool">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="crumb"><a href="./">Backlog Writing System</a> / Capacity simulation</p>
+      <h1 class="thesis">The sprint, simulated.</h1>
+      <p class="lede">The team by name, each person's weekly capacity in points, the stories with their Fibonacci points and what they depend on. Move a story, change a capacity, add a developer: the week the Epic lands moves with it. This is the conversation with the sponsor. The tracker is the record.</p>
+      <p class="actions">
+        <a class="button primary" href="#inputs">Edit the inputs</a>
+        <a class="button" href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/capacity-simulation">The skill on GitHub</a>
+      </p>
+      <p class="honest">Fictional team and numbers. The rules are real.</p>
+    </div>
+  </div>
+</header>
+
+<main class="ledger">
+
+  <section class="block" id="inputs" aria-labelledby="h-inputs">
+    <div class="margin">
+      <h2 id="h-inputs">Inputs</h2>
+      <p>Edit anything. The plan recomputes on every change and is kept in this browser.</p>
+    </div>
+    <div class="body">
+      <div class="form-grid">
+        <div>
+          <h3>Team</h3>
+          <div class="scroll">
+            <table class="edit" id="team-table">
+              <thead>
+                <tr><th scope="col">Name</th><th scope="col">Points per week</th><th scope="col"><span class="sr-only">Remove</span></th></tr>
+              </thead>
+              <tbody id="team-body"></tbody>
+            </table>
+          </div>
+          <div class="btn-row">
+            <button type="button" class="btn small" id="add-person">Add a person</button>
+          </div>
+          <div class="settings">
+            <label>Start date (Monday)<input type="date" id="start-date"></label>
+            <label>Sprint length<select id="sprint-weeks"><option value="1">1 week</option><option value="2">2 weeks</option><option value="3">3 weeks</option></select></label>
+            <label>Reserve for enabling work, percent of the team's sprint<input type="number" id="reserve" min="0" max="60" step="1"></label>
+          </div>
+        </div>
+        <div>
+          <h3>What if</h3>
+          <p>Three questions a sponsor asks. Each one changes the inputs on the left and reports what it did to the landing week.</p>
+          <div class="btn-row">
+            <button type="button" class="btn" id="whatif-add">Add a person at 4 points</button>
+            <button type="button" class="btn" id="whatif-remove">Remove the smallest capacity</button>
+            <button type="button" class="btn" id="whatif-later">Move the biggest Now story to Later</button>
+          </div>
+          <div class="btn-row">
+            <button type="button" class="btn quiet" id="reset">Reset to the Acme example</button>
+          </div>
+        </div>
+      </div>
+
+      <h3>Stories</h3>
+      <p class="note">Points follow the Fibonacci scale. A story with no points is not scheduled: it goes to the "to refine" list. Depends on takes story codes separated by commas. Enabler marks work that carries little value alone and draws on the reserve.</p>
+      <div class="scroll">
+        <table class="edit" id="stories-table">
+          <thead>
+            <tr>
+              <th scope="col">Code</th>
+              <th scope="col">Title</th>
+              <th scope="col">Feature</th>
+              <th scope="col">Points</th>
+              <th scope="col">Owner</th>
+              <th scope="col">Band</th>
+              <th scope="col">Depends on</th>
+              <th scope="col">Enabler</th>
+              <th scope="col"><span class="sr-only">Remove</span></th>
+            </tr>
+          </thead>
+          <tbody id="stories-body"></tbody>
+        </table>
+      </div>
+      <div class="btn-row">
+        <button type="button" class="btn small" id="add-story">Add a story</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="block result" id="result" aria-labelledby="h-result">
+    <div class="margin">
+      <h2 id="h-result">The plan</h2>
+      <p>Derived, never typed. Dependency order first, then the chain that sets the landing week, then whoever is free.</p>
+    </div>
+    <div class="body">
+      <p class="headline" id="headline" aria-live="polite"></p>
+      <p class="subline" id="subline"></p>
+      <p class="message" id="message" role="status" aria-live="polite"></p>
+      <ul class="problems" id="problems" aria-label="Problems found in the inputs"></ul>
+
+      <h3>When each Feature lands</h3>
+      <ul class="features" id="feature-bars"></ul>
+
+      <h3>Who does what, week by week</h3>
+      <div class="scroll">
+        <table class="grid" id="grid" aria-describedby="grid-note"></table>
+      </div>
+      <p class="totals" id="totals"></p>
+      <p class="legend" id="grid-note"><span><span class="chip critical">F03-US03 <span class="pts">5</span></span> on the chain that sets the landing week</span><span><span class="chip enabler">S1 <span class="pts">5</span></span> enabler, placed first up to the reserve</span><span><span class="chip">S3 <span class="pts">5</span></span> other story</span><span><span class="idle flag">idle 3</span> capacity left while work waits on a dependency or a sprint boundary</span></p>
+
+      <div class="lists">
+        <div><h3>Parked (Next and Later)</h3><ul id="parked"></ul></div>
+        <div><h3>To refine (no points)</h3><ul id="refine"></ul></div>
+        <div><h3>Features on the board</h3><ul id="board"></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="how" aria-labelledby="h-how">
+    <div class="margin">
+      <h2 id="h-how">How to read this</h2>
+      <p>The rules the simulation applies, in the order it applies them.</p>
+    </div>
+    <div class="body">
+      <ol class="rules">
+        <li><strong>Only Now is scheduled.</strong> Next and Later stories are parked. A Now story that depends on a parked one is blocked and reported, because a plan that waits on a decision nobody made is not a plan.</li>
+        <li><strong>Dependencies set the order.</strong> A story starts the week after everything it depends on has finished. Cycles are reported as an error.</li>
+        <li><strong>The chain goes first.</strong> Among stories that can start, the one with the longest path of work behind it is placed first. Inside the same level, the Feature with the higher ROI impact goes first.</li>
+        <li><strong>A story stays inside a sprint when it can.</strong> A person who can finish it before the sprint ends is preferred. When nobody can and the person would otherwise sit idle, the story starts anyway, carries over the boundary, and a note says so: split it. A story bigger than any person's whole sprint is flagged for the same reason.</li>
+        <li><strong>The reserve protects enabling work.</strong> Each sprint, stories marked Enabler are placed first until the reserve share of the team's capacity holds enabling work, so the foundation that waits for the product to finish never has to wait. Nothing is held back from use.</li>
+        <li><strong>Dates are derived.</strong> Weeks count from the start date. Nothing is typed into a card. The landing week is the last week of the last Now story; the chain that sets it is highlighted.</li>
+        <li><strong>Points per person are a reference, not a measurement.</strong> Five points a week is one point per working day; replace it with the team's measured velocity as soon as there is one.</li>
+              <li>The simulation works in whole weeks: a story that depends on another starts the week after it lands, and a person works one story at a time. A day-level plan of the same stories, like the example's capacity plan, lands about two weeks earlier; the order and the critical chain are the same.</li>
+</ol>
+      <p class="note">The method behind this page: <a href="https://github.com/Benyoumen/backlog-writing-system/blob/main/docs/prioritization.md">Now / Next / Later, ROI impact and the enabling chain</a>. The skill: <a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/capacity-simulation"><code>capacity-simulation</code></a>. Back to the <a href="./">field guide</a>.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p>Benjamin Tayar, 2026. MIT.</p>
+  <p><a href="https://github.com/Benyoumen">github.com/Benyoumen</a></p>
+</footer>
+
+<script src="capacity.js" defer></script>
+</body>
+</html>

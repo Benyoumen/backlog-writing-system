@@ -47,11 +47,11 @@
 <rect x="1119" y="90" width="220" height="180" rx="6" fill="#FFFFFF" stroke="#1B2621" stroke-width="1.5"/>
 <circle cx="1149" cy="120" r="16" fill="#1B2621"/>
 <text x="1149" y="126" font-size="18" font-weight="700" fill="#F4F7F1" text-anchor="middle">3</text>
-<text x="1133" y="168" font-size="21" font-weight="600">Slice</text>
+<text x="1133" y="168" font-size="20" font-weight="600">Slice and sequence</text>
 <line x1="1133" y1="182" x2="1325" y2="182" stroke="#C9D3CA"/>
 <text x="1133" y="206" font-size="18" fill="#3A4842">Vertical slices,</text>
-<text x="1133" y="229" font-size="18" fill="#3A4842">sizes XS to L,</text>
-<text x="1133" y="252" font-size="18" fill="#3A4842">critical path</text>
+<text x="1133" y="229" font-size="18" fill="#3A4842">Now / Next / Later,</text>
+<text x="1133" y="252" font-size="18" fill="#3A4842">the enabling chain</text>
 </g>
 
 <!-- Row 1 arrows and gates -->
@@ -68,7 +68,7 @@
 
 <!-- Stage 3 to stage 4 -->
 <path d="M1229,270 V300 H170 V348" stroke="#1B2621" stroke-width="2" fill="none" marker-end="url(#ink)"/>
-<text x="700" y="292" font-size="18" text-anchor="middle">every slice ships behavior</text>
+<text x="700" y="292" font-size="18" text-anchor="middle">every slice ships, in order</text>
 
 <!-- Eval loop return: golden set back into Build and verify -->
 <path d="M1300,350 V318 H523 V348" stroke="#B4372F" stroke-width="2" stroke-dasharray="7 5" fill="none" marker-end="url(#red)"/>

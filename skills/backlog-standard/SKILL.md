@@ -164,6 +164,6 @@ A reviewer can open any item written with it, find every section in the expected
 ## Related
 
 - Companions: [`why-it-exists`](../why-it-exists/SKILL.md), [`user-story-writing`](../user-story-writing/SKILL.md), [`epic-feature-story-templates`](../epic-feature-story-templates/SKILL.md), [`eval-cases`](../eval-cases/SKILL.md), [`agent-brief`](../agent-brief/SKILL.md).
-- Upstream: [`write-prd`](../write-prd/SKILL.md), [`decompose-spec`](../decompose-spec/SKILL.md), [`execution-plan`](../execution-plan/SKILL.md).
+- Upstream: [`write-prd`](../write-prd/SKILL.md), [`decompose-spec`](../decompose-spec/SKILL.md), [`prioritize-now-next-later`](../prioritize-now-next-later/SKILL.md), [`execution-plan`](../execution-plan/SKILL.md). Downstream: [`spec-preview-html`](../spec-preview-html/SKILL.md) renders the batch as one readable page; [`capacity-simulation`](../capacity-simulation/SKILL.md) turns the points and relations into landing dates.
 - Why: [principle 6, structure serves navigation](../../docs/principles.md#6-structure-serves-navigation-not-ceremony); [principle 4, the four-reader test](../../docs/principles.md#4-pass-the-four-reader-test); [principle 7, the acceptance criterion is an eval](../../docs/principles.md#7-for-ai-behavior-the-acceptance-criterion-is-an-eval); [the hierarchy](../../docs/hierarchy.md).
 - Templates: [`epic.md`](../../templates/epic.md), [`feature.md`](../../templates/feature.md), [`user-story.md`](../../templates/user-story.md). Examples: [`examples/acme-sales-assistant/`](../../examples/acme-sales-assistant/README.md).

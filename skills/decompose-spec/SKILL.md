@@ -117,6 +117,7 @@ Split when: it exceeds one focused session; the acceptance criterion does not fi
 ## Rules
 
 - Appetite before estimate. The appetite is an input; the estimate is checked against it. When they disagree, scope moves, not the appetite.
+- The chain decides the order, not the score. A low-value slice that a valuable one depends on is cut and scheduled first, with its inherited priority written on the card (`prioritize-now-next-later`).
 - Vertical, never horizontal. At least one slice reaches the write layer.
 - No task is XL. Above L you split; you do not estimate.
 - Dependencies live in the tracker's link field, not in prose.
@@ -160,6 +161,6 @@ The plan is done when a developer who was not in the conversation can pick the f
 
 ## Related
 
-- Before: [`write-prd`](../write-prd/SKILL.md), [`frame-the-problem`](../frame-the-problem/SKILL.md) for the appetite. After: [`execution-plan`](../execution-plan/SKILL.md), [`backlog-standard`](../backlog-standard/SKILL.md).
-- Why: [principle 5, vertical slices, appetite before estimate](../../docs/principles.md#5-vertical-slices-appetite-before-estimate); [the delivery flow](../../docs/delivery-flow.md).
+- Before: [`write-prd`](../write-prd/SKILL.md), [`frame-the-problem`](../frame-the-problem/SKILL.md) for the appetite. After: [`prioritize-now-next-later`](../prioritize-now-next-later/SKILL.md) for the bands, the chain and the waves, [`capacity-simulation`](../capacity-simulation/SKILL.md) for the dates, [`execution-plan`](../execution-plan/SKILL.md), [`backlog-standard`](../backlog-standard/SKILL.md).
+- Why: [principle 5, sequence by the chain, not by the score](../../docs/principles.md#5-sequence-by-the-chain-not-by-the-score); [the prioritization method](../../docs/prioritization.md); [the delivery flow](../../docs/delivery-flow.md).
 - Template: [`execution-plan.md`](../../templates/execution-plan.md). Example: [`decomposition.md`](../../examples/acme-sales-assistant/decomposition.md).

@@ -3,19 +3,16 @@
 How the operations skills fit into one week. The goal is that the sponsor review, the snapshot, the roadmap and the tracker always tell the same story.
 
 ```mermaid
-flowchart TD
-    A[Monday cutoff] --> B[weekly-backlog-snapshot<br/>update living backlog, freeze snapshot w NN]
-    B --> C[roadmap-status<br/>pull tracker, write dated snapshot, diff]
-    C --> D[backlog-review-meeting<br/>build deck: actions summary, topics, schedule, next steps]
-    D --> E[Sponsor review<br/>with the one-line What we cut]
-    E --> F[Follow-up email to sponsor<br/>the contract of the week]
-    F --> G[Saved as input for week NN+1]
-    E --> H[sprint-planning<br/>owner, points, sprint written to tracker]
-    H --> I[work-item-card<br/>cards and dated comments for follow-ups]
-    C --> J[publish-roadmap<br/>when stakeholders need a version]
-    G --> D
-    I --> B
+flowchart LR
+    A["Monday: freeze the week"] --> B["Read the roadmap from the tracker"]
+    B --> C["Build the review deck"]
+    C --> D["Review with the sponsor"]
+    D --> E["Email the commitments"]
+    E --> F["Plan the sprint from the simulation"]
+    F -. "next Monday" .-> A
 ```
+
+*One week, six steps, the same every week. The snapshot shows what changed, including what was removed; the review opens with last week's commitments; the email is the contract of the week; the sprint is planned from the capacity simulation, re-run from the tracker's current state, and written back only after a dry run.*
 
 ## Weekly rhythm
 
@@ -26,7 +23,7 @@ flowchart TD
 | 3 | `backlog-review-meeting` | Last week's deck, sponsor email, meeting notes, snapshot, roadmap | Review deck and PDF for week NN |
 | 4 | Meeting | Deck | Decisions and commitments |
 | 5 | Follow-up email | Meeting | Input file for week NN+1 |
-| 6 | `sprint-planning` | Backlog, team calendar | Owners, points and sprint in the tracker |
+| 6 | `capacity-simulation`, then `sprint-planning` | Now band, team by name with weekly capacity, points and relations from the tracker | The landing week per story and for the Epic, the what-ifs; then owners, points and sprint written to the tracker |
 | 7 | `work-item-card` | Commitments | Cards with next step and dated comments |
 | As needed | `publish-roadmap` | Roadmap source | Document, deck, PDF, PPTX, diff |
 

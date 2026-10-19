@@ -14,6 +14,9 @@ A method for writing a product backlog: a spec, vertical slices, Epic / Feature 
 | "We prototyped X, what goes in the spec?" | `prototype-to-spec` |
 | "Write the PRD / spec for X" | `write-prd` |
 | "Break this spec into tasks / slices" | `decompose-spec`, then `execution-plan` |
+| "Prioritize this", "what comes first?", "Now / Next / Later", "what's the ROI?" | `prioritize-now-next-later` |
+| "Simulate the sprint", "when does it land?", "do we have the capacity?" | `capacity-simulation` |
+| "Make the spec readable", "spec preview", "an HTML for the tech lead and QA" | `spec-preview-html` |
 | "Write the epic / feature / story for X" | `backlog-standard`, `epic-feature-story-templates`, `why-it-exists`, `user-story-writing` |
 | "Write acceptance criteria for an AI feature", "what's the eval?" | `eval-cases` |
 | "Prepare this story so an agent can build it" | `agent-brief` |
@@ -29,15 +32,18 @@ A method for writing a product backlog: a spec, vertical slices, Epic / Feature 
 1. Read the frame or ask for the number and the appetite. Do not invent them.
 2. Read the spec. If there is none, run `write-prd` first and stop at the end of its first phase for approval.
 3. Run `decompose-spec`. Present the slices, sizes and dependencies before writing any item.
-4. Write items with `backlog-standard`. One fixed parent: a Story belongs to a Feature, never to an Epic.
-5. Run `why-it-exists` on every item, then `user-story-writing` on every Story.
-6. For every probabilistic behavior, run `eval-cases`. An AI item without eval cases is not Ready.
-7. For every item an agent will execute, run `agent-brief`.
-8. Apply the four-reader test to each item: can an engineer, a designer, an executive and a coding agent act on it without a meeting? If not, rewrite; do not add a comment.
+4. Run `prioritize-now-next-later`. Present the board and the enabling chain: which Features are Now, which low-value items are pulled in because a valuable one depends on them, and what is demonstrable each week. When the team is known, run `capacity-simulation` and show the landing week and at least one what-if. Do not type a date anywhere.
+5. Write items with `backlog-standard`. One fixed parent: a Story belongs to a Feature, never to an Epic.
+6. Run `why-it-exists` on every item, then `user-story-writing` on every Story.
+7. For every probabilistic behavior, run `eval-cases`. An AI item without eval cases is not Ready.
+8. For every item an agent will execute, run `agent-brief`.
+9. When the batch is complete, run `spec-preview-html` so the tech lead, QA and the sponsor can read it as one page before it is loaded into the tracker.
+10. Apply the four-reader test to each item: can an engineer, a designer, an executive and a coding agent act on it without a meeting? If not, rewrite; do not add a comment.
 
 ## Never
 
 - Never invent a number, a date, a customer, a metric or a dependency. Mark the gap `[TO CONFIRM]` and ask.
+- Never rank a Feature that has no estimated stories, and never place a Feature in Now without its prerequisites in Now with their inherited priority written.
 - Never assert the cause of a bug in a bug card.
 - Never write a persona for Enabler work.
 - Never mark an AI item Ready without a golden set, a scoring method and a threshold.

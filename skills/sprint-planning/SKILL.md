@@ -24,6 +24,7 @@ metadata:
 - The tracker's field names for points, effort and iteration, checked once and written down.
 - The Definition of Ready (`backlog-standard`): an AI item needs eval cases; an item a coding agent will build needs an agent brief.
 - Measured velocity, when the team has it.
+- The capacity plan from `capacity-simulation`: owner, week and landing date per story, the reserve for enabling work. This skill writes that plan to the tracker; it does not derive it.
 
 ## Procedure
 
@@ -69,6 +70,7 @@ Done means the team closed it. It does not mean the business accepted it.
 8. Browser-side writes need the tracker's CORS policy to allow the method and the authorization header. Send requests without cookies.
 9. Text the tracker returns can be escaped (`&`, quotes, angle brackets). Unescape both sides before comparing, or the check reports false differences.
 10. Some tracker forms do not show acceptance criteria on Epics and Features. The API may accept the write and nobody sees it. At those levels, put the criteria in the description.
+11. A reserve of each sprint, a third to start, goes to Enabler and platform stories and is allocated first, so the foundation never waits for the product to finish. A Feature never splits across two sprints. The allocation comes from `capacity-simulation`; this skill writes it after the dry run.
 
 Pitfalls to test for in the planning document: a class that sets `display` beats the `hidden` attribute, so a modal styled `display:flex` stays visible when hidden; two documents with the same storage key overwrite each other's plan when opened from local files, so give each its own key; after any bulk text replacement, count every proper name in the old and new document, and treat a name that dropped to zero as suspect.
 
@@ -95,6 +97,6 @@ Every write was previewed and then verified by re-reading the tracker; no estima
 
 ## Related
 
-- Readiness: [`backlog-standard`](../backlog-standard/SKILL.md), [`eval-cases`](../eval-cases/SKILL.md), [`agent-brief`](../agent-brief/SKILL.md). The plan the sprint draws from: [`execution-plan`](../execution-plan/SKILL.md). The weekly cadence: [`weekly-backlog-snapshot`](../weekly-backlog-snapshot/SKILL.md), [`work-item-card`](../work-item-card/SKILL.md).
+- Readiness: [`backlog-standard`](../backlog-standard/SKILL.md), [`eval-cases`](../eval-cases/SKILL.md), [`agent-brief`](../agent-brief/SKILL.md). The plan the sprint draws from: [`capacity-simulation`](../capacity-simulation/SKILL.md) for the allocation and the landing dates, [`prioritize-now-next-later`](../prioritize-now-next-later/SKILL.md) for the waves, [`execution-plan`](../execution-plan/SKILL.md). The weekly cadence: [`weekly-backlog-snapshot`](../weekly-backlog-snapshot/SKILL.md), [`work-item-card`](../work-item-card/SKILL.md).
 - Why: [principle 10, a roadmap is a dated photo](../../docs/principles.md#10-a-roadmap-is-a-dated-photo-not-a-promise); [the operating cadence](../../docs/operating-cadence.md).
 - Template: [`sprint-planning.md`](../../templates/sprint-planning.md).

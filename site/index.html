@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Backlog Writing System</title>
-<meta name="description" content="A field guide to writing a product backlog as a set of decisions: seven stages with a gate question each, twelve principles, and eighteen reusable skills, with a fictional worked example.">
+<meta name="description" content="A field guide to writing a product backlog as a set of decisions: seven stages with a gate question each, twelve principles, twenty-one reusable skills, a live capacity simulation and a readable spec preview, with a fictional worked example.">
 <link rel="canonical" href="https://benyoumen.github.io/backlog-writing-system/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Backlog Writing System">
-<meta property="og:description" content="A backlog is a set of decisions. Seven stages, seven gates, twelve principles, eighteen reusable skills.">
+<meta property="og:description" content="A backlog is a set of decisions. Seven stages, seven gates, twelve principles, twenty-one reusable skills, a live capacity simulation.">
 <meta property="og:url" content="https://benyoumen.github.io/backlog-writing-system/">
 <meta property="og:image" content="https://benyoumen.github.io/backlog-writing-system/workflow-map.svg">
 <meta name="twitter:card" content="summary_large_image">
@@ -32,7 +32,7 @@
         <a class="button primary" href="#workflow">Read the workflow</a>
         <a class="button" href="https://github.com/Benyoumen/backlog-writing-system">Skills on GitHub</a>
       </p>
-      <p class="note">Fictional example product: Acme Field Sales Assistant.</p>
+      <p class="note">Live tools: the <a href="capacity.html">capacity simulation</a> and the <a href="spec-preview.html">spec preview</a>. Fictional example product: Acme Field Sales Assistant.</p>
     </div>
     <figure class="specimen">
       <figcaption>A User Story field set, written to the standard</figcaption>
@@ -61,7 +61,7 @@
         <button class="node" role="tab" id="tab-0" aria-selected="true" aria-controls="stage-0"><span class="num">0</span><span class="name">Frame</span></button>
         <button class="node" role="tab" id="tab-1" aria-selected="false" aria-controls="stage-1" tabindex="-1"><span class="num">1</span><span class="name">Discover</span></button>
         <button class="node" role="tab" id="tab-2" aria-selected="false" aria-controls="stage-2" tabindex="-1"><span class="num">2</span><span class="name">Decide</span></button>
-        <button class="node" role="tab" id="tab-3" aria-selected="false" aria-controls="stage-3" tabindex="-1"><span class="num">3</span><span class="name">Slice</span></button>
+        <button class="node" role="tab" id="tab-3" aria-selected="false" aria-controls="stage-3" tabindex="-1"><span class="num">3</span><span class="name">Slice and sequence</span></button>
         <button class="node" role="tab" id="tab-4" aria-selected="false" aria-controls="stage-4" tabindex="-1"><span class="num">4</span><span class="name">Write</span></button>
         <button class="node" role="tab" id="tab-5" aria-selected="false" aria-controls="stage-5" tabindex="-1"><span class="num">5</span><span class="name">Build and verify</span></button>
         <button class="node" role="tab" id="tab-6" aria-selected="false" aria-controls="stage-6" tabindex="-1"><span class="num">6</span><span class="name">Ship and learn</span></button>
@@ -152,27 +152,27 @@
 
         <section class="panel" role="tabpanel" id="stage-3" aria-labelledby="tab-3">
           <p class="gate-label">Gate question</p>
-          <p class="gate">Does every slice ship behavior someone can verify?</p>
+          <p class="gate">Does every slice ship behavior, in an order that lets the team find its pace?</p>
           <div class="panel-grid">
             <div>
               <h3>Purpose</h3>
-              <p>Make it buildable in small, verifiable pieces. Vertical slices, each crossing collect, decide, show and write, each shipping behavior a person can verify. Sizes XS to L. Above L you split, you do not estimate. Dependencies are declared and the schedule is derived from them, so there is one critical path and everyone can see it.</p>
+              <p>Make it buildable in small, verifiable pieces, then put the pieces in the order that lets the team find its pace. Vertical slices, each crossing collect, decide, show and write. Sizes XS to L; above L you split, you do not estimate. Then the board: Features in Now / Next / Later, scored by ROI impact, with every prerequisite of a Now Feature pulled into Now and marked with its inherited priority. The go-live set in dependency order is wave 1. Dates are derived from the chain and the team's capacity, never typed.</p>
               <h3>Typical failure</h3>
-              <p>Horizontal layers ("build the data model", "build the API") that ship nothing for weeks.</p>
+              <p>Horizontal layers ("build the data model", "build the API") that ship nothing for weeks. Or a ranked list whose top item cannot be built, because its two unglamorous prerequisites sit at the bottom.</p>
             </div>
             <dl class="facts">
               <dt>Artifact</dt>
-              <dd>The decomposition and the execution plan.</dd>
+              <dd>The decomposition, the Now / Next / Later board with the enabling chain, the execution plan, the <a href="capacity.html">capacity simulation</a>.</dd>
               <dt>Skills</dt>
-              <dd><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/decompose-spec"><code>decompose-spec</code></a>, <a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/execution-plan"><code>execution-plan</code></a></dd>
+              <dd><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/decompose-spec"><code>decompose-spec</code></a>, <a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/prioritize-now-next-later"><code>prioritize-now-next-later</code></a>, <a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/execution-plan"><code>execution-plan</code></a>, <a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/capacity-simulation"><code>capacity-simulation</code></a></dd>
             </dl>
           </div>
           <div class="changed">
             <h3>What changed in 2026</h3>
             <dl class="triple">
-              <div><dt>Before</dt><dd>Estimation first.</dd></div>
-              <div><dt>Now</dt><dd>Appetite first, then vertical slices.</dd></div>
-              <div><dt>Why</dt><dd>Shape Up. Small batches.</dd></div>
+              <div><dt>Before</dt><dd>Estimation first, then a ranked list.</dd></div>
+              <div><dt>Now</dt><dd>Appetite first, vertical slices, the chain pulled into Now, dates derived from capacity.</dd></div>
+              <div><dt>Why</dt><dd>Shape Up. Now / Next / Later. Small batches.</dd></div>
             </dl>
           </div>
         </section>
@@ -284,6 +284,74 @@
     </div>
   </section>
 
+  <section class="block" id="prioritize" aria-labelledby="h-prioritize">
+    <div class="margin">
+      <h2 id="h-prioritize">Prioritize what makes it live</h2>
+      <p>Finding the problem is half the job. Cutting the work in the right order is the other half.</p>
+    </div>
+    <div class="body">
+      <ol class="questions">
+        <li><h3>How much does it move the number?</h3><p>The ROI impact: effect on the Epic's metric, reach, confidence, against effort. No estimate, no rank.</p></li>
+        <li><h3>When?</h3><p>Now, Next or Later. A commitment band, not a date. Dates are derived later from capacity and dependencies.</p></li>
+        <li><h3>What has to exist first?</h3><p>The enabling chain: the features that carry little value alone and without which the valuable one never goes live. They inherit Now.</p></li>
+      </ol>
+
+      <h3 class="sub">The board for the Acme Epic</h3>
+      <div class="scrollx">
+        <table class="board">
+          <thead>
+            <tr><th scope="col">Feature</th><th scope="col">Impact</th><th scope="col">Effort</th><th scope="col">ROI</th><th scope="col">Band</th><th scope="col">Why here</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>F01 Meetings and notes</td><td>1</td><td>3</td><td>1.00</td><td>Now, <span class="enabling">enabling F02 and F03</span></td><td>Nothing drafts and nothing previews without the list of finished meetings. Lowest value alone, built first.</td></tr>
+            <tr><td>F02 Follow-up draft and send</td><td>3</td><td>11</td><td>0.49</td><td>Now</td><td>The reason the Epic exists: the draft is the main time saving.</td></tr>
+            <tr><td>F03 CRM write-back</td><td>3</td><td>15</td><td>0.36</td><td>Now</td><td>Moves the second metric directly; the write path is the autonomy contract.</td></tr>
+            <tr><td>F04 Activity trail</td><td>2</td><td>2</td><td>0.60</td><td>Now</td><td>Measures the Epic's number; without it nobody can read the result.</td></tr>
+            <tr><td>F05 Manager weekly digest</td><td>2</td><td>8</td><td>0.05</td><td>Next</td><td>Valuable once F04 has two weeks of data. Scoped, not yet estimated to the story.</td></tr>
+            <tr><td>F06 Drafts in a second language</td><td>1</td><td>8</td><td>0.01</td><td>Later</td><td>One rep in ten works in a second language. Reason recorded, no scope yet.</td></tr>
+            <tr><td>F07 Schedule the next meeting</td><td>no stories</td><td></td><td></td><td>To refine</td><td>Not estimated, so not ranked and not scheduled.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub">The enabling chain</h3>
+      <svg class="chain" viewBox="0 0 920 230" role="img" aria-labelledby="chain-title">
+        <title id="chain-title">The enabling chain: F01 makes F02 and F03 possible, F04 measures them, F05 waits for the trail's data</title>
+        <defs><marker id="chain-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L8,4 L0,8 Z" fill="currentColor"/></marker></defs>
+        <g font-size="13" fill="currentColor">
+          <rect x="20" y="85" width="190" height="58" rx="2" fill="var(--paper-2)" stroke="currentColor"/>
+          <text x="32" y="108" font-size="14" font-weight="600">F01 Meetings and notes</text>
+          <text x="32" y="129" font-size="12" fill="var(--ink-2)">impact 1, enables F02 and F03</text>
+          <rect x="260" y="30" width="200" height="58" rx="2" fill="var(--paper-2)" stroke="currentColor" stroke-width="2"/>
+          <text x="272" y="53" font-size="14" font-weight="600">F02 Follow-up draft and send</text>
+          <text x="272" y="74" font-size="12" fill="var(--ink-2)">impact 3, Now</text>
+          <rect x="260" y="140" width="200" height="58" rx="2" fill="var(--paper-2)" stroke="currentColor" stroke-width="2"/>
+          <text x="272" y="163" font-size="14" font-weight="600">F03 CRM write-back</text>
+          <text x="272" y="184" font-size="12" fill="var(--ink-2)">impact 3, Now</text>
+          <rect x="510" y="85" width="170" height="58" rx="2" fill="var(--paper-2)" stroke="currentColor"/>
+          <text x="522" y="108" font-size="14" font-weight="600">F04 Activity trail</text>
+          <text x="522" y="129" font-size="12" fill="var(--ink-2)">impact 2, measures the number</text>
+          <rect x="730" y="85" width="170" height="58" rx="2" fill="var(--paper-2)" stroke="currentColor" stroke-dasharray="5 4"/>
+          <text x="742" y="108" font-size="14" font-weight="600">F05 Manager digest</text>
+          <text x="742" y="129" font-size="12" fill="var(--ink-2)">impact 2, Next</text>
+          <path d="M210,114 C235,114 235,59 258,59" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#chain-arrow)"/>
+          <path d="M210,114 C235,114 235,169 258,169" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#chain-arrow)"/>
+          <path d="M460,59 C485,59 485,114 508,114" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#chain-arrow)"/>
+          <path d="M460,169 C485,169 485,114 508,114" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#chain-arrow)"/>
+          <path d="M680,114 H728" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#chain-arrow)"/>
+          <text x="20" y="222" font-size="12" fill="var(--ink-2)">Arrows read "makes possible". Dashed: parked in Next.</text>
+        </g>
+      </svg>
+      <p class="chain-caption">F01 carries almost no value alone. Nothing ships without it, so it is built first. Read from the right: F02 and F03 carry the value, F01 makes them possible, F04 measures the result, F05 waits for two weeks of trail data. Wave 1 is F01, then F02 and F03 in parallel, then F04.</p>
+
+      <p class="actions">
+        <a class="button primary" href="capacity.html">Open the capacity simulation</a>
+        <a class="button" href="spec-preview.html">Read the spec preview</a>
+      </p>
+      <p class="note">The full method with the worked example: <a href="https://github.com/Benyoumen/backlog-writing-system/blob/main/docs/prioritization.md">docs/prioritization.md</a>.</p>
+    </div>
+  </section>
+
   <section class="block" id="readers" aria-labelledby="h-readers">
     <div class="margin">
       <h2 id="h-readers">Four readers</h2>
@@ -370,14 +438,14 @@
         <li>
           <span class="n" aria-hidden="true">5</span>
           <div>
-            <h3>Vertical slices; appetite before estimate</h3>
-            <p>Every slice crosses the stack and ships behavior a person can verify. Decide the appetite, the time you are willing to spend, before you estimate. Above size L you split; you do not estimate.</p>
+            <h3>Sequence by the chain, not by the score</h3>
+            <p>Every slice crosses the stack and ships behavior a person can verify. Decide the appetite before you estimate; above size L you split. Then place Features in Now / Next / Later, score them by ROI impact, and pull every prerequisite of a Now Feature into Now with its inherited priority written. The go-live set, in dependency order, is wave 1, and every week has something demonstrable.</p>
             <details>
               <summary><span class="more">More</span><span class="less">Less</span></summary>
               <dl>
-                <dt>Prevents</dt><dd>Layers that ship nothing. Estimates that become promises.</dd>
-                <dt>In this method</dt><dd><code>decompose-spec</code>, <code>execution-plan</code>.</dd>
-                <dt>Who is saying it</dt><dd>Basecamp's Shape Up (appetite, scope hammering). DORA's findings on small batches. Cagan's building-to-earn phase expects commercial quality per slice, not a demo.</dd>
+                <dt>Prevents</dt><dd>The most valuable feature at the top of a list that cannot be built, because its two unglamorous prerequisites sit at the bottom. Layers that ship nothing. Estimates that become promises. A team that never finds its pace.</dd>
+                <dt>In this method</dt><dd><code>decompose-spec</code>, <code>prioritize-now-next-later</code>, <code>execution-plan</code>, <code>capacity-simulation</code>. The worked example: <a href="https://github.com/Benyoumen/backlog-writing-system/blob/main/docs/prioritization.md">prioritization.md</a>, and the <a href="capacity.html">live simulation</a>.</dd>
+                <dt>Who is saying it</dt><dd>Basecamp's Shape Up (appetite, scope hammering). The Now / Next / Later roadmap, popularized by Janna Bastow at ProdPad, as the alternative to dated roadmaps. DORA's findings on small batches. Cagan's building-to-earn phase expects commercial quality per slice, not a demo.</dd>
               </dl>
             </details>
           </div>
@@ -493,7 +561,7 @@
 
   <section class="block" id="skills" aria-labelledby="h-skills">
     <div class="margin">
-      <h2 id="h-skills">Eighteen skills</h2>
+      <h2 id="h-skills">Twenty-one skills</h2>
       <p>Each skill is a folder with a SKILL.md that an AI coding assistant can load, and plain Markdown anyone can read.</p>
     </div>
     <div class="body">
@@ -507,12 +575,15 @@
           <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/epic-feature-story-templates"><code>epic-feature-story-templates</code></a></td><td>Epic (11 sections), Feature (15), User Story (9), and what each section must contain.</td></tr>
           <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/why-it-exists"><code>why-it-exists</code></a></td><td>The why field: starts from the consequence of the item not existing, in plain language.</td></tr>
           <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/user-story-writing"><code>user-story-writing</code></a></td><td>Seven writing rules so a story needs no rules inside rules.</td></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/spec-preview-html"><code>spec-preview-html</code></a></td><td>The functional and technical spec as one readable page: a plain sentence per item, numbered sections, glossary, derived schedule. <a href="spec-preview.html">Live example</a>.</td></tr>
           <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/work-item-card"><code>work-item-card</code></a></td><td>A five-second card for a task or a follow-up.</td></tr>
         </tbody>
         <tbody>
           <tr class="group"><th scope="rowgroup" colspan="2">Plan and decompose</th></tr>
           <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/write-prd"><code>write-prd</code></a></td><td>The spec before any card or code, in gated phases.</td></tr>
           <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/decompose-spec"><code>decompose-spec</code></a></td><td>Vertical slices with acceptance, verification, dependency and size.</td></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/prioritize-now-next-later"><code>prioritize-now-next-later</code></a></td><td>Now / Next / Later with ROI impact and the enabling chain: every prerequisite of a Now Feature inherits Now, and the go-live set in dependency order is wave 1.</td></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/capacity-simulation"><code>capacity-simulation</code></a></td><td>Named people, weekly capacity, Fibonacci points, dependencies, a reserve for enabling work, and the week the Epic lands. <a href="capacity.html">Live tool</a>.</td></tr>
           <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/execution-plan"><code>execution-plan</code></a></td><td>Spec to ready-to-load items, phases and a schedule derived from dependencies.</td></tr>
           <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/bug-report"><code>bug-report</code></a></td><td>Lean bug cards that describe what happened and never assert a cause.</td></tr>
         </tbody>

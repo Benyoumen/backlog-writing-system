@@ -4,18 +4,18 @@ Stages are not phases of a waterfall. They are the questions a team must answer 
 
 ```mermaid
 flowchart LR
-    F["0 Frame"] -->|"number and appetite"| D["1 Discover"]
-    D -->|"what we learned"| S["2 Decide: the spec"]
-    S -->|"start without a meeting"| L["3 Slice"]
-    L -->|"every slice ships behavior"| W["4 Write the items"]
-    W -->|"four-reader test"| B["5 Build and verify"]
-    B -->|"threshold met, never-cases zero"| H["6 Ship and learn"]
-    H -. "metric vs the number" .-> F
-    H -. "production failures" .-> E[("golden set")]
-    E -.-> B
-    H -. "defects" .-> G["bug-report"] -.-> W
-    H -. "weekly snapshot" .-> R["review and roadmap"]
+    F["0 Frame<br/>the number and the time budget"] --> D["1 Discover<br/>learn with a prototype"]
+    D --> S["2 Decide<br/>write the spec"]
+    S --> L["3 Slice and sequence<br/>Now / Next / Later"]
+    L --> W["4 Write<br/>items four readers can act on"]
+    W --> B["5 Build and verify<br/>evals as the bar"]
+    B --> H["6 Ship and learn<br/>did the number move?"]
+    H -. "what we learned" .-> F
+    H -. "a failure becomes a test" .-> B
+    H -. "a defect becomes a card" .-> W
 ```
+
+*Seven stages. Each arrow is a gate with one question. When the answer is no, the work goes back one stage, not to a meeting. The dotted lines are the loops: what was learned opens the next frame, a production failure becomes a test case before a fix, a defect becomes a card linked to the story it broke.*
 
 ## The stages at a glance
 
@@ -24,9 +24,9 @@ flowchart LR
 | 0 Frame | Decide whether this is worth time at all | One-page frame: problem, who, evidence, number, appetite, not-doing | Can we say the number and the appetite in one sentence? | `frame-the-problem` |
 | 1 Discover | Learn before committing | Prototype notes, interview notes, assumption tests | What did we learn that changes the spec? | `prototype-to-spec` |
 | 2 Decide | Record the decision | PRD in gated phases, with boundaries and an evals plan | Could an engineer and a coding agent start without a meeting? | `write-prd` |
-| 3 Slice | Make it buildable in small, verifiable pieces | Decomposition and execution plan | Does every slice ship behavior someone can verify? | `decompose-spec`, `execution-plan` |
-| 4 Write | Put it in the tracker so four readers can act | Epic, Feature, User Story, eval cases, agent brief | Does each item pass the four-reader test? | `backlog-standard`, `epic-feature-story-templates`, `why-it-exists`, `user-story-writing`, `eval-cases`, `agent-brief` |
-| 5 Build and verify | Ship each slice to the agreed bar | Passing checks; eval pass rate; shadow results | Threshold met on the held-out set, and zero never-cases? | `sprint-planning`, `eval-cases` |
+| 3 Slice and sequence | Make it buildable in small pieces, in the order that lets the team find its pace | Decomposition, the Now / Next / Later board, execution plan | Does every slice ship behavior, and is every Now Feature's chain in Now? | `decompose-spec`, `prioritize-now-next-later`, `execution-plan` |
+| 4 Write | Put it in the tracker so four readers can act, and render it as one readable page | Epic, Feature, User Story, eval cases, agent brief, the spec preview | Does each item pass the four-reader test? | `backlog-standard`, `epic-feature-story-templates`, `why-it-exists`, `user-story-writing`, `eval-cases`, `agent-brief`, `spec-preview-html` |
+| 5 Build and verify | Ship each slice to the agreed bar, on a schedule the team can see | Capacity plan; passing checks; eval pass rate; shadow results | Threshold met on the held-out set, and zero never-cases? | `capacity-simulation`, `sprint-planning`, `eval-cases` |
 | 6 Ship and learn | Find out whether the number moved | Snapshot, review deck, roadmap status, bug cards | Did the number move? What do we delete? | `weekly-backlog-snapshot`, `backlog-review-meeting`, `roadmap-status`, `publish-roadmap`, `bug-report` |
 
 ## Stage by stage
@@ -49,21 +49,23 @@ The PRD is short and gated. A capability map when the request has several testab
 
 Typical failure: a ten-page document nobody reads, or a prototype standing in for a decision nobody made.
 
-### 3. Slice
+### 3. Slice and sequence
 
 Vertical slices, each crossing collect, decide, show and write, each shipping behavior a person can verify. Sizes XS to L. Above L you split, you do not estimate. Dependencies are declared and the schedule is derived from them, so there is one critical path and everyone can see it.
 
-Typical failure: horizontal layers ("build the data model", "build the API") that ship nothing for weeks.
+Then the order. Every Feature answers three questions: how much it moves the number (an ROI impact score), when (Now, Next or Later), and what has to exist first (the enabling chain). A Now Feature pulls its prerequisites into Now, with their inherited priority written on the card, however low they score on their own; the go-live set, in dependency order, is wave 1. Something is demonstrable every week, or the cut is wrong. The method is in [prioritization.md](prioritization.md).
+
+Typical failure: horizontal layers ("build the data model", "build the API") that ship nothing for weeks. Or a list ranked by value alone, where the most valuable item sits at the top and cannot start because the two things it depends on sit at the bottom.
 
 ### 4. Write the items
 
-Epic for the outcome, Feature for the deliverable capability, User Story for the testable behavior. One fixed parent. The why written from the consequence of absence. Acceptance criteria an engineer can verify. For AI behavior, eval cases instead of deterministic criteria. For work an agent will execute, an agent brief with the verification command and the Never list.
+Epic for the outcome, Feature for the deliverable capability, User Story for the testable behavior. One fixed parent. The why written from the consequence of absence. Acceptance criteria an engineer can verify. For AI behavior, eval cases instead of deterministic criteria. For work an agent will execute, an agent brief with the verification command and the Never list. When the batch is complete, the spec preview renders it as one readable page: a plain sentence per item next to its numbered sections, a glossary, the phases and the schedule, so the tech lead, QA and the sponsor read the same thing.
 
 Typical failure: items that only their author understands. Run the four-reader test on each one.
 
 ### 5. Build and verify
 
-Each slice to the agreed bar. Deterministic checks for the ordinary software around the model. Eval pass rate on the golden set for the probabilistic parts, in CI, before merge. Shadow mode before any agent acts on real records. Promotion up the autonomy ladder only on evidence.
+Each slice to the agreed bar, on a schedule everyone can see: the capacity simulation takes the team by name, each person's weekly capacity and the stories with their points and relations, and shows the week each slice and the Epic land, and what moves the date. Deterministic checks for the ordinary software around the model. Eval pass rate on the golden set for the probabilistic parts, in CI, before merge. Shadow mode before any agent acts on real records. Promotion up the autonomy ladder only on evidence.
 
 Typical failure: a green pipeline and a feature that is right 92 times in 100 when the risk tier needed 99.
 
@@ -80,7 +82,7 @@ Typical failure: celebrating output. The only question that matters here is whet
 | Frame | A slide with a vision | A page with a number and an appetite | Output is free; the frame is the judgment |
 | Discover | Mockups, then a long PRD | Working prototypes in hours; PMs build their own | Cagan's building-to-learn; Affirm, Uber, Slack |
 | Decide | The PRD as the main document | A short alignment spec plus the prototype; boundaries of autonomy explicit | The ten-page PRD died; the decision record did not |
-| Slice | Estimation first | Appetite first, then vertical slices | Shape Up; small batches |
+| Slice and sequence | Estimation first, then a list ranked by value | Appetite first, vertical slices, Now / Next / Later with the enabling chain, dates derived from capacity | Shape Up; small batches; a chain beats a score |
 | Write | One reader, the engineer | Four readers, one of them an agent | Spec-driven development; AGENTS.md as standing context |
 | Build and verify | Tests pass or fail | Evals: threshold on a distribution; guardrails for the tail | Probabilistic features; Torres, Pollick |
 | Ship and learn | Launch, then move on | Production failures feed the golden set; autonomy earned tier by tier | Continuous error analysis; autonomy ladders |
@@ -104,4 +106,4 @@ Typical failure: celebrating output. The only question that matters here is whet
 
 ## Where the Acme example touches each stage
 
-The fictional [Acme Field Sales Assistant](../examples/acme-sales-assistant/README.md) runs through every stage: frame, prototype notes, PRD, decomposition, execution plan, Epic, Feature, two Stories, eval cases, an agent brief, a bug report, a weekly snapshot, a review outline and a roadmap status.
+The fictional [Acme Field Sales Assistant](../examples/acme-sales-assistant/README.md) runs through every stage: frame, prototype notes, PRD, decomposition, the Now / Next / Later board with its enabling chain, execution plan, Epic, Feature, two Stories, eval cases, an agent brief, the data behind the readable spec page, the capacity plan with its what-ifs, a bug report, a weekly snapshot, a review outline and a roadmap status.

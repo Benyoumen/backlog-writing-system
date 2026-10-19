@@ -73,5 +73,5 @@ A sponsor who was not in the room reads the page, repeats the number and the app
 
 - Next: [`prototype-to-spec`](../prototype-to-spec/SKILL.md) for discovery, [`write-prd`](../write-prd/SKILL.md) for the spec, which reads the frame's number.
 - The weekly read of the number: [`weekly-backlog-snapshot`](../weekly-backlog-snapshot/SKILL.md), [`backlog-review-meeting`](../backlog-review-meeting/SKILL.md).
-- Why: [principle 1, start from the number](../../docs/principles.md#1-start-from-the-number); [principle 5, appetite before estimate](../../docs/principles.md#5-vertical-slices-appetite-before-estimate); [the workflow, stage 0](../../docs/workflow.md).
+- Why: [principle 1, start from the number](../../docs/principles.md#1-start-from-the-number); [principle 5, sequence by the chain, not by the score](../../docs/principles.md#5-sequence-by-the-chain-not-by-the-score); [the workflow, stage 0](../../docs/workflow.md).
 - Template: [`templates/frame.md`](../../templates/frame.md). Example: [`examples/acme-sales-assistant/frame.md`](../../examples/acme-sales-assistant/frame.md).
