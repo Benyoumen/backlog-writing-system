@@ -1,0 +1,3357 @@
+{
+ "meta": {
+  "program": "Acme Realty · Broker Assistant",
+  "title": "Backlog: Epics and Features, in plain language",
+  "eyebrow": "Epic and Feature · review before the tracker · fictional example",
+  "version": "v3",
+  "date": "2026-04-13",
+  "lede": "The whole backlog of the Broker Assistant in one document, written so that a developer, a QA and a sales manager read the same thing. Codes, scope, dependencies and rules are the tracker's; the writing is plain. Everything here is fictional: the brokerage, the people, the numbers and the dates.",
+  "how_to_read": "\"Write to the CRM\" means updating a field in the brokerage's CRM after the broker approves. \"Wave\" (ondas, in the vocabulary this layout comes from) is a delivery group that ends with something a broker uses. \"Points\" are Fibonacci story points set by the developer who will build the story.",
+  "storage_key": "bws-backlog-document-v1",
+  "footer": "Fictional program for a fictional brokerage. Generated from tools/backlog_document/acme_realty_backlog.json by build.py; do not edit the HTML by hand. Part of the Backlog Writing System.",
+  "warning_level": 0.8,
+  "fib": [
+   0,
+   1,
+   2,
+   3,
+   5,
+   8,
+   13
+  ],
+  "default_limit": 10,
+  "sprint_weeks": 2,
+  "tracker_name": "the tracker",
+  "export_note": "In the original, this chapter writes owner, points and sprint to Azure DevOps from the browser, with a token that lives only in the open tab. This public version exports the plan instead."
+ },
+ "waves": [
+  {
+   "id": "O1",
+   "order": 1,
+   "name": "Leads and approval",
+   "title": "Wave 1 · Leads and approval: the lead is answered and every write is approved",
+   "parallel": false,
+   "usable": "The broker opens one queue with every portal lead, its listing facts and the open questions; a drafted first reply goes out after approval; every write to the CRM is previewed field by field, can be undone for a day, and shows up in the evening digest. The first three Features are the MVP and depend on no outside access.",
+   "not_covered": "Qualification happens in the broker's head for now; visits and proposals are still recorded by hand."
+  },
+  {
+   "id": "O2",
+   "order": 2,
+   "name": "Visits",
+   "title": "Wave 2 · Visits: a prepared broker and a recorded outcome",
+   "parallel": false,
+   "usable": "A one-page sheet before the visit, three fitting slots proposed in the conversation, and the outcome spoken in the car and proposed as fields. Qualification questions run in the conversation and a score the broker can explain orders the queue.",
+   "not_covered": "Proposals and the forecast still live outside the assistant."
+  },
+  {
+   "id": "O3",
+   "order": 3,
+   "name": "Proposals",
+   "title": "Wave 3 · Proposals: nothing stays silent",
+   "parallel": false,
+   "usable": "Every proposal has a next step and a date; the follow-up is drafted on the date; counter-proposals are checked against the developer's table before they leave; brokers switch capabilities to always-allow at their own pace.",
+   "not_covered": "The developer's answers still arrive by phone until the parallel track lands."
+  },
+  {
+   "id": "O4",
+   "order": 4,
+   "name": "Forecast",
+   "title": "Wave 4 · Forecast: the stage and the category read the evidence",
+   "parallel": false,
+   "usable": "The stage is proposed from the last event with its rule; the category from stage, score and status; the manager's Monday view shows reasons, disagreements and month-end accuracy.",
+   "not_covered": "Revenue projections and automatic stage writes stay out until the rules have two scored months."
+  },
+  {
+   "id": "PT",
+   "order": 5,
+   "name": "Parallel track",
+   "title": "Parallel track · Developer status sync",
+   "parallel": true,
+   "usable": "The two developers' daily exports are imported and matched, status changes are proposed to the broker, and the sync is measured weekly. It runs beside waves 3 and 4 because it depends on an access agreement, not on the waves.",
+   "not_covered": "Developer APIs and the other developers."
+  }
+ ],
+ "sprints": [
+  {
+   "id": "S3",
+   "name": "Sprint 3",
+   "range": "23 March to 3 April 2026",
+   "state": "closed",
+   "note": "Closed with 10 stories and 40 points of the 42 planned (illustrative)."
+  },
+  {
+   "id": "S4",
+   "name": "Sprint 4",
+   "range": "6 to 17 April 2026",
+   "state": "current",
+   "note": "In progress: 7 stories, 25 points planned."
+  },
+  {
+   "id": "S5",
+   "name": "Sprint 5",
+   "range": "20 April to 1 May 2026",
+   "state": "next",
+   "note": "Planned in this document, in the review meeting, before anything is loaded into the tracker."
+  }
+ ],
+ "team": [
+  {
+   "id": "helena",
+   "name": "Helena Costa",
+   "short": "Helena",
+   "initials": "HC",
+   "weekly": 5
+  },
+  {
+   "id": "rafael",
+   "name": "Rafael Nunes",
+   "short": "Rafael",
+   "initials": "RN",
+   "weekly": 5
+  },
+  {
+   "id": "julia",
+   "name": "Júlia Prado",
+   "short": "Júlia",
+   "initials": "JP",
+   "weekly": 4
+  },
+  {
+   "id": "tomas",
+   "name": "Tomás Ferreira",
+   "short": "Tomás",
+   "initials": "TF",
+   "weekly": 4
+  },
+  {
+   "id": "bianca",
+   "name": "Bianca Lemos",
+   "short": "Bianca",
+   "initials": "BL",
+   "weekly": 3
+  }
+ ],
+ "epics": [
+  {
+   "code": "BA-LEAD",
+   "name": "Leads become qualified conversations",
+   "summary": "A lead from a property portal reaches the broker with context and a drafted first reply, instead of a bare name and phone number.",
+   "features": [
+    {
+     "code": "BA-LEAD-F01",
+     "name": "The lead queue with context",
+     "summary": "The broker opens one queue where every portal lead shows the listing, the buyer's message and what is still unknown.",
+     "wave": "O1",
+     "queue": 1,
+     "mvp": true,
+     "kpi": {
+      "code": "L1",
+      "group": "exe",
+      "level": 3,
+      "gera": true,
+      "name": "First reply within one hour",
+      "definition": "Leads answered within 60 minutes of arrival ÷ leads received in the period",
+      "today": "no data yet",
+      "target": "80% of leads in the pilot",
+      "impact": "A lead answered in the first hour is the one that converts; this queue is where the hour starts.",
+      "source": "the assistant's own event log and the CRM mirror, read weekly"
+     },
+     "depends_on": [],
+     "stories": [
+      {
+       "code": "BA-LEAD-F01-US01",
+       "name": "Receive portal leads into one queue",
+       "summary": "A lead sent by a portal appears in the broker's queue within a minute, with the portal, the listing and the buyer's message.",
+       "type": "Functional",
+       "sections": {
+        "why": "Today a lead is an email the broker may read tonight. If the queue does not exist, nothing else in the program has a starting point.",
+        "context": "Three portals send leads by email in three formats; the brokerage also receives walk-in leads typed by the reception.",
+        "type": "Functional",
+        "story": "As a broker, I want every portal lead in one queue with its listing and message, so that I answer from one place instead of three inboxes.",
+        "expected": [
+         "The lead record shows portal, listing code, buyer name, phone, email and the message as written.",
+         "Arrival time and the time since arrival are visible on the row.",
+         "A lead for a listing the broker does not handle is routed to the listing's broker."
+        ],
+        "out": [
+         "Replying from the queue (BA-LEAD-F02).",
+         "Portal APIs; this story parses emails and imports CSV."
+        ],
+        "tech": [
+         "Email parser per portal with a test fixture per format.",
+         "Duplicate check by phone and email across the last 30 days."
+        ],
+        "trace": [
+         "Program brief section 2; portal export formats, read on 2026-02-20."
+        ],
+        "cases": [
+         {
+          "case": "A portal lead lands in the queue",
+          "given": "a portal sends a lead email for listing AR-2041",
+          "when": "the email is received",
+          "then": "the lead is in the broker's queue within one minute with portal, listing and message."
+         },
+         {
+          "case": "A duplicate is merged",
+          "given": "the same phone number wrote through two portals in the same week",
+          "when": "the second lead arrives",
+          "then": "the queue shows one lead with both portals listed, not two leads."
+         },
+         {
+          "case": "A lead for another broker's listing",
+          "given": "the listing belongs to a different broker",
+          "when": "the lead arrives",
+          "then": "it lands in that broker's queue and the first broker does not see it."
+         }
+        ]
+       },
+       "depends_on": [],
+       "tracker": {
+        "id": 4101,
+        "state": "Done",
+        "sprint": "S3",
+        "owner": "helena",
+        "points": 5
+       }
+      },
+      {
+       "code": "BA-LEAD-F01-US02",
+       "name": "Show what is still unknown about the buyer",
+       "summary": "Next to each lead the broker sees the questions nobody has answered yet: budget, financing, timing, must-haves.",
+       "type": "Functional",
+       "sections": {
+        "why": "A broker who calls without knowing what to ask repeats the portal form. The open questions turn the first call into qualification.",
+        "context": "The portal form rarely carries budget or financing; the buyer's message sometimes does.",
+        "type": "Functional",
+        "story": "As a broker, I want to see which qualification facts are missing, so that my first call covers them.",
+        "expected": [
+         "Four facts tracked: budget range, financing status, moving timeline, must-haves.",
+         "Facts found in the message are filled with the sentence they came from.",
+         "Missing facts are listed as questions in the broker's words."
+        ],
+        "out": [
+         "Asking the questions automatically (BA-LEAD-F03)."
+        ],
+        "tech": [
+         "Extraction from the message text with a confidence flag; low confidence shows as unknown, never as a guess."
+        ],
+        "trace": [
+         "Qualification checklist agreed with the sales manager on 2026-02-27."
+        ],
+        "cases": [
+         {
+          "case": "A budget found in the message",
+          "given": "the buyer wrote 'up to 900 thousand'",
+          "when": "the lead opens",
+          "then": "budget shows 'up to 900 thousand' with the phrase next to it."
+         },
+         {
+          "case": "A fact that is not there",
+          "given": "the message says nothing about financing",
+          "when": "the lead opens",
+          "then": "financing is listed under 'still to ask', not filled with a guess."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-LEAD-F01-US01"
+       ],
+       "tracker": {
+        "id": 4102,
+        "state": "Done",
+        "sprint": "S3",
+        "owner": "helena",
+        "points": 3
+       }
+      },
+      {
+       "code": "BA-LEAD-F01-US03",
+       "name": "Attach the listing facts the buyer will ask about",
+       "summary": "The lead shows the listing's price, size, floor, parking and the developer's current conditions, from the catalogue.",
+       "type": "Functional",
+       "sections": {
+        "why": "Brokers answer price and conditions from memory and get them wrong when a developer changes a campaign. The catalogue is the source; the lead should read it.",
+        "context": "The brokerage keeps a catalogue with the developer's conditions, updated weekly by the back office.",
+        "type": "Functional",
+        "story": "As a broker, I want the listing facts next to the lead, so that my first reply is right without opening the catalogue.",
+        "expected": [
+         "Price, area, floor, parking, delivery date and current campaign conditions shown with the catalogue's update date.",
+         "A listing with no catalogue entry shows 'not in the catalogue' and a link to request it."
+        ],
+        "out": [
+         "Editing the catalogue."
+        ],
+        "tech": [
+         "Read-only query to the catalogue by listing code."
+        ],
+        "trace": [
+         "Catalogue schema, back office, 2026-02-25."
+        ],
+        "cases": [
+         {
+          "case": "The facts come from the catalogue",
+          "given": "listing AR-2041 is in the catalogue with conditions dated last Friday",
+          "when": "the lead opens",
+          "then": "price, area, floor, parking, delivery and conditions appear with that date."
+         },
+         {
+          "case": "A listing without an entry",
+          "given": "listing AR-7788 is not in the catalogue",
+          "when": "the lead opens",
+          "then": "the lead says 'not in the catalogue' and offers the request link; nothing is invented."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-LEAD-F01-US01"
+       ],
+       "tracker": {
+        "id": 4103,
+        "state": "Done",
+        "sprint": "S3",
+        "owner": "rafael",
+        "points": 3
+       }
+      },
+      {
+       "code": "BA-LEAD-F01-US04",
+       "name": "Flag leads that are waiting too long",
+       "summary": "A lead with no reply after 30 minutes is highlighted, and the manager sees the count per broker.",
+       "type": "Functional",
+       "sections": {
+        "why": "The hour is lost in silence. A visible timer and a count per broker make the delay a shared fact instead of a private one.",
+        "context": "Brokers are often at visits; the manager redistributes by hand today.",
+        "type": "Functional",
+        "story": "As a sales manager, I want to see leads waiting past 30 minutes per broker, so that I redistribute before the hour is lost.",
+        "expected": [
+         "Rows turn amber at 30 minutes and red at 60.",
+         "The manager's view counts waiting leads per broker.",
+         "Redistribution is a manual action by the manager with a reason."
+        ],
+        "out": [
+         "Automatic redistribution."
+        ],
+        "tech": [
+         "Timer from arrival time; the manager's view reads the same records."
+        ],
+        "trace": [
+         "Program brief section 4."
+        ],
+        "cases": [
+         {
+          "case": "A lead crosses 30 minutes",
+          "given": "a lead arrived 31 minutes ago with no reply",
+          "when": "the queue refreshes",
+          "then": "the row is amber and counts in the manager's view."
+         },
+         {
+          "case": "A manual redistribution",
+          "given": "the manager moves the lead to another broker with a reason",
+          "when": "the move is saved",
+          "then": "the lead appears in the new queue, and the trail records who moved it and why."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-LEAD-F01-US01"
+       ],
+       "tracker": {
+        "id": 4104,
+        "state": "Active",
+        "sprint": "S4",
+        "owner": "bianca",
+        "points": 3
+       }
+      }
+     ],
+     "sections": {
+      "why": "Nothing in the program starts before the lead is in one place with its context. This Feature is the queue and the context; the reply and the qualification build on it.",
+      "problem": "Leads arrive by email from three portals in three formats and are copied by hand, late, into the CRM.",
+      "objective": "Every lead in one queue within a minute, with the listing facts and the open questions, and a visible timer.",
+      "value": "The first hour becomes visible and manageable; the first reply (F02) has something to say.",
+      "behavior": [
+       "One queue per broker, ordered by arrival.",
+       "Listing facts from the catalogue, dated.",
+       "Open qualification questions per lead.",
+       "Timer and manager's count of waiting leads."
+      ],
+      "acceptance": [
+       "A portal lead is in the queue within one minute of the email.",
+       "Duplicates across portals are merged.",
+       "Listing facts carry the catalogue date.",
+       "A lead past 30 minutes is highlighted and counted."
+      ],
+      "scope": [
+       "In: three portals by email, CSV import, catalogue read.",
+       "Out: portal APIs, automatic redistribution."
+      ],
+      "rules": [
+       "A lead belongs to the listing's broker.",
+       "Nothing is guessed: a missing fact is a question."
+      ],
+      "data": [
+       "Portal emails (source of truth for the lead).",
+       "Catalogue (source of truth for listing facts).",
+       "CRM (destination, through BA-CRM-F01)."
+      ],
+      "dependencies": "As drawn: none",
+      "nfr": [
+       "Preview opens in under two seconds on a phone.",
+       "Every write is logged with its origin."
+      ],
+      "evaluation": [
+       "Parser accuracy per portal on a 40-email golden set: 100% on required fields (illustrative).",
+       "Extraction of the four facts: no guessed value in the never-cases."
+      ],
+      "open": [
+       "Whether reception-typed leads enter through the same queue (decision by 2026-04-20)."
+      ],
+      "trace": [
+       "Program brief sections 2 and 4.",
+       "Portal formats read on 2026-02-20."
+      ],
+      "estimate": "4 stories, 14 points (illustrative)."
+     }
+    },
+    {
+     "code": "BA-LEAD-F02",
+     "name": "The first reply, drafted and sent after approval",
+     "summary": "The assistant drafts the first reply to a lead from the listing facts and the buyer's message; the broker edits, approves and it goes out.",
+     "wave": "O1",
+     "queue": 2,
+     "mvp": true,
+     "kpi": {
+      "code": "L1",
+      "group": "exe",
+      "level": 3,
+      "gera": false,
+      "name": "First reply within one hour",
+      "definition": "Leads answered within 60 minutes of arrival ÷ leads received in the period",
+      "today": "no data yet",
+      "target": "80% of leads in the pilot",
+      "impact": "This Feature is the reply itself; it exists to move the first-hour number.",
+      "source": "the assistant's own event log and the CRM mirror, read weekly"
+     },
+     "depends_on": [
+      "BA-LEAD-F01"
+     ],
+     "stories": [
+      {
+       "code": "BA-LEAD-F02-US01",
+       "name": "Draft the first reply from the lead and the listing",
+       "summary": "For each new lead the assistant drafts a reply that answers what the buyer asked, with the listing facts, and asks one qualification question.",
+       "type": "Functional",
+       "sections": {
+        "why": "The broker writes the same reply forty times a month from memory. A draft that already has the facts turns a ten-minute task into a one-minute review.",
+        "context": "Replies go by WhatsApp or email depending on the portal; tone is the brokerage's, short and concrete.",
+        "type": "Functional",
+        "story": "As a broker, I want a drafted reply that answers the buyer and asks one question, so that I only review and send.",
+        "expected": [
+         "The draft answers each question in the buyer's message with a catalogue fact or says the broker will confirm.",
+         "Exactly one qualification question from the open list.",
+         "The draft is stored until the broker approves or discards it."
+        ],
+        "out": [
+         "Sending without approval.",
+         "Replies to follow-up messages (later wave)."
+        ],
+        "tech": [
+         "Model call with the listing facts and the message as context; the draft shows which fact each sentence used."
+        ],
+        "trace": [
+         "Reply tone guide, sales manager, 2026-03-02."
+        ],
+        "cases": [
+         {
+          "case": "A draft answers the question asked",
+          "given": "the buyer asked about parking",
+          "when": "the draft is generated",
+          "then": "it states the parking from the catalogue and asks one open question."
+         },
+         {
+          "case": "A fact not in the catalogue",
+          "given": "the buyer asked about the condominium fee and the catalogue has none",
+          "when": "the draft is generated",
+          "then": "the draft says the broker will confirm the fee; it never states a number."
+         },
+         {
+          "case": "A never-case: no invented discount",
+          "given": "the buyer asked for a discount",
+          "when": "the draft is generated",
+          "then": "the draft contains no discount or condition absent from the catalogue."
+         }
+        ]
+       },
+       "depends_on": [],
+       "tracker": {
+        "id": 4105,
+        "state": "Done",
+        "sprint": "S3",
+        "owner": "rafael",
+        "points": 5
+       }
+      },
+      {
+       "code": "BA-LEAD-F02-US02",
+       "name": "Edit, approve and send the reply from the queue",
+       "summary": "The broker edits the draft in place, approves, and the reply is sent through the lead's channel from the broker's own identity.",
+       "type": "Functional",
+       "sections": {
+        "why": "A draft that has to be copied into another app is a draft nobody uses.",
+        "context": "WhatsApp through the brokerage's business account; email through the broker's mailbox.",
+        "type": "Functional",
+        "story": "As a broker, I want to approve and send from the queue, so that the reply leaves in one click.",
+        "expected": [
+         "Approve sends; discard records the reason; edit keeps the original for comparison.",
+         "The sent reply is written to the lead's timeline with the time."
+        ],
+        "out": [
+         "Scheduling the send for later."
+        ],
+        "tech": [
+         "Channel adapters for WhatsApp business and email; the send is logged as a write through the single write path."
+        ],
+        "trace": [
+         "Channel policy, 2026-03-02."
+        ],
+        "cases": [
+         {
+          "case": "Approve sends through the right channel",
+          "given": "the lead came from a portal that provides a phone number",
+          "when": "the broker approves",
+          "then": "the reply goes by WhatsApp from the brokerage account and appears on the timeline."
+         },
+         {
+          "case": "Discard records a reason",
+          "given": "the broker discards the draft",
+          "when": "the discard is confirmed",
+          "then": "the reason is stored and the lead stays in the queue as unanswered."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-LEAD-F02-US01"
+       ],
+       "tracker": {
+        "id": 4106,
+        "state": "Done",
+        "sprint": "S3",
+        "owner": "julia",
+        "points": 5
+       }
+      },
+      {
+       "code": "BA-LEAD-F02-US03",
+       "name": "Learn from the broker's edits",
+       "summary": "Edits made before approval are kept and summarized so the next drafts for the same broker get closer to how they write.",
+       "type": "Evaluation",
+       "sections": {
+        "why": "If the draft never improves, the broker stops editing and starts rewriting, and the time saving is gone.",
+        "context": "Edits are small and repeated: greeting, closing, how prices are written.",
+        "type": "Evaluation",
+        "story": "As a product manager, I want the edits measured and fed back, so that drafts improve and I can prove it.",
+        "expected": [
+         "Edit distance per draft stored.",
+         "A weekly eval run on the golden set reports the share of drafts approved without edits.",
+         "Style notes per broker derived from repeated edits, shown to the broker and editable."
+        ],
+        "out": [
+         "Fine-tuning a model."
+        ],
+        "tech": [
+         "Golden set of 40 leads with approved replies; rubric: answers the question, one question asked, tone, no invented fact."
+        ],
+        "trace": [
+         "Eval plan, section 3 of the spec."
+        ],
+        "cases": [
+         {
+          "case": "The weekly number exists",
+          "given": "a week of drafts has been approved or edited",
+          "when": "the eval runs",
+          "then": "the report shows the share approved without edits and the edit distance median."
+         },
+         {
+          "case": "A style note is proposed",
+          "given": "the broker changed the closing in five of five drafts",
+          "when": "the week ends",
+          "then": "the style note 'closing: ...' is proposed to the broker, who can accept or delete it."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-LEAD-F02-US02"
+       ],
+       "tracker": {
+        "id": 4107,
+        "state": "Active",
+        "sprint": "S4",
+        "owner": "rafael",
+        "points": 3
+       }
+      }
+     ],
+     "sections": {
+      "why": "The queue shows the lead; this Feature answers it. It is the single largest time saving in the Epic and the first place the brokers will judge the assistant.",
+      "problem": "Replies are written from memory, late, and repeat the portal form.",
+      "objective": "A reviewed reply out within the hour for 80% of leads.",
+      "value": "The broker's ten minutes become one; the buyer gets a specific answer while still interested.",
+      "behavior": [
+       "Draft from the message and the catalogue.",
+       "Edit, approve, send from the queue.",
+       "Edits measured and fed back."
+      ],
+      "acceptance": [
+       "Each question in the message is answered or marked to confirm.",
+       "One qualification question per draft.",
+       "Nothing sent without approval.",
+       "No fact absent from the catalogue."
+      ],
+      "scope": [
+       "In: first reply only.",
+       "Out: follow-ups, scheduling."
+      ],
+      "rules": [
+       "Tier 2 autonomy: approve each.",
+       "Never a price or condition that is not in the catalogue."
+      ],
+      "data": [
+       "Lead record, catalogue, reply tone guide."
+      ],
+      "dependencies": "As drawn: BA-LEAD-F01",
+      "nfr": [
+       "Preview opens in under two seconds on a phone.",
+       "Every write is logged with its origin."
+      ],
+      "evaluation": [
+       "Golden set of 40 leads: 90% of drafts pass the rubric before the pilot; never-cases (invented fact, discount) at zero (illustrative)."
+      ],
+      "open": [
+       "Whether a draft may propose a visit slot in the first reply (decision with BA-VISIT-F03)."
+      ],
+      "trace": [
+       "Program brief section 3; tone guide 2026-03-02."
+      ],
+      "estimate": "3 stories, 13 points (illustrative)."
+     }
+    },
+    {
+     "code": "BA-LEAD-F03",
+     "name": "Qualification questions and a score",
+     "summary": "After the first reply, the assistant asks the remaining qualification questions in the conversation and keeps a score the broker can read.",
+     "wave": "O2",
+     "queue": 8,
+     "mvp": false,
+     "kpi": {
+      "code": "L2",
+      "group": "mar",
+      "level": 2,
+      "gera": false,
+      "name": "Qualified before the first visit",
+      "definition": "Leads with the four facts known before the first visit ÷ leads that had a visit",
+      "today": "no data yet",
+      "target": "70% in the pilot",
+      "impact": "A qualified lead visits the right unit; an unqualified one visits three.",
+      "source": "the assistant's own event log and the CRM mirror, read weekly"
+     },
+     "depends_on": [
+      "BA-LEAD-F02"
+     ],
+     "stories": [
+      {
+       "code": "BA-LEAD-F03-US01",
+       "name": "Ask the open questions one at a time",
+       "summary": "When the buyer replies, the assistant drafts the next message with the next open question, until the four facts are known.",
+       "type": "Functional",
+       "sections": {
+        "why": "Asking four questions at once reads like a form; one at a time reads like a broker.",
+        "context": "The conversation runs on WhatsApp; the broker approves each message in the first release.",
+        "type": "Functional",
+        "story": "As a broker, I want the next question drafted when the buyer answers, so that qualification happens in the conversation.",
+        "expected": [
+         "Next question chosen from the open list in a fixed order: timing, budget, financing, must-haves.",
+         "The buyer's answer is proposed as the fact, with the phrase, for approval.",
+         "No question is repeated."
+        ],
+        "out": [
+         "Automatic sending (tier 3) in this release."
+        ],
+        "tech": [
+         "Conversation state per lead; each proposed fact is a write through BA-CRM-F01."
+        ],
+        "trace": [
+         "Qualification checklist 2026-02-27."
+        ],
+        "cases": [
+         {
+          "case": "The next question follows the order",
+          "given": "timing is known and budget is not",
+          "when": "the buyer replies",
+          "then": "the draft asks the budget question only."
+         },
+         {
+          "case": "An answer becomes a proposed fact",
+          "given": "the buyer wrote 'we have the financing approved'",
+          "when": "the message is read",
+          "then": "financing is proposed as 'approved' with the phrase, for the broker to approve."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-LEAD-F02-US02"
+       ],
+       "tracker": {
+        "id": 4108,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      },
+      {
+       "code": "BA-LEAD-F03-US02",
+       "name": "Keep a qualification score the broker can explain",
+       "summary": "Each lead shows a score from 0 to 4, one point per known fact that fits the listing, with the reason per point.",
+       "type": "Functional",
+       "sections": {
+        "why": "A score nobody can explain is a score nobody trusts. Four facts, four points, each with its reason.",
+        "context": "The sales manager wants to prioritize visits by score.",
+        "type": "Functional",
+        "story": "As a broker, I want a score I can explain to the manager, so that visit priority is not a gut feeling.",
+        "expected": [
+         "Score = number of facts known and compatible with the listing.",
+         "Each point shows its reason; an incompatible fact shows why.",
+         "The score sorts the queue when the broker chooses."
+        ],
+        "out": [
+         "Weighting or machine-learned scores."
+        ],
+        "tech": [
+         "Rule-based; no model."
+        ],
+        "trace": [
+         "Checklist 2026-02-27; manager's request 2026-03-10."
+        ],
+        "cases": [
+         {
+          "case": "A point with its reason",
+          "given": "budget 'up to 900 thousand' and the listing costs 850 thousand",
+          "when": "the score is computed",
+          "then": "budget counts one point with the reason 'within budget'."
+         },
+         {
+          "case": "An incompatible fact",
+          "given": "the buyer needs delivery this year and the listing delivers in two years",
+          "when": "the score is computed",
+          "then": "timing counts zero with the reason shown, and the lead is not hidden."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-LEAD-F03-US01"
+       ],
+       "tracker": {
+        "id": 4109,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      },
+      {
+       "code": "BA-LEAD-F03-US03",
+       "name": "Suggest a better-fitting listing when the facts do not match",
+       "summary": "When two or more facts do not fit the listing, the assistant proposes up to three listings from the catalogue that do.",
+       "type": "Functional",
+       "sections": {
+        "why": "A lead that does not fit the listing is not a lost lead; it is a lead for another listing. Today it is lost.",
+        "context": "The catalogue has the facts needed to match budget, timing and must-haves.",
+        "type": "Functional",
+        "story": "As a broker, I want alternatives proposed when the fit is poor, so that I keep the buyer instead of the listing.",
+        "expected": [
+         "Up to three alternatives with the matching facts shown.",
+         "The broker picks one or none; the pick is written as the lead's listing with the previous one kept.",
+         "No alternative is sent to the buyer without approval."
+        ],
+        "out": [
+         "Cross-brokerage listings."
+        ],
+        "tech": [
+         "Catalogue query by budget band, delivery date and must-haves."
+        ],
+        "trace": [
+         "Program brief section 3."
+        ],
+        "cases": [
+         {
+          "case": "Alternatives are offered",
+          "given": "budget and timing do not fit the listing",
+          "when": "the lead opens",
+          "then": "up to three listings appear with the facts that match, and the original listing stays."
+         },
+         {
+          "case": "No alternative exists",
+          "given": "nothing in the catalogue fits the budget",
+          "when": "the lead opens",
+          "then": "the assistant says so; it does not stretch the budget."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-LEAD-F03-US02"
+       ],
+       "tracker": {
+        "id": 4110,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      }
+     ],
+     "sections": {
+      "why": "A first reply opens a conversation; this Feature turns the conversation into four facts and a score. Without it, qualification stays in the broker's head.",
+      "problem": "Brokers visit with unqualified buyers and the manager cannot prioritize.",
+      "objective": "The four facts known before the first visit for 70% of leads, with a score the broker can explain.",
+      "value": "Fewer wasted visits; the right listing for the buyer.",
+      "behavior": [
+       "One question at a time in the conversation.",
+       "A score of 0 to 4 with reasons.",
+       "Alternatives when the fit is poor."
+      ],
+      "acceptance": [
+       "No repeated question.",
+       "Each score point has a reason.",
+       "Alternatives come from the catalogue only."
+      ],
+      "scope": [
+       "In: four facts, score, alternatives.",
+       "Out: automatic sending, learned weights."
+      ],
+      "rules": [
+       "Rules, not a model, for the score.",
+       "Nothing sent without approval."
+      ],
+      "data": [
+       "Conversation, catalogue, lead record."
+      ],
+      "dependencies": "As drawn: BA-LEAD-F02",
+      "nfr": [
+       "Preview opens in under two seconds on a phone.",
+       "Every write is logged with its origin."
+      ],
+      "evaluation": [
+       "Score agreement with the sales manager's manual score on 30 leads: 90% (illustrative)."
+      ],
+      "open": [
+       "Whether the score is shown to the buyer's broker only or also to the manager in real time."
+      ],
+      "trace": [
+       "Checklist 2026-02-27; manager's request 2026-03-10."
+      ],
+      "estimate": "3 stories, 11 points (illustrative)."
+     }
+    }
+   ],
+   "sections": {
+    "why": "A brokerage receives hundreds of portal leads a month and most die in the first hour: the broker is at a visit, the reply comes late, and the buyer has already written to three other brokers. Without this Epic the assistant has nothing to work with: no queue, no context, no first reply.",
+    "problem": "Portal leads arrive by email and in three portal back offices. Brokers copy them by hand into the CRM, reply from memory, and lose the ones that arrive during visits.",
+    "objective": "Every lead is in the broker's queue within a minute, with the listing, the buyer's message and the questions the broker still has to ask, and the first reply goes out the same hour after the broker approves it.",
+    "metrics": [
+     "First reply within one hour, from 35% to 80% of leads (illustrative).",
+     "Leads with a qualification score before the first visit: 70%.",
+     "Portal leads lost to a late reply, read from the portal's own report: half of today's number."
+    ],
+    "scope": [
+     "The queue with context (BA-LEAD-F01).",
+     "The drafted first reply, sent after approval (BA-LEAD-F02).",
+     "Qualification questions and a score (BA-LEAD-F03)."
+    ],
+    "rules": [
+     "The assistant never contacts a buyer without the broker's approval.",
+     "A lead belongs to one broker; redistribution is the manager's decision, not the assistant's.",
+     "The portal of origin and its lead id stay on the record."
+    ],
+    "dependencies": "Portal exports (email and CSV) in wave 1; portal APIs are a later enabler. BA-CRM-F01 for any write to the CRM.",
+    "risks": [
+     "Risk: a portal changes its email format and leads stop arriving. Mitigation: a daily count per portal with an alert when it drops to zero.",
+     "Risk: the drafted reply sounds generic. Mitigation: the broker edits before approving, and edits feed the next drafts.",
+     "Risk: duplicate leads across portals. Mitigation: match by phone and email before creating a record."
+    ],
+    "governance": [
+     "The sales manager owns the queue rules and the redistribution.",
+     "Weekly reading of first-reply time per broker in the manager's digest.",
+     "Autonomy: the assistant drafts; sending stays at tier 2 (approve each) in the first release."
+    ],
+    "technical": [
+     "Inbound: portal emails parsed into a lead record; CSV import as a fallback.",
+     "Listing data from the brokerage's catalogue, read only.",
+     "Reads and writes go through the assistant's single CRM write path; every write carries author, previous value, proposed value, written value, origin and approval."
+    ],
+    "estimate": "11 User Stories, 34 points estimated by the developers (illustrative)."
+   }
+  },
+  {
+   "code": "BA-VISIT",
+   "name": "Every visit has a prepared broker and a recorded outcome",
+   "summary": "Before a visit the broker knows the unit, the price, the buyer's answers and what is still open; after it, the outcome is in the CRM without typing.",
+   "features": [
+    {
+     "code": "BA-VISIT-F01",
+     "name": "The visit preparation sheet",
+     "summary": "Before a visit, one page shows the unit, the price and conditions, the buyer's facts and what the broker still has to find out.",
+     "wave": "O2",
+     "queue": 5,
+     "mvp": false,
+     "kpi": {
+      "code": "V1",
+      "group": "exe",
+      "level": 2,
+      "gera": false,
+      "name": "Visits prepared",
+      "definition": "Visits whose sheet was opened before the visit ÷ visits held",
+      "today": "no data yet",
+      "target": "85% in the pilot",
+      "impact": "A prepared broker closes the second visit during the first one.",
+      "source": "the assistant's own event log and the CRM mirror, read weekly"
+     },
+     "depends_on": [
+      "BA-LEAD-F01"
+     ],
+     "stories": [
+      {
+       "code": "BA-VISIT-F01-US01",
+       "name": "Build the sheet from the lead and the catalogue",
+       "summary": "The sheet assembles the unit facts, the campaign conditions, the buyer's four facts and the open questions, on one phone screen.",
+       "type": "Functional",
+       "sections": {
+        "why": "The broker prepares from PDFs in a chat thread; one page beats five attachments.",
+        "context": "Visits are confirmed the day before; the sheet is read in the car.",
+        "type": "Functional",
+        "story": "As a broker, I want one page with everything I need for the visit, so that I walk in prepared.",
+        "expected": [
+         "Unit facts, conditions with date, buyer facts, open questions, last conversation.",
+         "Readable on a phone, offline once opened."
+        ],
+        "out": [
+         "Editing catalogue data."
+        ],
+        "tech": [
+         "Server-rendered page cached on the device."
+        ],
+        "trace": [
+         "Program brief section 5."
+        ],
+        "cases": [
+         {
+          "case": "The sheet has the four blocks",
+          "given": "a visit is scheduled for listing AR-2041 with lead 1180",
+          "when": "the sheet opens",
+          "then": "it shows unit facts, conditions dated, the buyer's facts and the open questions."
+         },
+         {
+          "case": "Offline reading",
+          "given": "the sheet was opened once with network",
+          "when": "the broker opens it in the car without network",
+          "then": "the sheet is readable."
+         }
+        ]
+       },
+       "depends_on": [],
+       "tracker": {
+        "id": 4111,
+        "state": "Active",
+        "sprint": "S4",
+        "owner": "julia",
+        "points": 5
+       }
+      },
+      {
+       "code": "BA-VISIT-F01-US02",
+       "name": "Compare with two similar units",
+       "summary": "The sheet shows two comparable units from the catalogue with price per square meter, so the broker can answer 'is this expensive'.",
+       "type": "Functional",
+       "sections": {
+        "why": "The first objection at a visit is the price; a comparison on the sheet answers it with facts.",
+        "context": "Comparables by area band, neighborhood and delivery date.",
+        "type": "Functional",
+        "story": "As a broker, I want two comparables on the sheet, so that I answer the price objection with numbers.",
+        "expected": [
+         "Two units from the same neighborhood and area band, price per square meter shown.",
+         "The comparables' dates shown; no comparable older than 60 days."
+        ],
+        "out": [
+         "Comparables outside the brokerage's catalogue."
+        ],
+        "tech": [
+         "Catalogue query; price per square meter computed from price and private area."
+        ],
+        "trace": [
+         "Program brief section 5."
+        ],
+        "cases": [
+         {
+          "case": "Two comparables appear",
+          "given": "the catalogue has three units in the band",
+          "when": "the sheet opens",
+          "then": "two appear with price per square meter and dates."
+         },
+         {
+          "case": "No comparable is recent",
+          "given": "all candidates are older than 60 days",
+          "when": "the sheet opens",
+          "then": "the block says 'no recent comparable' instead of showing stale ones."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-VISIT-F01-US01"
+       ],
+       "tracker": {
+        "id": 4112,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      },
+      {
+       "code": "BA-VISIT-F01-US03",
+       "name": "Remind the broker of the sheet before the visit",
+       "summary": "Two hours before a visit the broker receives the sheet link; opening it is recorded for the KPI.",
+       "type": "Functional",
+       "sections": {
+        "why": "A sheet that is not opened does not prepare anyone, and the KPI needs the opening to be a fact.",
+        "context": "Reminders by WhatsApp to the broker, not the buyer.",
+        "type": "Functional",
+        "story": "As a broker, I want the sheet sent before the visit, so that I do not have to look for it.",
+        "expected": [
+         "Reminder two hours before, with the link.",
+         "Opening is logged with time and device."
+        ],
+        "out": [
+         "Reminders to the buyer (BA-VISIT-F03)."
+        ],
+        "tech": [
+         "Scheduled job from the visit time; open event through the single write path as an activity."
+        ],
+        "trace": [
+         "Program brief section 5."
+        ],
+        "cases": [
+         {
+          "case": "The reminder arrives",
+          "given": "a visit is at 15:00",
+          "when": "the clock reaches 13:00",
+          "then": "the broker receives the link and the sheet is one tap away."
+         },
+         {
+          "case": "The opening is a fact",
+          "given": "the broker opens the sheet",
+          "when": "the page loads",
+          "then": "the activity 'sheet opened' is written with the time."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-VISIT-F01-US01"
+       ],
+       "tracker": {
+        "id": 4113,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      }
+     ],
+     "sections": {
+      "why": "The visit is the most expensive hour of the sale and today it starts from memory. The sheet puts the facts in the broker's hand before the door opens.",
+      "problem": "Scattered PDFs, no comparables, no record that the broker prepared.",
+      "objective": "A sheet opened before 85% of visits.",
+      "value": "Fewer wrong answers at the door; the price objection answered with numbers.",
+      "behavior": [
+       "One page from lead and catalogue.",
+       "Two comparables.",
+       "A reminder with the link, and the opening recorded."
+      ],
+      "acceptance": [
+       "Four blocks on the sheet.",
+       "Comparables under 60 days.",
+       "Opening logged."
+      ],
+      "scope": [
+       "In: the sheet, comparables, reminder.",
+       "Out: catalogue editing, buyer reminders."
+      ],
+      "rules": [
+       "Only catalogue facts.",
+       "No comparable older than 60 days."
+      ],
+      "data": [
+       "Lead record, catalogue, visit calendar."
+      ],
+      "dependencies": "As drawn: BA-LEAD-F01",
+      "nfr": [
+       "Preview opens in under two seconds on a phone.",
+       "Every write is logged with its origin."
+      ],
+      "evaluation": [
+       "Sheets opened before the visit, read weekly."
+      ],
+      "open": [
+       "Whether the sheet may show the developer's internal discount band (commercial director's decision)."
+      ],
+      "trace": [
+       "Program brief section 5."
+      ],
+      "estimate": "3 stories, 11 points (illustrative)."
+     }
+    },
+    {
+     "code": "BA-VISIT-F02",
+     "name": "Visit outcome by voice or text",
+     "summary": "After the visit the broker speaks or types what happened and the assistant proposes the fields: interest, objections, next step, date.",
+     "wave": "O2",
+     "queue": 7,
+     "mvp": false,
+     "kpi": {
+      "code": "V2",
+      "group": "exe",
+      "level": 3,
+      "gera": false,
+      "name": "Outcome recorded within an hour",
+      "definition": "Visits with an outcome recorded within 60 minutes ÷ visits held",
+      "today": "no data yet",
+      "target": "90% in the pilot",
+      "impact": "The outcome is what the forecast and the follow-up read; without it both read nothing.",
+      "source": "the assistant's own event log and the CRM mirror, read weekly"
+     },
+     "depends_on": [
+      "BA-VISIT-F01",
+      "BA-CRM-F01"
+     ],
+     "stories": [
+      {
+       "code": "BA-VISIT-F02-US01",
+       "name": "Turn a voice note into proposed fields",
+       "summary": "The broker records a voice note after the visit; the assistant transcribes it and proposes interest level, objections, next step and date, each with the phrase it came from.",
+       "type": "Functional",
+       "sections": {
+        "why": "The outcome is spoken in the car and typed never. Voice is the only channel that will be used within the hour.",
+        "context": "Transcription in Portuguese; fields in the CRM's vocabulary.",
+        "type": "Functional",
+        "story": "As a broker, I want to say what happened and see the fields proposed, so that the CRM is updated before I reach the next visit.",
+        "expected": [
+         "Transcript kept as evidence.",
+         "Four fields proposed, each with the source phrase.",
+         "Amounts and dates shown next to the phrase; unclear values proposed as unknown."
+        ],
+        "out": [
+         "Writing without approval."
+        ],
+        "tech": [
+         "Speech to text, then field extraction; the preview is BA-CRM-F01's."
+        ],
+        "trace": [
+         "Program brief section 6; CRM field list."
+        ],
+        "cases": [
+         {
+          "case": "Fields with their phrases",
+          "given": "the broker said 'they liked it, worried about the fee, will decide by Friday'",
+          "when": "the note is processed",
+          "then": "interest high, objection 'condominium fee', next step 'decision', date Friday, each with its phrase."
+         },
+         {
+          "case": "An unclear amount",
+          "given": "the broker said 'maybe around eight something'",
+          "when": "the note is processed",
+          "then": "no amount is proposed; the field says unknown with the phrase."
+         }
+        ]
+       },
+       "depends_on": [],
+       "tracker": {
+        "id": 4114,
+        "state": "Active",
+        "sprint": "S4",
+        "owner": "tomas",
+        "points": 5
+       }
+      },
+      {
+       "code": "BA-VISIT-F02-US02",
+       "name": "Type the outcome when voice is not possible",
+       "summary": "The same four fields can be filled from a short typed message, with the same preview.",
+       "type": "Functional",
+       "sections": {
+        "why": "In a developer's stand the broker cannot record; typing must produce the same result.",
+        "context": "Text through the assistant's chat.",
+        "type": "Functional",
+        "story": "As a broker, I want to type the outcome when I cannot speak, so that nothing waits for the office.",
+        "expected": [
+         "Same extraction and preview as the voice path.",
+         "A message with no outcome content asks one question back."
+        ],
+        "out": [
+         "Free-form notes without fields."
+        ],
+        "tech": [
+         "Shared extraction; channel adapter for text."
+        ],
+        "trace": [
+         "Program brief section 6."
+        ],
+        "cases": [
+         {
+          "case": "Text produces the same fields",
+          "given": "the broker typed 'liked it, fee objection, decides Friday'",
+          "when": "the message is read",
+          "then": "the same four fields are proposed as from voice."
+         },
+         {
+          "case": "A message without outcome",
+          "given": "the broker typed 'visit done'",
+          "when": "the message is read",
+          "then": "the assistant asks what the buyer said, and proposes nothing."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-VISIT-F02-US01"
+       ],
+       "tracker": {
+        "id": 4115,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      },
+      {
+       "code": "BA-VISIT-F02-US03",
+       "name": "Block the stage change without an outcome",
+       "summary": "A deal cannot move to the next stage while its last visit has no recorded outcome; the broker is told what is missing.",
+       "type": "Functional",
+       "sections": {
+        "why": "Stages move on hope; the outcome is the evidence. The block is what makes the forecast read evidence.",
+        "context": "Stage changes happen in the CRM and through the assistant.",
+        "type": "Functional",
+        "story": "As a sales manager, I want stage changes blocked without an outcome, so that the pipeline reads what happened.",
+        "expected": [
+         "Block with the reason and a link to record the outcome.",
+         "The manager can override with a reason, recorded."
+        ],
+        "out": [
+         "Blocking other field changes."
+        ],
+        "tech": [
+         "Rule in the write path for the stage field."
+        ],
+        "trace": [
+         "Forecast rules, commercial director, 2026-03-10."
+        ],
+        "cases": [
+         {
+          "case": "The block explains itself",
+          "given": "the last visit has no outcome",
+          "when": "the broker moves the stage",
+          "then": "the move is refused with 'record the outcome of the visit on April 2' and a link."
+         },
+         {
+          "case": "The manager overrides",
+          "given": "the manager moves the stage with a reason",
+          "when": "the move is saved",
+          "then": "the stage changes and the trail shows the override and the reason."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-VISIT-F02-US01"
+       ],
+       "tracker": {
+        "id": 4116,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      }
+     ],
+     "sections": {
+      "why": "The visit outcome is the fact every later step depends on. Spoken in the car, it reaches the CRM; typed tonight, it does not.",
+      "problem": "Outcomes recorded hours later or never; stages moved without evidence.",
+      "objective": "An outcome within the hour for 90% of visits.",
+      "value": "A pipeline that reads what happened; follow-ups that start on time.",
+      "behavior": [
+       "Voice note to proposed fields with phrases.",
+       "Typed fallback.",
+       "Stage change blocked without an outcome."
+      ],
+      "acceptance": [
+       "Each proposed field has its phrase.",
+       "Unclear values are unknown, never guessed.",
+       "The block names what is missing."
+      ],
+      "scope": [
+       "In: four outcome fields.",
+       "Out: free-form notes, automatic stage change."
+      ],
+      "rules": [
+       "Tier 2 for all four fields in the first release."
+      ],
+      "data": [
+       "Voice note, transcript, CRM fields."
+      ],
+      "dependencies": "As drawn: BA-VISIT-F01, BA-CRM-F01",
+      "nfr": [
+       "Preview opens in under two seconds on a phone.",
+       "Every write is logged with its origin."
+      ],
+      "evaluation": [
+       "Golden set of 30 voice notes: field accuracy 90%, never-cases (invented amount) zero (illustrative)."
+      ],
+      "open": [
+       "Whether the transcript is stored for 30 or 90 days (legal decision)."
+      ],
+      "trace": [
+       "Program brief section 6; forecast rules 2026-03-10."
+      ],
+      "estimate": "3 stories, 12 points (illustrative)."
+     }
+    },
+    {
+     "code": "BA-VISIT-F03",
+     "name": "Scheduling with the buyer and the developer's stand",
+     "summary": "The assistant proposes visit slots that fit the broker's calendar and the stand's hours, and confirms with the buyer after approval.",
+     "wave": "O2",
+     "queue": 6,
+     "mvp": false,
+     "kpi": {
+      "code": "V3",
+      "group": "mar",
+      "level": 2,
+      "gera": false,
+      "name": "Visits scheduled from the conversation",
+      "definition": "Visits scheduled by the assistant ÷ visits held",
+      "today": "no data yet",
+      "target": "60% in the pilot",
+      "impact": "A slot offered in the conversation becomes a visit; a 'let me check' becomes silence.",
+      "source": "the assistant's own event log and the CRM mirror, read weekly"
+     },
+     "depends_on": [
+      "BA-LEAD-F02"
+     ],
+     "stories": [
+      {
+       "code": "BA-VISIT-F03-US01",
+       "name": "Offer three slots that fit everyone",
+       "summary": "When a buyer agrees to visit, the assistant drafts a message with three slots that fit the broker's calendar and the stand's hours.",
+       "type": "Functional",
+       "sections": {
+        "why": "Scheduling by message takes five exchanges; three fitting slots take one.",
+        "context": "The brokerage calendar is the broker's; stands have fixed hours per listing in the catalogue.",
+        "type": "Functional",
+        "story": "As a broker, I want three fitting slots drafted, so that scheduling takes one message.",
+        "expected": [
+         "Slots from the next three days, inside stand hours, outside the broker's busy times.",
+         "Travel time between visits respected (30 minutes default).",
+         "The draft goes out after approval."
+        ],
+        "out": [
+         "Buyer self-service booking."
+        ],
+        "tech": [
+         "Calendar free-busy read; stand hours from the catalogue."
+        ],
+        "trace": [
+         "Program brief section 5."
+        ],
+        "cases": [
+         {
+          "case": "Slots respect the stand",
+          "given": "the stand opens 10:00 to 18:00",
+          "when": "slots are proposed",
+          "then": "none is outside those hours."
+         },
+         {
+          "case": "Slots respect the broker",
+          "given": "the broker has a visit at 14:00",
+          "when": "slots are proposed",
+          "then": "none starts between 13:30 and 15:00."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-LEAD-F02-US02"
+       ],
+       "tracker": {
+        "id": 4117,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      },
+      {
+       "code": "BA-VISIT-F03-US02",
+       "name": "Confirm and write the visit to both calendars",
+       "summary": "When the buyer picks a slot, the visit is written to the broker's calendar and the CRM, and the buyer gets a confirmation with the address.",
+       "type": "Functional",
+       "sections": {
+        "why": "A visit that is not in the calendar is a visit the broker forgets.",
+        "context": "Confirmation by the same channel as the conversation.",
+        "type": "Functional",
+        "story": "As a broker, I want the picked slot written everywhere, so that I never double-book.",
+        "expected": [
+         "Calendar event with address and buyer facts.",
+         "CRM visit record through the single write path.",
+         "Confirmation message after the broker's approval."
+        ],
+        "out": [
+         "Rescheduling by the buyer (later)."
+        ],
+        "tech": [
+         "Calendar write; CRM write; channel send."
+        ],
+        "trace": [
+         "Program brief section 5."
+        ],
+        "cases": [
+         {
+          "case": "The slot is written",
+          "given": "the buyer replied 'Tuesday 11:00'",
+          "when": "the broker approves",
+          "then": "the calendar has the event, the CRM has the visit, and the buyer receives the confirmation."
+         },
+         {
+          "case": "The slot is no longer free",
+          "given": "another visit took Tuesday 11:00 meanwhile",
+          "when": "the broker approves",
+          "then": "the assistant says the slot is gone and offers the next two."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-VISIT-F03-US01"
+       ],
+       "tracker": {
+        "id": 4118,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      },
+      {
+       "code": "BA-VISIT-F03-US03",
+       "name": "Remind the buyer the day before",
+       "summary": "The buyer receives a reminder with the address and the broker's name the day before, after the broker's approval or automatically once the capability is on always-allow.",
+       "type": "Functional",
+       "sections": {
+        "why": "No-shows are the silent cost of visits; a reminder cuts them.",
+        "context": "Reminders are the first capability the brokers will want on always-allow.",
+        "type": "Functional",
+        "story": "As a broker, I want the buyer reminded the day before, so that fewer visits are no-shows.",
+        "expected": [
+         "Reminder at 18:00 the day before with address and name.",
+         "Tier 2 by default; tier 3 when the broker switches always-allow (BA-CRM-F02)."
+        ],
+        "out": [
+         "Reminders for the stand."
+        ],
+        "tech": [
+         "Scheduled send; always-allow checked at send time."
+        ],
+        "trace": [
+         "Program brief section 5."
+        ],
+        "cases": [
+         {
+          "case": "Reminder under approval",
+          "given": "always-allow is off",
+          "when": "18:00 the day before",
+          "then": "the broker sees the reminder to approve; nothing is sent before."
+         },
+         {
+          "case": "Reminder on always-allow",
+          "given": "the broker switched reminders to always-allow",
+          "when": "18:00 the day before",
+          "then": "the reminder is sent and logged with 'always-allow' as the approval."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-VISIT-F03-US02"
+       ],
+       "tracker": {
+        "id": 4119,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      }
+     ],
+     "sections": {
+      "why": "A buyer who agrees to visit has to be given a time in the same message, or the agreement cools. This Feature closes the loop from reply to visit.",
+      "problem": "Five messages to find a time; double bookings; no-shows.",
+      "objective": "60% of visits scheduled by the assistant, written to both calendars.",
+      "value": "More visits from the same leads; fewer no-shows.",
+      "behavior": [
+       "Three fitting slots.",
+       "Written to calendar and CRM on pick.",
+       "Reminder the day before."
+      ],
+      "acceptance": [
+       "Slots inside stand hours and outside busy times.",
+       "No double booking.",
+       "Reminder respects the autonomy setting."
+      ],
+      "scope": [
+       "In: proposal, confirmation, reminder.",
+       "Out: buyer self-service, rescheduling."
+      ],
+      "rules": [
+       "Nothing sent without approval unless always-allow is on for the capability."
+      ],
+      "data": [
+       "Broker calendar, stand hours, CRM."
+      ],
+      "dependencies": "As drawn: BA-LEAD-F02",
+      "nfr": [
+       "Preview opens in under two seconds on a phone.",
+       "Every write is logged with its origin."
+      ],
+      "evaluation": [
+       "Share of proposed slots accepted; no-show rate before and after."
+      ],
+      "open": [
+       "Default travel time per region."
+      ],
+      "trace": [
+       "Program brief section 5."
+      ],
+      "estimate": "3 stories, 8 points (illustrative)."
+     }
+    }
+   ],
+   "sections": {
+    "why": "A visit is the most expensive moment of the sale and today it starts from memory and ends in a WhatsApp message that nobody records. Without this Epic the CRM shows visits that happened with no outcome, and the forecast reads a pipeline that does not exist.",
+    "problem": "Brokers prepare visits from scattered PDFs and chat threads, and record outcomes hours later, if at all. The manager cannot tell a cold visit from a hot one.",
+    "objective": "A one-page preparation before every visit and a recorded outcome within an hour after it, for 90% of visits.",
+    "metrics": [
+     "Visits with a recorded outcome within one hour: from 30% to 90% (illustrative).",
+     "Visits with a preparation sheet opened before the visit: 85%.",
+     "Second visits scheduled during the first visit: a measured baseline, then plus 20%."
+    ],
+    "scope": [
+     "The preparation sheet (BA-VISIT-F01).",
+     "Scheduling with the buyer and the developer's sales stand (BA-VISIT-F03).",
+     "Outcome capture by voice or text (BA-VISIT-F02)."
+    ],
+    "rules": [
+     "The outcome fields the assistant proposes are previewed and approved field by field (BA-CRM-F01).",
+     "A visit without a recorded outcome blocks the stage change in the forecast."
+    ],
+    "dependencies": "BA-LEAD-F01 for the buyer's context; BA-CRM-F01 for the writes; the developer's visit calendar for BA-VISIT-F03.",
+    "risks": [
+     "Risk: voice capture misreads amounts. Mitigation: amounts are shown next to the source phrase and never written without approval.",
+     "Risk: developers' stands keep their own calendars. Mitigation: scheduling starts with the brokerage's own calendar and adds stands one by one."
+    ],
+    "governance": [
+     "The sales manager reads visits without outcome in the weekly digest.",
+     "Autonomy: tier 2 for all writes in the first release; tier 3 for the visit date once the eval set passes."
+    ],
+    "technical": [
+     "Calendar read and write through the brokerage's calendar provider.",
+     "Voice notes transcribed, then mapped to fields; the transcript is kept as evidence.",
+     "Reads and writes go through the assistant's single CRM write path; every write carries author, previous value, proposed value, written value, origin and approval."
+    ],
+    "estimate": "9 User Stories, 31 points (illustrative)."
+   }
+  },
+  {
+   "code": "BA-PROP",
+   "name": "Proposals are followed up on time",
+   "summary": "A proposal never sits silent: the broker is reminded, the follow-up is drafted, and the developer's answer reaches the CRM.",
+   "features": [
+    {
+     "code": "BA-PROP-F01",
+     "name": "Follow-up reminders and drafts",
+     "summary": "When a proposal's next-step date arrives, the broker gets a drafted follow-up for the buyer or the developer, with the proposal facts.",
+     "wave": "O3",
+     "queue": 9,
+     "mvp": false,
+     "kpi": {
+      "code": "P1",
+      "group": "exe",
+      "level": 3,
+      "gera": false,
+      "name": "Silent proposals",
+      "definition": "Open proposals with no activity for seven days ÷ open proposals",
+      "today": "no data yet",
+      "target": "under 10% in the pilot",
+      "impact": "A silent proposal is a sale someone else closes.",
+      "source": "the assistant's own event log and the CRM mirror, read weekly"
+     },
+     "depends_on": [
+      "BA-VISIT-F02",
+      "BA-CRM-F01"
+     ],
+     "stories": [
+      {
+       "code": "BA-PROP-F01-US01",
+       "name": "Set a next step and a date on every proposal",
+       "summary": "A proposal cannot be saved without a next step and a date; the assistant proposes both from the outcome of the visit.",
+       "type": "Functional",
+       "sections": {
+        "why": "A proposal without a next step is the definition of silence.",
+        "context": "Proposals are created after a visit, from the outcome.",
+        "type": "Functional",
+        "story": "As a broker, I want the next step and date proposed when I create the proposal, so that no proposal is born silent.",
+        "expected": [
+         "Next step from a fixed list: buyer decision, developer answer, document, counter-proposal.",
+         "Date proposed from the buyer's phrase or three working days by default.",
+         "Saved through the preview."
+        ],
+        "out": [
+         "Proposal document generation."
+        ],
+        "tech": [
+         "Field rules in the write path."
+        ],
+        "trace": [
+         "Proposal process, commercial director, 2026-03-10."
+        ],
+        "cases": [
+         {
+          "case": "The proposal gets a step and a date",
+          "given": "the visit outcome said 'decides Friday'",
+          "when": "the proposal is created",
+          "then": "next step 'buyer decision', date Friday, both in the preview."
+         },
+         {
+          "case": "No phrase to read",
+          "given": "the outcome has no date",
+          "when": "the proposal is created",
+          "then": "next step 'buyer decision', date in three working days, flagged as default."
+         }
+        ]
+       },
+       "depends_on": [],
+       "tracker": {
+        "id": 4120,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      },
+      {
+       "code": "BA-PROP-F01-US02",
+       "name": "Draft the follow-up when the date arrives",
+       "summary": "On the date, the broker receives a drafted message for the buyer or the developer, with the proposal's facts and the question to ask.",
+       "type": "Functional",
+       "sections": {
+        "why": "The reminder alone is ignored; the drafted message is sent.",
+        "context": "Buyer follow-ups by WhatsApp; developer follow-ups by email.",
+        "type": "Functional",
+        "story": "As a broker, I want the follow-up drafted on the date, so that I send instead of writing.",
+        "expected": [
+         "Draft with unit, value, date of the proposal and the one question.",
+         "Approve sends; snooze moves the date with a reason."
+        ],
+        "out": [
+         "Automatic sending."
+        ],
+        "tech": [
+         "Scheduled job; draft through the model with the proposal facts; send through the channel adapter."
+        ],
+        "trace": [
+         "Proposal process 2026-03-10."
+        ],
+        "cases": [
+         {
+          "case": "A buyer follow-up is drafted",
+          "given": "the next step is 'buyer decision' and the date is today",
+          "when": "the morning job runs",
+          "then": "the broker has a drafted message with the unit, the value and the question."
+         },
+         {
+          "case": "Snooze moves the date",
+          "given": "the broker snoozes for two days with a reason",
+          "when": "the snooze is saved",
+          "then": "the date moves, the reason is in the trail, and no message is sent."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-PROP-F01-US01"
+       ],
+       "tracker": {
+        "id": 4121,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      },
+      {
+       "code": "BA-PROP-F01-US03",
+       "name": "Show the manager the silent proposals",
+       "summary": "The manager's view lists proposals past their date with the days of silence per broker.",
+       "type": "Functional",
+       "sections": {
+        "why": "The number only moves when someone sees it weekly.",
+        "context": "The manager reviews the pipeline on Mondays.",
+        "type": "Functional",
+        "story": "As a sales manager, I want silent proposals per broker, so that Monday's review starts from facts.",
+        "expected": [
+         "List sorted by days past the date.",
+         "Count per broker; a link to the proposal.",
+         "Exported to the weekly digest (BA-CRM-F03)."
+        ],
+        "out": [
+         "Automatic escalation."
+        ],
+        "tech": [
+         "Query over proposals and activities."
+        ],
+        "trace": [
+         "Proposal process 2026-03-10."
+        ],
+        "cases": [
+         {
+          "case": "A silent proposal is listed",
+          "given": "a proposal's date was eight days ago with no activity",
+          "when": "the manager opens the view",
+          "then": "it appears with 8 days and the broker's name."
+         },
+         {
+          "case": "A proposal with activity is not silent",
+          "given": "a follow-up was sent yesterday",
+          "when": "the manager opens the view",
+          "then": "the proposal is not listed."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-PROP-F01-US02"
+       ],
+       "tracker": {
+        "id": 4122,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      }
+     ],
+     "sections": {
+      "why": "Half the pipeline is proposals nobody follows up. A date, a draft and a manager's view turn silence into a list.",
+      "problem": "Proposals without next steps; reminders ignored; the manager finds out late.",
+      "objective": "Silent proposals under 10%.",
+      "value": "More closings from proposals already made; less time chasing.",
+      "behavior": [
+       "Next step and date on creation.",
+       "Drafted follow-up on the date.",
+       "Manager's list of silent proposals."
+      ],
+      "acceptance": [
+       "No proposal saved without a step and a date.",
+       "The draft carries the proposal facts.",
+       "The list counts days of silence."
+      ],
+      "scope": [
+       "In: reminders, drafts, manager's view.",
+       "Out: automatic sending, escalation."
+      ],
+      "rules": [
+       "Tier 2 for follow-ups."
+      ],
+      "data": [
+       "Proposals, activities, channel adapters."
+      ],
+      "dependencies": "As drawn: BA-VISIT-F02, BA-CRM-F01",
+      "nfr": [
+       "Preview opens in under two seconds on a phone.",
+       "Every write is logged with its origin."
+      ],
+      "evaluation": [
+       "Share of drafts approved without edits; days of silence median per week."
+      ],
+      "open": [
+       "Whether developer follow-ups go from the broker's mailbox or the brokerage's."
+      ],
+      "trace": [
+       "Proposal process 2026-03-10."
+      ],
+      "estimate": "3 stories, 10 points (illustrative)."
+     }
+    },
+    {
+     "code": "BA-PROP-F02",
+     "name": "Counter-proposal preview with the developer's rules",
+     "summary": "Before sending a counter-proposal, the broker sees whether it fits the developer's discount and payment rules, with the rule and its date.",
+     "wave": "O3",
+     "queue": 10,
+     "mvp": false,
+     "kpi": {
+      "code": "P2",
+      "group": "res",
+      "level": 2,
+      "gera": false,
+      "name": "Counter-proposals inside the rules",
+      "definition": "Counter-proposals within the developer's discount and payment table ÷ counter-proposals sent",
+      "today": "no data yet",
+      "target": "100%",
+      "impact": "A counter-proposal outside the rules is a week lost and a buyer told no twice.",
+      "source": "the assistant's own event log and the CRM mirror, read weekly"
+     },
+     "depends_on": [
+      "BA-PROP-F01"
+     ],
+     "stories": [
+      {
+       "code": "BA-PROP-F02-US01",
+       "name": "Check a counter-proposal against the developer's table",
+       "summary": "The broker enters the buyer's offer; the assistant shows whether discount, down payment and installments fit the developer's table, rule by rule.",
+       "type": "Functional",
+       "sections": {
+        "why": "Brokers learn the rules by being refused. The table exists; the check should read it.",
+        "context": "Each developer has a table per project, dated, kept by the back office.",
+        "type": "Functional",
+        "story": "As a broker, I want the offer checked against the table before I send it, so that I do not promise what the developer refuses.",
+        "expected": [
+         "Three checks: discount ceiling, minimum down payment, maximum installments.",
+         "Each check shows the rule and the table's date.",
+         "An offer outside the rules is not blocked; it is flagged with what would make it fit."
+        ],
+        "out": [
+         "Negotiating with the developer."
+        ],
+        "tech": [
+         "Table lookup by project; the preview is read-only."
+        ],
+        "trace": [
+         "Commercial rules, 2026-03-10."
+        ],
+        "cases": [
+         {
+          "case": "A discount over the ceiling",
+          "given": "the table allows 5% and the offer asks 8%",
+          "when": "the check runs",
+          "then": "the discount line is flagged with 'ceiling 5%, table of March 3' and the rest pass."
+         },
+         {
+          "case": "A table that is out of date",
+          "given": "the project's table is older than 30 days",
+          "when": "the check runs",
+          "then": "the preview says the table may be stale and names the back office contact."
+         }
+        ]
+       },
+       "depends_on": [],
+       "tracker": {
+        "id": 4123,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      },
+      {
+       "code": "BA-PROP-F02-US02",
+       "name": "Draft the counter-proposal message from the checked offer",
+       "summary": "Once the offer fits or the broker accepts the flags, the assistant drafts the message to the developer with the offer and the buyer's facts.",
+       "type": "Functional",
+       "sections": {
+        "why": "The message to the developer is the same every time and still takes twenty minutes.",
+        "context": "Developer messages go by email with a fixed structure.",
+        "type": "Functional",
+        "story": "As a broker, I want the counter-proposal drafted from the checked offer, so that I send a complete message in one go.",
+        "expected": [
+         "Draft with unit, offer, payment plan, buyer qualification facts.",
+         "Flags, if accepted, are stated as requests, not hidden.",
+         "Sent after approval."
+        ],
+        "out": [
+         "Generating the proposal PDF."
+        ],
+        "tech": [
+         "Template plus model for the free text; send through email adapter."
+        ],
+        "trace": [
+         "Commercial rules 2026-03-10."
+        ],
+        "cases": [
+         {
+          "case": "A complete draft",
+          "given": "the offer passed the checks",
+          "when": "the draft is generated",
+          "then": "it carries unit, offer, plan and the four buyer facts."
+         },
+         {
+          "case": "A flag becomes a request",
+          "given": "the broker accepted the discount flag",
+          "when": "the draft is generated",
+          "then": "the discount is stated as a request to the developer, with the rule quoted."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-PROP-F02-US01"
+       ],
+       "tracker": {
+        "id": 4124,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      }
+     ],
+     "sections": {
+      "why": "Counter-proposals outside the rules cost a week each. The table exists; the preview makes the broker read it before the developer does.",
+      "problem": "Rules learned by refusal; stale tables; incomplete messages.",
+      "objective": "100% of counter-proposals inside the rules or explicitly flagged.",
+      "value": "Faster answers from developers; fewer buyers told no twice.",
+      "behavior": [
+       "Three checks with the rule and date.",
+       "Drafted message from the checked offer."
+      ],
+      "acceptance": [
+       "Each check shows its rule.",
+       "Stale tables are named.",
+       "Flags are stated in the draft."
+      ],
+      "scope": [
+       "In: check, draft.",
+       "Out: PDF generation, negotiation."
+      ],
+      "rules": [
+       "Never a rule from the conversation; only from the table."
+      ],
+      "data": [
+       "Developer tables (back office), proposals."
+      ],
+      "dependencies": "As drawn: BA-PROP-F01",
+      "nfr": [
+       "Preview opens in under two seconds on a phone.",
+       "Every write is logged with its origin."
+      ],
+      "evaluation": [
+       "Zero counter-proposals sent with an unflagged rule breach."
+      ],
+      "open": [
+       "Who updates the tables and how often (back office decision)."
+      ],
+      "trace": [
+       "Commercial rules 2026-03-10."
+      ],
+      "estimate": "2 stories, 8 points (illustrative)."
+     }
+    },
+    {
+     "code": "BA-PROP-F03",
+     "name": "Proposal status synced from the developer's system",
+     "summary": "The developer's answer to a proposal reaches the CRM within a day, from the developer's export, without the broker retyping it.",
+     "wave": "PT",
+     "queue": 14,
+     "mvp": false,
+     "kpi": {
+      "code": "P3",
+      "group": "sen",
+      "level": 2,
+      "gera": false,
+      "name": "Status in sync",
+      "definition": "Proposals whose CRM status matches the developer's system ÷ open proposals",
+      "today": "no data yet",
+      "target": "95%",
+      "impact": "The forecast reads the status; a stale status is a wrong forecast.",
+      "source": "the assistant's own event log and the CRM mirror, read weekly"
+     },
+     "depends_on": [
+      "BA-PROP-F01"
+     ],
+     "stories": [
+      {
+       "code": "BA-PROP-F03-US01",
+       "name": "Import the developer's proposal export daily",
+       "summary": "A daily import reads the developer's CSV export and matches each line to a proposal by number and buyer document.",
+       "type": "Enabler",
+       "sections": {
+        "why": "Developers answer in their own system; the broker learns by phone. The export is the only honest source.",
+        "context": "Two developers provide a daily CSV; others are later.",
+        "type": "Enabler",
+        "story": "The assistant imports the developer export daily and matches lines to proposals, so that status changes can be proposed to the broker.",
+        "expected": [
+         "Match by proposal number, then by buyer document.",
+         "Unmatched lines listed for the back office.",
+         "No write without a match."
+        ],
+        "out": [
+         "Developer APIs."
+        ],
+        "tech": [
+         "Scheduled import; matching rules; unmatched report."
+        ],
+        "trace": [
+         "Developer export formats, 2026-03-18."
+        ],
+        "cases": [
+         {
+          "case": "A line matches",
+          "given": "the export has proposal 5521 for buyer document ending 44",
+          "when": "the import runs",
+          "then": "the line is linked to the proposal and nothing is written yet."
+         },
+         {
+          "case": "A line does not match",
+          "given": "the export has a proposal number the CRM does not know",
+          "when": "the import runs",
+          "then": "the line is in the unmatched report; no proposal is created."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-PROP-F01-US01"
+       ],
+       "tracker": {
+        "id": 4125,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      },
+      {
+       "code": "BA-PROP-F03-US02",
+       "name": "Propose the status change to the broker",
+       "summary": "When the developer's status differs from the CRM, the broker sees a proposed change with the developer's value and date, for approval.",
+       "type": "Functional",
+       "sections": {
+        "why": "A status written without the broker seeing it is the kind of write that breaks trust.",
+        "context": "Statuses: under analysis, accepted, refused, counter.",
+        "type": "Functional",
+        "story": "As a broker, I want status changes proposed with the developer's value, so that I approve what I can explain to the buyer.",
+        "expected": [
+         "Proposed change in the preview with old value, new value and the export's date.",
+         "Approve writes; refuse records a reason and keeps the line for the back office."
+        ],
+        "out": [
+         "Automatic writes (tier 3) in this release."
+        ],
+        "tech": [
+         "Preview through BA-CRM-F01; refuse feeds the unmatched report."
+        ],
+        "trace": [
+         "Developer export formats 2026-03-18."
+        ],
+        "cases": [
+         {
+          "case": "A change is proposed",
+          "given": "the export says 'accepted' and the CRM says 'under analysis'",
+          "when": "the import runs",
+          "then": "the broker sees the proposed change with the date and approves or refuses."
+         },
+         {
+          "case": "No difference",
+          "given": "the export and the CRM agree",
+          "when": "the import runs",
+          "then": "nothing is proposed."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-PROP-F03-US01",
+        "BA-CRM-F01-US01"
+       ],
+       "tracker": {
+        "id": 4126,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      },
+      {
+       "code": "BA-PROP-F03-US03",
+       "name": "Measure the sync and its failures",
+       "summary": "A weekly report shows the share of proposals in sync, the unmatched lines and the time from export to CRM.",
+       "type": "Evaluation",
+       "sections": {
+        "why": "A sync nobody measures drifts in a month.",
+        "context": "Report in the manager's digest.",
+        "type": "Evaluation",
+        "story": "As a product manager, I want the sync measured weekly, so that drift is caught before the forecast reads it.",
+        "expected": [
+         "In-sync share, unmatched count, median delay.",
+         "Included in the weekly digest."
+        ],
+        "out": [
+         "Alerts."
+        ],
+        "tech": [
+         "Query over imports and proposals."
+        ],
+        "trace": [
+         "KPI P3 definition."
+        ],
+        "cases": [
+         {
+          "case": "The number is in the digest",
+          "given": "a week of imports ran",
+          "when": "the digest is built",
+          "then": "it shows in-sync share, unmatched lines and median delay."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-PROP-F03-US02"
+       ],
+       "tracker": {
+        "id": 4127,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      }
+     ],
+     "sections": {
+      "why": "The developer's answer is the fact the forecast needs and the broker learns last. The export is the only honest source, so this track reads it.",
+      "problem": "Statuses retyped late or never; forecast reads stale statuses.",
+      "objective": "95% of proposals in sync within a day.",
+      "value": "A forecast that reads the developers' answers.",
+      "behavior": [
+       "Daily import and match.",
+       "Proposed status changes for approval.",
+       "Weekly measurement."
+      ],
+      "acceptance": [
+       "No write without a match.",
+       "Every change previewed.",
+       "The number is in the digest."
+      ],
+      "scope": [
+       "In: two developers' CSV.",
+       "Out: APIs, automatic writes."
+      ],
+      "rules": [
+       "Tier 2; matching by number then document."
+      ],
+      "data": [
+       "Developer exports, proposals, CRM."
+      ],
+      "dependencies": "Parallel track: depends on BA-PROP-F01 and BA-CRM-F01 only; runs beside waves 3 and 4 while the developer access is negotiated.",
+      "nfr": [
+       "Preview opens in under two seconds on a phone.",
+       "Every write is logged with its origin."
+      ],
+      "evaluation": [
+       "Matching precision on a 50-line golden set: 100% (illustrative)."
+      ],
+      "open": [
+       "Access agreement with the two developers (commercial director)."
+      ],
+      "trace": [
+       "Export formats 2026-03-18; KPI P3."
+      ],
+      "estimate": "3 stories, 11 points (illustrative)."
+     }
+    }
+   ],
+   "sections": {
+    "why": "Half of the proposals in the pipeline have no follow-up for more than a week. The buyer cools, the developer forgets, and the broker finds out when the unit is sold to someone else. Without this Epic the assistant stops at the visit.",
+    "problem": "Proposals live in the developer's system, in email and in the broker's head. Deadlines pass without anyone noticing.",
+    "objective": "Every open proposal has a next step with a date, a drafted follow-up when the date arrives, and a status that matches the developer's answer within a day.",
+    "metrics": [
+     "Proposals without a follow-up for seven days: from 48% to under 10% (illustrative).",
+     "Proposals with a status that matches the developer's system: 95%.",
+     "Counter-proposals inside the developer's discount rules: 100%."
+    ],
+    "scope": [
+     "Follow-up reminders and drafts (BA-PROP-F01).",
+     "Counter-proposal preview with the developer's rules (BA-PROP-F02).",
+     "Proposal status synced from the developer's system (BA-PROP-F03, parallel track)."
+    ],
+    "rules": [
+     "The assistant never sends a proposal or a counter-proposal; it drafts, the broker sends.",
+     "Discount limits come from the developer's table, never from the conversation."
+    ],
+    "dependencies": "BA-CRM-F01 for writes; the developer's system export for BA-PROP-F03.",
+    "risks": [
+     "Risk: a developer's discount table is out of date. Mitigation: the table carries its date and the preview shows it.",
+     "Risk: status sync creates duplicates. Mitigation: match by proposal number and buyer document."
+    ],
+    "governance": [
+     "The commercial director owns the discount tables.",
+     "Weekly reading of silent proposals per broker."
+    ],
+    "technical": [
+     "Reminders from the proposal date and the next-step field.",
+     "Developer export as CSV in the first release; API later.",
+     "Reads and writes go through the assistant's single CRM write path; every write carries author, previous value, proposed value, written value, origin and approval."
+    ],
+    "estimate": "8 User Stories, 29 points (illustrative)."
+   }
+  },
+  {
+   "code": "BA-CRM",
+   "name": "The broker approves what the assistant writes",
+   "summary": "Nothing reaches the CRM without the broker seeing it field by field, and everything that was written can be read back later.",
+   "features": [
+    {
+     "code": "BA-CRM-F01",
+     "name": "Field-by-field preview and approval",
+     "summary": "Every write the assistant wants to make is shown as old value, new value and origin, and the broker approves field by field.",
+     "wave": "O1",
+     "queue": 3,
+     "mvp": true,
+     "kpi": {
+      "code": "C1",
+      "group": "res",
+      "level": 3,
+      "gera": false,
+      "name": "Writes approved without edits",
+      "definition": "Proposed writes approved as proposed ÷ proposed writes",
+      "today": "no data yet",
+      "target": "80% after two months",
+      "impact": "This number is the trust the brokers put in the assistant, measured.",
+      "source": "the assistant's own event log and the CRM mirror, read weekly"
+     },
+     "depends_on": [],
+     "stories": [
+      {
+       "code": "BA-CRM-F01-US01",
+       "name": "Create the single write path to the CRM",
+       "summary": "All CRM writes from the assistant go through one service that records author, previous value, proposed value, written value, origin and approval.",
+       "type": "Enabler",
+       "sections": {
+        "why": "Two write paths diverge on the first correction. One path is what makes the trail and the undo possible.",
+        "context": "The CRM exposes a REST API with field-level writes.",
+        "type": "Enabler",
+        "story": "The assistant writes to the CRM only through one path that records every write, so that the trail and the undo exist from day one.",
+        "expected": [
+         "One service; no other code calls the CRM write API.",
+         "Every write stored with the six attributes.",
+         "A write without an approval reference is refused."
+        ],
+        "out": [
+         "Reads."
+        ],
+        "tech": [
+         "Service with a contract table (object, field, allowed values); refusal is an error, not a silent skip."
+        ],
+        "trace": [
+         "Write contract, spec section 4."
+        ],
+        "cases": [
+         {
+          "case": "A write without approval is refused",
+          "given": "a caller sends a write with no approval reference",
+          "when": "the service receives it",
+          "then": "the write is refused and logged as refused."
+         },
+         {
+          "case": "A write stores six attributes",
+          "given": "a broker approved a stage change",
+          "when": "the write is made",
+          "then": "the record carries author, previous, proposed, written value, origin and approval."
+         }
+        ]
+       },
+       "depends_on": [],
+       "tracker": {
+        "id": 4128,
+        "state": "Done",
+        "sprint": "S3",
+        "owner": "tomas",
+        "points": 5
+       }
+      },
+      {
+       "code": "BA-CRM-F01-US02",
+       "name": "Show the preview with old and new values",
+       "summary": "Before a write, the broker sees each field with its old value, the proposed value and the phrase or source it came from, and approves or edits per field.",
+       "type": "Functional",
+       "sections": {
+        "why": "Approval of a block is approval of nothing; the broker has to see each field.",
+        "context": "Preview in the assistant's chat and in the web app.",
+        "type": "Functional",
+        "story": "As a broker, I want each field shown with old, new and source, so that I approve what I understand.",
+        "expected": [
+         "Old value, new value, source per field.",
+         "Approve all, approve one, edit one, discard with reason.",
+         "Edited values are written as edited, with the original kept."
+        ],
+        "out": [
+         "Previews for other brokers' records."
+        ],
+        "tech": [
+         "Rendered from the proposed writes; edits create new proposed values with origin 'broker'."
+        ],
+        "trace": [
+         "Write contract, spec section 4."
+        ],
+        "cases": [
+         {
+          "case": "Each field is visible",
+          "given": "three fields are proposed",
+          "when": "the preview opens",
+          "then": "each shows old, new and source, with its own approve."
+         },
+         {
+          "case": "An edit is recorded as an edit",
+          "given": "the broker changes the proposed date",
+          "when": "the broker approves",
+          "then": "the written value is the edited one and the trail shows both."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-CRM-F01-US01"
+       ],
+       "tracker": {
+        "id": 4129,
+        "state": "Done",
+        "sprint": "S3",
+        "owner": "julia",
+        "points": 3
+       }
+      },
+      {
+       "code": "BA-CRM-F01-US03",
+       "name": "Undo any write for 24 hours",
+       "summary": "The broker can undo any write made through the assistant within 24 hours; the previous value is restored and the undo is recorded.",
+       "type": "Functional",
+       "sections": {
+        "why": "An undo the broker trusts is what lets them approve faster.",
+        "context": "Undo from the trail or the preview confirmation.",
+        "type": "Functional",
+        "story": "As a broker, I want to undo a write within a day, so that approving is not a risk.",
+        "expected": [
+         "Undo restores the previous value through the same write path.",
+         "Undo recorded with its reason.",
+         "A field changed meanwhile by someone else is not overwritten; the broker is told."
+        ],
+        "out": [
+         "Undo after 24 hours (back office request)."
+        ],
+        "tech": [
+         "Compare current value with the written value before restoring."
+        ],
+        "trace": [
+         "Write contract, spec section 4."
+        ],
+        "cases": [
+         {
+          "case": "Undo restores the value",
+          "given": "a stage was written ten minutes ago",
+          "when": "the broker undoes",
+          "then": "the previous stage is restored and the trail shows the undo."
+         },
+         {
+          "case": "Someone else changed the field",
+          "given": "the manager changed the stage after the write",
+          "when": "the broker undoes",
+          "then": "nothing is overwritten and the broker sees who changed it."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-CRM-F01-US01"
+       ],
+       "tracker": {
+        "id": 4130,
+        "state": "Active",
+        "sprint": "S4",
+        "owner": "tomas",
+        "points": 3
+       }
+      }
+     ],
+     "sections": {
+      "why": "No other Feature may write without this one. It is the contract between the assistant and the brokers.",
+      "problem": "Automatic writes nobody trusts; no audit; no undo.",
+      "objective": "Every write previewed, approved and reversible.",
+      "value": "Trust, measured as approvals without edits.",
+      "behavior": [
+       "Single write path.",
+       "Preview with old, new, source.",
+       "Undo for 24 hours."
+      ],
+      "acceptance": [
+       "No write without approval.",
+       "Six attributes per write.",
+       "Undo respects later changes."
+      ],
+      "scope": [
+       "In: all assistant writes.",
+       "Out: human writes in the CRM itself."
+      ],
+      "rules": [
+       "One write path.",
+       "Approval per field."
+      ],
+      "data": [
+       "CRM API, write log."
+      ],
+      "dependencies": "As drawn: none",
+      "nfr": [
+       "Preview opens in under two seconds on a phone.",
+       "Every write is logged with its origin."
+      ],
+      "evaluation": [
+       "Share of writes approved without edits; reverted writes under 2%."
+      ],
+      "open": [
+       "Retention of the write log (legal)."
+      ],
+      "trace": [
+       "Write contract, spec section 4."
+      ],
+      "estimate": "3 stories, 11 points (illustrative)."
+     }
+    },
+    {
+     "code": "BA-CRM-F02",
+     "name": "Always-allow settings per capability",
+     "summary": "The broker switches each capability of the assistant to always-allow at their own pace, and switches it back with one tap.",
+     "wave": "O3",
+     "queue": 11,
+     "mvp": false,
+     "kpi": {
+      "code": "C2",
+      "group": "sen",
+      "level": 2,
+      "gera": false,
+      "name": "Capabilities on always-allow",
+      "definition": "Brokers with at least one capability on always-allow ÷ active brokers",
+      "today": "no data yet",
+      "target": "50% after the first month",
+      "impact": "Autonomy earned broker by broker, visible as a number.",
+      "source": "the assistant's own event log and the CRM mirror, read weekly"
+     },
+     "depends_on": [
+      "BA-CRM-F01"
+     ],
+     "stories": [
+      {
+       "code": "BA-CRM-F02-US01",
+       "name": "Switch a capability to always-allow",
+       "summary": "In settings, the broker sees each capability with its approval count and error count, and can switch it to always-allow.",
+       "type": "Functional",
+       "sections": {
+        "why": "The setting makes autonomy the broker's decision, with the evidence next to the switch.",
+        "context": "Capabilities: buyer reminders, visit outcome fields, follow-up drafts.",
+        "type": "Functional",
+        "story": "As a broker, I want to switch a capability to always-allow when I trust it, so that I stop approving what I never edit.",
+        "expected": [
+         "Per capability: approvals, edits, undos in the last 30 days next to the switch.",
+         "A capability with an undo in the last 7 days cannot be switched on; the reason is shown.",
+         "Switching is recorded in the trail."
+        ],
+        "out": [
+         "Global switches; manager overrides."
+        ],
+        "tech": [
+         "Settings stored per broker; checked at send or write time."
+        ],
+        "trace": [
+         "Autonomy rules, spec section 5."
+        ],
+        "cases": [
+         {
+          "case": "The evidence is next to the switch",
+          "given": "reminders were approved 20 times with no edit",
+          "when": "settings open",
+          "then": "the switch shows 20 approvals, 0 edits, 0 undos and can be turned on."
+         },
+         {
+          "case": "A recent undo blocks the switch",
+          "given": "an outcome write was undone three days ago",
+          "when": "the broker tries to switch outcomes to always-allow",
+          "then": "the switch stays off with 'an undo in the last 7 days'."
+         }
+        ]
+       },
+       "depends_on": [],
+       "tracker": {
+        "id": 4131,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      },
+      {
+       "code": "BA-CRM-F02-US02",
+       "name": "Pause always-allow with one tap, everywhere",
+       "summary": "From any message or write made under always-allow, the broker can pause the capability for a day or switch it back to approve-each.",
+       "type": "Functional",
+       "sections": {
+        "why": "Autonomy without a brake is autonomy nobody switches on.",
+        "context": "Pause from the chat, the app and the digest.",
+        "type": "Functional",
+        "story": "As a broker, I want to pause always-allow from where I see the result, so that switching on is safe.",
+        "expected": [
+         "Pause for 24 hours or switch back, from the message itself.",
+         "Recorded in the trail with the reason if given."
+        ],
+        "out": [
+         "Pausing for other brokers."
+        ],
+        "tech": [
+         "Setting change through the same settings service."
+        ],
+        "trace": [
+         "Autonomy rules, spec section 5."
+        ],
+        "cases": [
+         {
+          "case": "Pause from the message",
+          "given": "a reminder went out under always-allow",
+          "when": "the broker taps pause",
+          "then": "the capability is paused for 24 hours and the trail records it."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-CRM-F02-US01"
+       ],
+       "tracker": {
+        "id": 4132,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      }
+     ],
+     "sections": {
+      "why": "Trust grows unevenly across brokers and capabilities. A per-capability switch, with the evidence next to it, lets each broker widen autonomy at their pace.",
+      "problem": "Approve-each forever, or automatic for all: both lose brokers.",
+      "objective": "Half the brokers with one capability on always-allow after a month.",
+      "value": "Fewer approvals; autonomy that is earned and reversible.",
+      "behavior": [
+       "Switch with evidence.",
+       "Pause from the result."
+      ],
+      "acceptance": [
+       "Evidence shown per capability.",
+       "Recent undo blocks the switch.",
+       "Pause works from any message."
+      ],
+      "scope": [
+       "In: three capabilities.",
+       "Out: manager overrides."
+      ],
+      "rules": [
+       "Per broker, per capability.",
+       "Irreversible actions stay at approve-each."
+      ],
+      "data": [
+       "Settings, write log, trail."
+      ],
+      "dependencies": "As drawn: BA-CRM-F01",
+      "nfr": [
+       "Preview opens in under two seconds on a phone.",
+       "Every write is logged with its origin."
+      ],
+      "evaluation": [
+       "Undo rate under always-allow compared with approve-each."
+      ],
+      "open": [
+       "Whether the manager sees each broker's switches (privacy decision)."
+      ],
+      "trace": [
+       "Autonomy rules, spec section 5."
+      ],
+      "estimate": "2 stories, 8 points (illustrative)."
+     }
+    },
+    {
+     "code": "BA-CRM-F03",
+     "name": "Activity trail and daily digest",
+     "summary": "Everything the assistant did on a record can be read back, and each broker receives a daily digest of what was written in their name.",
+     "wave": "O1",
+     "queue": 4,
+     "mvp": false,
+     "kpi": {
+      "code": "C1",
+      "group": "res",
+      "level": 3,
+      "gera": true,
+      "name": "Writes approved without edits",
+      "definition": "Proposed writes approved as proposed ÷ proposed writes",
+      "today": "no data yet",
+      "target": "80% after two months",
+      "impact": "The trail is where the number is read; the digest is where the broker sees it.",
+      "source": "the assistant's own event log and the CRM mirror, read weekly"
+     },
+     "depends_on": [
+      "BA-CRM-F01"
+     ],
+     "stories": [
+      {
+       "code": "BA-CRM-F03-US01",
+       "name": "Show the trail on the record",
+       "summary": "On any lead, visit or proposal, a trail lists what the assistant proposed, what the broker approved or edited, and when, in plain sentences.",
+       "type": "Functional",
+       "sections": {
+        "why": "A write someone cannot read back is a write someone will dispute.",
+        "context": "Trail in the CRM record and in the app.",
+        "type": "Functional",
+        "story": "As a broker, I want to read what the assistant did on a record, so that I can explain it to the buyer and the manager.",
+        "expected": [
+         "One line per write: field, old, new, who approved, when.",
+         "Grouped per day.",
+         "Links to the source phrase when it exists."
+        ],
+        "out": [
+         "Trails for human writes made directly in the CRM."
+        ],
+        "tech": [
+         "Rendered from the write log."
+        ],
+        "trace": [
+         "Write contract, spec section 4."
+        ],
+        "cases": [
+         {
+          "case": "A write reads as a sentence",
+          "given": "the stage changed from visit to proposal on Tuesday",
+          "when": "the trail opens",
+          "then": "it reads 'stage: visit to proposal, approved by you, Tuesday 16:10, from the visit outcome'."
+         }
+        ]
+       },
+       "depends_on": [],
+       "tracker": {
+        "id": 4133,
+        "state": "Done",
+        "sprint": "S3",
+        "owner": "bianca",
+        "points": 3
+       }
+      },
+      {
+       "code": "BA-CRM-F03-US02",
+       "name": "Send the daily digest",
+       "summary": "At 18:30 each broker receives an email with what was written in their name that day, what is waiting for approval and what is silent.",
+       "type": "Functional",
+       "sections": {
+        "why": "The digest is the daily contract: nothing happened that the broker did not see by evening.",
+        "context": "Email; the manager's digest is a separate story.",
+        "type": "Functional",
+        "story": "As a broker, I want a daily digest of what was written and what waits, so that I end the day knowing.",
+        "expected": [
+         "Three blocks: written today, waiting for approval, silent items.",
+         "Empty blocks are stated as empty.",
+         "Sent at 18:30; nothing sent on days with nothing."
+        ],
+        "out": [
+         "Manager's weekly digest (BA-PROP-F01-US03 feeds it)."
+        ],
+        "tech": [
+         "Scheduled job; email adapter."
+        ],
+        "trace": [
+         "Program brief section 7."
+        ],
+        "cases": [
+         {
+          "case": "A day with writes",
+          "given": "two writes were made and one preview waits",
+          "when": "18:30",
+          "then": "the digest lists the two writes and the waiting preview."
+         },
+         {
+          "case": "A day with nothing",
+          "given": "no write, no waiting preview, no silent item",
+          "when": "18:30",
+          "then": "no email is sent."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-CRM-F03-US01"
+       ],
+       "tracker": {
+        "id": 4134,
+        "state": "Active",
+        "sprint": "S4",
+        "owner": "bianca",
+        "points": 3
+       }
+      }
+     ],
+     "sections": {
+      "why": "Trust is read back, not declared. The trail and the digest are where the broker verifies the assistant every day.",
+      "problem": "No audit; surprises discovered weeks later.",
+      "objective": "Every write readable on the record and summarized daily.",
+      "value": "Disputes end in a minute; the manager reads the same facts.",
+      "behavior": [
+       "Trail per record.",
+       "Daily digest per broker."
+      ],
+      "acceptance": [
+       "One line per write with the five facts.",
+       "Digest sent only when there is content."
+      ],
+      "scope": [
+       "In: assistant writes.",
+       "Out: direct CRM edits."
+      ],
+      "rules": [
+       "The trail is stored with the write, never reconstructed."
+      ],
+      "data": [
+       "Write log, email adapter."
+      ],
+      "dependencies": "As drawn: BA-CRM-F01",
+      "nfr": [
+       "Preview opens in under two seconds on a phone.",
+       "Every write is logged with its origin."
+      ],
+      "evaluation": [
+       "Digest open rate; disputes per month."
+      ],
+      "open": [
+       "Digest time per team (18:30 default)."
+      ],
+      "trace": [
+       "Write contract; program brief section 7."
+      ],
+      "estimate": "2 stories, 6 points (illustrative)."
+     }
+    }
+   ],
+   "sections": {
+    "why": "An assistant that writes to the CRM on its own is an assistant the brokers switch off. Without this Epic every other Epic has no write path and no trust.",
+    "problem": "Brokers do not trust automatic updates; managers cannot audit what changed; the CRM has fields nobody owns.",
+    "objective": "A preview-and-approve step for every write, settings that let each broker widen the assistant's autonomy at their own pace, and a trail that explains every change.",
+    "metrics": [
+     "Writes approved without edits: a measured baseline, then 80% after two months (illustrative).",
+     "Writes reverted within a day: under 2%.",
+     "Brokers who switched a capability to always-allow after the first month: 50%."
+    ],
+    "scope": [
+     "Field-by-field preview and approval (BA-CRM-F01).",
+     "Always-allow settings per capability (BA-CRM-F02).",
+     "Activity trail and daily digest (BA-CRM-F03)."
+    ],
+    "rules": [
+     "One write path. Every write carries author, previous value, proposed value, written value, origin and approval.",
+     "Always-allow is per capability and per broker, never global.",
+     "Undo is available for 24 hours on any write."
+    ],
+    "dependencies": "The CRM write API and its field list.",
+    "risks": [
+     "Risk: the preview adds friction and brokers skip it. Mitigation: one screen, one approve button, and always-allow once trust is earned.",
+     "Risk: the trail becomes noise. Mitigation: grouped per record and per day."
+    ],
+    "governance": [
+     "Autonomy tiers follow the eval results per capability, decided monthly by the product manager and the sales manager."
+    ],
+    "technical": [
+     "A write service with a contract table (object, field, allowed values).",
+     "Trail stored with the write, never reconstructed.",
+     "Digest by email, daily, per broker."
+    ],
+    "estimate": "8 User Stories, 27 points (illustrative)."
+   }
+  },
+  {
+   "code": "BA-FCST",
+   "name": "The forecast matches the evidence",
+   "summary": "The stage and the forecast category of each deal follow what happened in visits and proposals, with the reason written next to them.",
+   "features": [
+    {
+     "code": "BA-FCST-F01",
+     "name": "Stage suggestion with its reason",
+     "summary": "After a visit outcome or a proposal event, the assistant proposes the deal's stage with the reason, for the broker's approval.",
+     "wave": "O4",
+     "queue": 12,
+     "mvp": false,
+     "kpi": {
+      "code": "F1",
+      "group": "res",
+      "level": 3,
+      "gera": false,
+      "name": "Stage matches the evidence",
+      "definition": "Deals whose stage matches the last recorded event ÷ open deals",
+      "today": "no data yet",
+      "target": "90% in the pilot",
+      "impact": "A pipeline whose stages match the events is a pipeline the manager can read.",
+      "source": "the assistant's own event log and the CRM mirror, read weekly"
+     },
+     "depends_on": [
+      "BA-VISIT-F02",
+      "BA-PROP-F01"
+     ],
+     "stories": [
+      {
+       "code": "BA-FCST-F01-US01",
+       "name": "Propose the stage from the last event",
+       "summary": "A rule table maps events to stages: first reply, visit held, proposal made, developer answer. After each event the stage is proposed with the rule as the reason.",
+       "type": "Functional",
+       "sections": {
+        "why": "Stages move on hope today; the rule table moves them on events.",
+        "context": "Five stages agreed with the commercial director.",
+        "type": "Functional",
+        "story": "As a broker, I want the stage proposed from what happened, with the rule shown, so that I approve a fact.",
+        "expected": [
+         "Rule table with event, stage and reason text.",
+         "Proposal through the preview, with the event linked.",
+         "No stage goes backwards without the broker's explicit choice."
+        ],
+        "out": [
+         "Automatic stage writes."
+        ],
+        "tech": [
+         "Rules; the preview is BA-CRM-F01's."
+        ],
+        "trace": [
+         "Forecast rules 2026-03-10."
+        ],
+        "cases": [
+         {
+          "case": "A visit held proposes the stage",
+          "given": "a visit outcome was recorded",
+          "when": "the write is approved",
+          "then": "the stage 'visited' is proposed with 'visit held on April 2' as the reason."
+         },
+         {
+          "case": "No backwards move",
+          "given": "the proposal was refused by the developer",
+          "when": "the event is recorded",
+          "then": "the assistant proposes 'counter or close' and never 'lead'."
+         }
+        ]
+       },
+       "depends_on": [],
+       "tracker": {
+        "id": 4135,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      },
+      {
+       "code": "BA-FCST-F01-US02",
+       "name": "Flag a stage changed without an event",
+       "summary": "A stage changed by hand with no event behind it is flagged to the manager with the broker's reason, not blocked.",
+       "type": "Functional",
+       "sections": {
+        "why": "Flagging keeps the broker's freedom and gives the manager the exception list.",
+        "context": "Manual stage changes happen in the CRM.",
+        "type": "Functional",
+        "story": "As a sales manager, I want stages changed without an event listed with the reason, so that I review exceptions, not everything.",
+        "expected": [
+         "Flag with broker, deal, old and new stage, reason.",
+         "Listed in the manager's weekly digest."
+        ],
+        "out": [
+         "Blocking manual changes."
+        ],
+        "tech": [
+         "Compare stage changes with the event log."
+        ],
+        "trace": [
+         "Forecast rules 2026-03-10."
+        ],
+        "cases": [
+         {
+          "case": "A manual change is flagged",
+          "given": "the broker moved a deal to 'proposal' with no proposal recorded",
+          "when": "the weekly check runs",
+          "then": "the change is listed with the reason the broker typed, or 'no reason'."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-FCST-F01-US01"
+       ],
+       "tracker": {
+        "id": 4136,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      }
+     ],
+     "sections": {
+      "why": "The events created by the other Epics are worth nothing to the forecast until they move the stage. This Feature moves it, with the reason written.",
+      "problem": "Stages updated late and optimistically.",
+      "objective": "90% of stages matching the last event.",
+      "value": "A pipeline the manager can read without asking.",
+      "behavior": [
+       "Rule-based stage proposal.",
+       "Exception list for manual changes."
+      ],
+      "acceptance": [
+       "Each proposal shows its rule.",
+       "No silent backwards move.",
+       "Exceptions listed weekly."
+      ],
+      "scope": [
+       "In: five stages.",
+       "Out: automatic writes."
+      ],
+      "rules": [
+       "Rules first; a model only for the reason text."
+      ],
+      "data": [
+       "Event log, CRM stages."
+      ],
+      "dependencies": "As drawn: BA-VISIT-F02, BA-PROP-F01",
+      "nfr": [
+       "Preview opens in under two seconds on a phone.",
+       "Every write is logged with its origin."
+      ],
+      "evaluation": [
+       "Agreement with the manager's manual review on 40 deals: 90% (illustrative)."
+      ],
+      "open": [
+       "Stage definitions in the glossary (commercial director)."
+      ],
+      "trace": [
+       "Forecast rules 2026-03-10."
+      ],
+      "estimate": "2 stories, 8 points (illustrative)."
+     }
+    },
+    {
+     "code": "BA-FCST-F02",
+     "name": "Forecast category from evidence",
+     "summary": "The forecast category (commit, likely, possible) is proposed from the stage, the qualification score and the proposal status, with the reason.",
+     "wave": "O4",
+     "queue": 13,
+     "mvp": false,
+     "kpi": {
+      "code": "F2",
+      "group": "res",
+      "level": 3,
+      "gera": false,
+      "name": "Forecast accuracy",
+      "definition": "Deals closed in the month ÷ deals in commit and likely at the start of the month",
+      "today": "no data yet",
+      "target": "baseline, then plus 15 points",
+      "impact": "The number the company runs on, finally read from evidence.",
+      "source": "the assistant's own event log and the CRM mirror, read weekly"
+     },
+     "depends_on": [
+      "BA-FCST-F01",
+      "BA-LEAD-F03"
+     ],
+     "stories": [
+      {
+       "code": "BA-FCST-F02-US01",
+       "name": "Propose the category with its three inputs",
+       "summary": "The category is proposed from stage, score and proposal status, and the preview shows the three inputs and the rule.",
+       "type": "Functional",
+       "sections": {
+        "why": "A category with its inputs visible is a category two people can discuss.",
+        "context": "Three categories, defined by the commercial director.",
+        "type": "Functional",
+        "story": "As a broker, I want the category proposed with its inputs, so that the manager and I argue about facts.",
+        "expected": [
+         "Rule table: stage × score × status to category.",
+         "Preview with the three inputs.",
+         "The broker can keep their own category with a reason, recorded."
+        ],
+        "out": [
+         "Weighted probabilities."
+        ],
+        "tech": [
+         "Rules; preview through BA-CRM-F01."
+        ],
+        "trace": [
+         "Forecast rules 2026-03-10."
+        ],
+        "cases": [
+         {
+          "case": "A category from three inputs",
+          "given": "stage 'proposal', score 4, status 'under analysis'",
+          "when": "the proposal runs",
+          "then": "category 'likely' is proposed with the three inputs shown."
+         },
+         {
+          "case": "The broker disagrees",
+          "given": "the broker keeps 'commit' with a reason",
+          "when": "the choice is saved",
+          "then": "the category is 'commit', the reason is in the trail, and the manager sees the disagreement."
+         }
+        ]
+       },
+       "depends_on": [],
+       "tracker": {
+        "id": 4137,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      },
+      {
+       "code": "BA-FCST-F02-US02",
+       "name": "Show the manager the forecast with its reasons",
+       "summary": "The manager's forecast view lists deals by category with the reason and the disagreements, and the month-end accuracy once closings are known.",
+       "type": "Functional",
+       "sections": {
+        "why": "The weekly forecast meeting is where this program is judged.",
+        "context": "Monday review; month-end closing data from the developers.",
+        "type": "Functional",
+        "story": "As a sales manager, I want the forecast by category with reasons and the accuracy at month end, so that the meeting reads evidence.",
+        "expected": [
+         "Deals by category with reason and disagreement flag.",
+         "Month-end accuracy per category, computed from closings.",
+         "Exported to the manager's weekly digest."
+        ],
+        "out": [
+         "Revenue projections."
+        ],
+        "tech": [
+         "Query over deals, categories and closings."
+        ],
+        "trace": [
+         "KPI F2 definition."
+        ],
+        "cases": [
+         {
+          "case": "Reasons are visible",
+          "given": "ten deals are in 'likely'",
+          "when": "the view opens",
+          "then": "each shows its reason and whether the broker disagreed."
+         },
+         {
+          "case": "Accuracy at month end",
+          "given": "closings for March are known",
+          "when": "the month closes",
+          "then": "accuracy per category for March is shown next to February's."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-FCST-F02-US01"
+       ],
+       "tracker": {
+        "id": 4138,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      },
+      {
+       "code": "BA-FCST-F02-US03",
+       "name": "Evaluate the category rules against closings",
+       "summary": "Each month the rules are scored against actual closings on the previous months' deals, and the product manager sees which rule misfires.",
+       "type": "Evaluation",
+       "sections": {
+        "why": "Rules that are never scored are opinions with a table.",
+        "context": "Monthly, after closings are imported.",
+        "type": "Evaluation",
+        "story": "As a product manager, I want the category rules scored monthly, so that the table changes on evidence.",
+        "expected": [
+         "Per rule: deals, closings, accuracy.",
+         "A rule below 60% for two months is flagged for review."
+        ],
+        "out": [
+         "Automatic rule changes."
+        ],
+        "tech": [
+         "Query over history; report in the product manager's view."
+        ],
+        "trace": [
+         "KPI F2; eval plan."
+        ],
+        "cases": [
+         {
+          "case": "A rule is scored",
+          "given": "February closings are in",
+          "when": "the monthly eval runs",
+          "then": "each rule shows deals, closings and accuracy, and the ones under 60% twice are flagged."
+         }
+        ]
+       },
+       "depends_on": [
+        "BA-FCST-F02-US02"
+       ],
+       "tracker": {
+        "id": 4139,
+        "state": "New",
+        "sprint": null,
+        "owner": null,
+        "points": null
+       }
+      }
+     ],
+     "sections": {
+      "why": "The category is the number the company runs on. Proposed from three visible inputs, it becomes a fact two people can discuss instead of a hope one person defends.",
+      "problem": "Categories mean different things per broker; accuracy unknown.",
+      "objective": "Plus 15 points of accuracy after the baseline.",
+      "value": "A forecast meeting that reads evidence.",
+      "behavior": [
+       "Category from three inputs.",
+       "Manager's view with reasons.",
+       "Monthly scoring of the rules."
+      ],
+      "acceptance": [
+       "Three inputs visible.",
+       "Disagreements recorded.",
+       "Accuracy computed monthly."
+      ],
+      "scope": [
+       "In: three categories.",
+       "Out: probabilities, revenue projection."
+      ],
+      "rules": [
+       "Rules first.",
+       "The broker may disagree with a reason."
+      ],
+      "data": [
+       "Stages, scores, proposal statuses, closings."
+      ],
+      "dependencies": "As drawn: BA-FCST-F01, BA-LEAD-F03",
+      "nfr": [
+       "Preview opens in under two seconds on a phone.",
+       "Every write is logged with its origin."
+      ],
+      "evaluation": [
+       "Monthly rule accuracy; flag under 60% twice."
+      ],
+      "open": [
+       "Category definitions in the glossary."
+      ],
+      "trace": [
+       "Forecast rules 2026-03-10; KPI F2."
+      ],
+      "estimate": "3 stories, 10 points (illustrative)."
+     }
+    }
+   ],
+   "sections": {
+    "why": "The manager's forecast is a weekly negotiation between what brokers hope and what the CRM shows. Without this Epic the data the other Epics create never reaches the number the company runs on.",
+    "problem": "Stages are updated late and optimistically; forecast categories mean different things to different brokers.",
+    "objective": "A stage suggestion with its reason after every visit and proposal event, and a forecast category derived from evidence, both approved by the broker.",
+    "metrics": [
+     "Deals whose stage matches the last recorded event: from 55% to 90% (illustrative).",
+     "Forecast accuracy at month end, measured against closings: a baseline, then plus 15 points."
+    ],
+    "scope": [
+     "Stage suggestion with reason (BA-FCST-F01).",
+     "Forecast category from evidence (BA-FCST-F02)."
+    ],
+    "rules": [
+     "The assistant suggests; the broker decides; the manager sees the reason.",
+     "A category change without an event is flagged, not blocked."
+    ],
+    "dependencies": "BA-VISIT-F02 and BA-PROP-F03 for the events; BA-CRM-F01 for the writes.",
+    "risks": [
+     "Risk: brokers feel policed. Mitigation: the reason is shown to the broker first, and the manager sees categories, not brokers' edits."
+    ],
+    "governance": [
+     "The commercial director owns the category definitions, written in the glossary."
+    ],
+    "technical": [
+     "Rules first; a model only for the reason text.",
+     "Reads and writes go through the assistant's single CRM write path; every write carries author, previous value, proposed value, written value, origin and approval."
+    ],
+    "estimate": "5 User Stories, 18 points (illustrative)."
+   }
+  }
+ ],
+ "improvements": [
+  {
+   "code": "IMP01",
+   "kind": "improvement",
+   "name": "Show the time since arrival in minutes under one hour, hours after",
+   "summary": "The queue showed '0 h' for a lead that arrived 40 minutes ago; brokers read it as fresh.",
+   "wave": "O1",
+   "points": 1,
+   "feature": "BA-LEAD-F01",
+   "state": "Done",
+   "sprint": "S3"
+  },
+  {
+   "code": "IMP02",
+   "kind": "improvement",
+   "name": "Keep the draft's original when the broker edits",
+   "summary": "Brokers asked to see what the assistant wrote before their edit, to decide whether to keep editing.",
+   "wave": "O1",
+   "points": 2,
+   "feature": "BA-LEAD-F02",
+   "state": "Active",
+   "sprint": "S4"
+  },
+  {
+   "code": "BUG01",
+   "kind": "bug",
+   "name": "A lead with two phone numbers was imported twice",
+   "summary": "Seen on 2026-04-02 on a portal lead with a landline and a mobile number. Both records show the same message. Origin of the second number to be verified with the portal.",
+   "wave": "O1",
+   "points": 2,
+   "feature": "BA-LEAD-F01",
+   "state": "New",
+   "sprint": null
+  },
+  {
+   "code": "BUG02",
+   "kind": "bug",
+   "name": "The preview showed the old value of a field changed by the broker a minute before",
+   "summary": "Seen on 2026-04-08. The preview read the record before the broker's own edit was saved. Expected: the preview reads the current value. The source of the read to be verified.",
+   "wave": "O1",
+   "points": 3,
+   "feature": "BA-CRM-F01",
+   "state": "Active",
+   "sprint": "S4"
+  }
+ ],
+ "wishlist": [
+  {
+   "theme": "Faster answers",
+   "asks": [
+    {
+     "who": "a broker, Monday review",
+     "ask": "Let the assistant answer the fee and parking questions without me when the catalogue has them.",
+     "status": "evaluating",
+     "note": "Depends on always-allow for first replies, which stays off until the eval set passes."
+    },
+    {
+     "who": "a broker, pilot feedback",
+     "ask": "Propose a visit slot in the first reply.",
+     "status": "planned",
+     "note": "Open item in BA-LEAD-F02; decision with BA-VISIT-F03."
+    }
+   ]
+  },
+  {
+   "theme": "Less typing",
+   "asks": [
+    {
+     "who": "two brokers, pilot feedback",
+     "ask": "Record the visit outcome from the stand's tablet, not only from my phone.",
+     "status": "new",
+     "note": "Needs the stand devices; no estimate."
+    },
+    {
+     "who": "the sales manager",
+     "ask": "A weekly digest for managers with silent proposals and exceptions.",
+     "status": "in the backlog",
+     "note": "Fed by BA-PROP-F01-US03 and BA-FCST-F01-US02; the digest itself is a later Feature."
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "name": "Program brief, sections 2 to 7",
+   "what": "The problem, the queue, the reply, the visit, the proposal and the digest, agreed with the sales manager on 2026-02-27."
+  },
+  {
+   "name": "Forecast rules, commercial director, 2026-03-10",
+   "what": "Stages, categories, discount and payment tables."
+  },
+  {
+   "name": "Portal export formats, read on 2026-02-20",
+   "what": "The three email formats and the CSV fallback."
+  },
+  {
+   "name": "Developer export formats, 2026-03-18",
+   "what": "The two developers' daily CSV."
+  },
+  {
+   "name": "Write contract, spec section 4",
+   "what": "The single write path, the six attributes, the undo."
+  },
+  {
+   "name": "Eval plan, spec section 3",
+   "what": "Golden sets, rubrics and thresholds per probabilistic behavior."
+  }
+ ],
+ "glossary": [
+  {
+   "term": "Always-allow",
+   "def": "A per-broker, per-capability setting that lets the assistant act without approving each action.",
+   "where": "BA-CRM-F02, BA-VISIT-F03"
+  },
+  {
+   "term": "Catalogue",
+   "def": "The brokerage's list of units with price, conditions and stand hours, kept by the back office and dated.",
+   "where": "BA-LEAD-F01, BA-VISIT-F01"
+  },
+  {
+   "term": "Category",
+   "def": "Commit, likely or possible: how sure the company is that a deal closes this month.",
+   "where": "BA-FCST-F02"
+  },
+  {
+   "term": "Developer",
+   "def": "The company that builds and sells the launch; it sets discount and payment rules and answers proposals.",
+   "where": "BA-PROP"
+  },
+  {
+   "term": "Enabler",
+   "def": "A story that builds something the other stories need and that no broker sees directly. It has no persona.",
+   "where": "BA-CRM-F01-US01, BA-PROP-F03-US01"
+  },
+  {
+   "term": "Golden set",
+   "def": "A fixed set of real, anonymized inputs with the expected result, used to score a probabilistic behavior.",
+   "where": "Evaluation sections"
+  },
+  {
+   "term": "Lead",
+   "def": "A buyer who wrote about a listing through a portal or walked in.",
+   "where": "BA-LEAD"
+  },
+  {
+   "term": "Never-case",
+   "def": "A behavior with zero tolerance, scored separately: an invented price, a write without approval.",
+   "where": "Evaluation sections"
+  },
+  {
+   "term": "Points",
+   "def": "Fibonacci story points (1, 2, 3, 5, 8, 13) set by the developer who will build the story; 0 means not estimated.",
+   "where": "Planning"
+  },
+  {
+   "term": "Preview",
+   "def": "The screen where a proposed write shows old value, new value and source, per field, before the broker approves.",
+   "where": "BA-CRM-F01"
+  },
+  {
+   "term": "Stage",
+   "def": "Where a deal is: lead, visited, proposal, counter or close, closed.",
+   "where": "BA-FCST-F01"
+  },
+  {
+   "term": "Stand",
+   "def": "The developer's sales office at the launch, with its own opening hours.",
+   "where": "BA-VISIT-F03"
+  },
+  {
+   "term": "Trail",
+   "def": "The list of what the assistant proposed and the broker approved on a record, stored with each write.",
+   "where": "BA-CRM-F03"
+  },
+  {
+   "term": "Wave",
+   "def": "A delivery group that ends with something a broker uses in production; the order dependencies may not cross.",
+   "where": "Waves of delivery"
+  },
+  {
+   "term": "Write path",
+   "def": "The single service through which every write to the CRM passes, recording six attributes.",
+   "where": "BA-CRM-F01-US01"
+  }
+ ]
+}

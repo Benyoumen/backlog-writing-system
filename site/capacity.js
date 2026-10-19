@@ -29,17 +29,17 @@
       people: [
         { name: 'Ana', weekly: 5 },
         { name: 'Bruno', weekly: 5 },
-        { name: 'Carla', weekly: 4 },
+        { name: 'Clara', weekly: 4 },
         { name: 'Diego', weekly: 3 }
       ],
       stories: [
         { code: 'F01-US01', title: "Show today's finished meetings with their notes", feature: 'F01', points: 3, owner: 'Ana', band: 'Now', deps: [], enabler: false },
         { code: 'F03-US01', title: 'Create a single write path to the CRM', feature: 'F03', points: 5, owner: 'Bruno', band: 'Now', deps: [], enabler: true },
         { code: 'F02-US01', title: 'Draft a follow-up email from the meeting notes', feature: 'F02', points: 3, owner: 'Ana', band: 'Now', deps: ['F01-US01'], enabler: false },
-        { code: 'F03-US02', title: 'Show a CRM update preview for a finished meeting', feature: 'F03', points: 3, owner: 'Carla', band: 'Now', deps: ['F01-US01'], enabler: false },
+        { code: 'F03-US02', title: 'Show a CRM update preview for a finished meeting', feature: 'F03', points: 3, owner: 'Clara', band: 'Now', deps: ['F01-US01'], enabler: false },
         { code: 'F02-US02', title: 'Show the facts behind each draft', feature: 'F02', points: 3, owner: 'Ana', band: 'Now', deps: ['F02-US01'], enabler: false },
         { code: 'F02-US04', title: 'Store each draft until the rep approves or discards it', feature: 'F02', points: 2, owner: 'Diego', band: 'Now', deps: ['F02-US01'], enabler: true },
-        { code: 'F03-US04', title: 'Block the update when the contact has no CRM match', feature: 'F03', points: 2, owner: 'Carla', band: 'Now', deps: ['F03-US02'], enabler: false },
+        { code: 'F03-US04', title: 'Block the update when the contact has no CRM match', feature: 'F03', points: 2, owner: 'Clara', band: 'Now', deps: ['F03-US02'], enabler: false },
         { code: 'F03-US03', title: 'Apply the CRM update the rep approved', feature: 'F03', points: 5, owner: 'Bruno', band: 'Now', deps: ['F03-US01', 'F03-US02'], enabler: false },
         { code: 'F02-US03', title: 'Send the follow-up after the rep edits it', feature: 'F02', points: 3, owner: 'Ana', band: 'Now', deps: ['F02-US02', 'F02-US04'], enabler: false },
         { code: 'F04-US01', title: 'Show the manager what was sent, applied and ignored', feature: 'F04', points: 2, owner: 'Ana', band: 'Now', deps: ['F02-US03', 'F03-US03'], enabler: false },

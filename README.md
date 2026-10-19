@@ -5,6 +5,7 @@
 [![Field guide](https://img.shields.io/badge/field%20guide-live%20site-0ea5a4)](https://benyoumen.github.io/backlog-writing-system/)
 [![Capacity simulation](https://img.shields.io/badge/capacity%20simulation-interactive-0ea5a4)](https://benyoumen.github.io/backlog-writing-system/capacity.html)
 [![Spec preview](https://img.shields.io/badge/spec%20preview-example-0ea5a4)](https://benyoumen.github.io/backlog-writing-system/spec-preview.html)
+[![Backlog document](https://img.shields.io/badge/backlog%20document-planning%20layer-0ea5a4)](https://benyoumen.github.io/backlog-writing-system/backlog-document.html)
 [![Skills](https://img.shields.io/badge/skills-21-1f3a8a)](#skills)
 [![License](https://img.shields.io/badge/license-MIT-475569)](LICENSE)
 
@@ -26,6 +27,12 @@ Three questions of every Feature, not one:
 The third question is the one teams skip, and the one that decides the pace. The full method, with the worked example and the rules of the chain: [`docs/prioritization.md`](docs/prioritization.md).
 
 From the same inputs come two tools: a **live capacity simulation** (the team by name, weekly capacity in Fibonacci points, the stories with their relations, the week each Feature and the Epic land, recomputed when you move anything) and a **readable spec preview** (one plain sentence per item next to its numbered sections, a glossary, phases, and a schedule chart). The simulation is the conversation with the sponsor; the tracker is the record.
+
+## Review the whole backlog before it reaches the tracker
+
+A tracker board is compact: one card at a time, without the why, the waves or the capacity in view. So the review happens in a **generated backlog document** instead, and the tracker is loaded only afterwards. The document reads top to bottom: summary, the tree of Epics and Features, the sprints, the waves of delivery, then every Epic, Feature and User Story with its plain sentence and its sections. Its planning layer runs the sprint planning inside the document: each Feature opens a pop-up where stories get an owner and Fibonacci points, and a bar at the bottom shows, live, the points per person against their capacity and the team total against the sprint limit, turning amber near the limit and red above it, with a toast the moment someone is over. In the original, that chapter writes owner, points and sprint to Azure DevOps from the browser; the public version exports the plan.
+
+Open the example: [the backlog document](https://benyoumen.github.io/backlog-writing-system/backlog-document.html), a fictional real-estate program with five Epics, fourteen Features, about forty stories, four waves and a team of five. Generated from one JSON by `tools/backlog_document/build.py`, like everything else here: the document is never edited by hand.
 
 ## Start here
 

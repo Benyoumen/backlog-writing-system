@@ -8,24 +8,24 @@
 |---|---|---|---|
 | Ana | 5 | reference | No history: the starting rule, one point per working day minus ceremonies |
 | Bruno | 5 | reference | Same |
-| Carla | 4 | reference | Four days a week on this Epic |
+| Clara | 4 | reference | Four days a week on this Epic |
 | Diego | 3 | reference | Three days a week on this Epic |
 
 Team capacity per week: 17 points. Acme has no closed items yet, so nothing is `measured` or `partial`; the plan says "no history" and uses the reference.
 
 ## 2. Stories in the simulation
 
-Now band, wave 1. Ten stories, 31 points. Points in a working day per person: Ana 1.0, Bruno 1.0, Carla 0.8, Diego 0.6.
+Now band, wave 1. Ten stories, 31 points. Points in a working day per person: Ana 1.0, Bruno 1.0, Clara 0.8, Diego 0.6.
 
 | Story | Feature | Points | Type | Depends on | Owner |
 |---|---|---|---|---|---|
 | ACME-E01-F01-US01 Show today's finished meetings with their notes | F01 | 3 | Functional | none | Ana |
 | ACME-E01-F03-US01 Create a single write path to the CRM | F03 | 5 | Enabler | none | Bruno |
 | ACME-E01-F02-US01 Draft a follow-up email from the meeting notes | F02 | 3 | Functional | F01-US01 | Ana |
-| ACME-E01-F03-US02 Show a CRM update preview for a finished meeting | F03 | 3 | Functional | F01-US01 | Carla |
+| ACME-E01-F03-US02 Show a CRM update preview for a finished meeting | F03 | 3 | Functional | F01-US01 | Clara |
 | ACME-E01-F02-US02 Show the facts behind each draft | F02 | 3 | Functional | F02-US01 | Ana |
 | ACME-E01-F02-US04 Store each draft until the rep approves or discards it | F02 | 2 | Enabler | F02-US01 | Diego |
-| ACME-E01-F03-US04 Block the update when the contact has no CRM match | F03 | 2 | Functional | F03-US02 | Carla |
+| ACME-E01-F03-US04 Block the update when the contact has no CRM match | F03 | 2 | Functional | F03-US02 | Clara |
 | ACME-E01-F03-US03 Apply the CRM update the rep approved | F03 | 5 | Functional | F03-US01, F03-US02 | Bruno |
 | ACME-E01-F02-US03 Send the follow-up after the rep edits it | F02 | 3 | Functional | F02-US02, F02-US04 | Ana |
 | ACME-E01-F04-US01 Show the manager what was sent, applied and ignored | F04 | 2 | Functional | F02-US03, F03-US03 | Ana |
@@ -41,11 +41,11 @@ A story starts only when its predecessors are done. One story per person at a ti
 | F01-US01 Finished meetings list | Ana | 1 | 3 | 03-11 |
 | F03-US01 Single write path (Enabler) | Bruno | 1 | 5 | 03-13 |
 | F02-US01 Draft the follow-up | Ana | 4 | 6 | 03-16 |
-| F03-US02 CRM update preview | Carla | 4 | 7 | 03-17 |
+| F03-US02 CRM update preview | Clara | 4 | 7 | 03-17 |
 | F02-US02 Facts behind each draft | Ana | 7 | 9 | 03-19 |
 | F02-US04 Store each draft (Enabler) | Diego | 7 | 10 | 03-20 |
 | F03-US03 Apply the approved update | Bruno | 8 | 12 | 03-24 |
-| F03-US04 Block unmatched contact | Carla | 8 | 10 | 03-20 |
+| F03-US04 Block unmatched contact | Clara | 8 | 10 | 03-20 |
 | F02-US03 Send after the rep edits | Ana | 11 | 13 | 03-25 |
 | F04-US01 Manager sees sent, applied, ignored | Ana | 14 | 15 | 03-27 |
 
@@ -65,11 +65,11 @@ Development of all ten stories lands on day 15, which is the phase 1 exit in the
 
 Points used / capacity. Idle means less than half the capacity used.
 
-| Week | Ana | Bruno | Carla | Diego | Team | Idle |
+| Week | Ana | Bruno | Clara | Diego | Team | Idle |
 |---|---|---|---|---|---|---|
-| 1 (03-09 to 03-13) | 5 / 5 | 5 / 5 | 1.6 / 4 | 0 / 3 | 11.6 / 17 | Carla, Diego: nothing they can take is unblocked before day 4 and day 7 |
+| 1 (03-09 to 03-13) | 5 / 5 | 5 / 5 | 1.6 / 4 | 0 / 3 | 11.6 / 17 | Clara, Diego: nothing they can take is unblocked before day 4 and day 7 |
 | 2 (03-16 to 03-20) | 4 / 5 | 3 / 5 | 3.4 / 4 | 2 / 3 | 12.4 / 17 | Bruno waits three days for the preview before the apply story can start |
-| 3 (03-23 to 03-27) | 5 / 5 | 2 / 5 | 0.4 / 4 | 0 / 3 | 7.4 / 17 | Carla, Diego: wave 1 has nothing left for them; wave 2 is not estimated |
+| 3 (03-23 to 03-27) | 5 / 5 | 2 / 5 | 0.4 / 4 | 0 / 3 | 7.4 / 17 | Clara, Diego: wave 1 has nothing left for them; wave 2 is not estimated |
 
 31 of 51 available points used over three weeks. The gap is the chain, not the people: the stories that can start on day 1 are two, and everything else waits for them.
 
