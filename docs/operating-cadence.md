@@ -7,7 +7,7 @@ flowchart TD
     A[Monday cutoff] --> B[weekly-backlog-snapshot<br/>update living backlog, freeze snapshot w NN]
     B --> C[roadmap-status<br/>pull tracker, write dated snapshot, diff]
     C --> D[backlog-review-meeting<br/>build deck: actions summary, topics, schedule, next steps]
-    D --> E[Sponsor review]
+    D --> E[Sponsor review<br/>with the one-line What we cut]
     E --> F[Follow-up email to sponsor<br/>the contract of the week]
     F --> G[Saved as input for week NN+1]
     E --> H[sprint-planning<br/>owner, points, sprint written to tracker]
@@ -21,7 +21,7 @@ flowchart TD
 
 | Step | Skill | Input | Output |
 |---|---|---|---|
-| 1 | `weekly-backlog-snapshot` | Living backlog, feedback, KPI values | Updated living document and snapshot w NN |
+| 1 | `weekly-backlog-snapshot` | Living backlog, feedback, KPI values, items removed | Updated living document and snapshot w NN, with what was added and what was removed |
 | 2 | `roadmap-status` | Tracker, registry | Dated snapshot, diff, optional delay events |
 | 3 | `backlog-review-meeting` | Last week's deck, sponsor email, meeting notes, snapshot, roadmap | Review deck and PDF for week NN |
 | 4 | Meeting | Deck | Decisions and commitments |
@@ -37,3 +37,4 @@ flowchart TD
 - The previous week's folder and snapshots are never edited. Corrections go into the living document and show up in the next snapshot.
 - The follow-up email wins over memory when they disagree.
 - Names of people stay out of sponsor-facing material. Sources of feedback are anonymous.
+- What was removed is reported with the same care as what was added: in the snapshot's Removed this week section and in the review's one-line What we cut.

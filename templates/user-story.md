@@ -41,3 +41,5 @@ Given <initial state>
 When <a single event>
 Then <observable result>
 ```
+
+For probabilistic behavior (a draft, an extracted value, an agent action), this line points to the eval cases file instead (templates/eval-cases.md). For a story a coding agent will build, an agent brief exists (templates/agent-brief.md) and is linked from Technical notes.

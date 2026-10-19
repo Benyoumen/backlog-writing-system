@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Backlog Writing System</title>
+<meta name="description" content="A field guide to writing a product backlog as a set of decisions: seven stages with a gate question each, twelve principles, and eighteen reusable skills, with a fictional worked example.">
+<link rel="canonical" href="https://benyoumen.github.io/backlog-writing-system/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Backlog Writing System">
+<meta property="og:description" content="A backlog is a set of decisions. Seven stages, seven gates, twelve principles, eighteen reusable skills.">
+<meta property="og:url" content="https://benyoumen.github.io/backlog-writing-system/">
+<meta property="og:image" content="https://benyoumen.github.io/backlog-writing-system/workflow-map.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F4F7F1'/%3E%3Crect x='7' y='4' width='3' height='24' fill='%23B4372F'/%3E%3Crect x='14' y='9' width='12' height='2.5' fill='%231B2621'/%3E%3Crect x='14' y='15' width='12' height='2.5' fill='%231B2621'/%3E%3Crect x='14' y='21' width='8' height='2.5' fill='%231B2621'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip" href="#workflow">Skip to the workflow</a>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="site-name">Backlog Writing System</p>
+      <h1 class="thesis">A backlog is a set of decisions.</h1>
+      <p class="lede">In 2026 a PRD, a working prototype or fifty tickets cost an afternoon. Knowing which of them should exist did not get cheaper. This method writes each backlog item as a decision: why it exists, what it changes for whom, how you will know, and what it must never do.</p>
+      <p class="actions">
+        <a class="button primary" href="#workflow">Read the workflow</a>
+        <a class="button" href="https://github.com/Benyoumen/backlog-writing-system">Skills on GitHub</a>
+      </p>
+      <p class="note">Fictional example product: Acme Field Sales Assistant.</p>
+    </div>
+    <figure class="specimen">
+      <figcaption>A User Story field set, written to the standard</figcaption>
+      <dl>
+        <dt>Why it exists</dt>
+        <dd>The agent currently shows reps deals that are not theirs. Besides the confidentiality problem, the daily list fills with opportunities the rep is not allowed to touch.</dd>
+        <dt>Acceptance</dt>
+        <dd>A rep sees only the deals they own or are listed on. Checked by the account-scope test in CI.</dd>
+        <dt>Never</dt>
+        <dd>Write to the CRM without the rep's approval.</dd>
+      </dl>
+      <p class="specimen-note">Acme Field Sales Assistant. Every name and number is fictional.</p>
+    </figure>
+  </div>
+</header>
+
+<main class="ledger">
+
+  <section class="block" id="workflow" aria-labelledby="h-workflow">
+    <div class="margin">
+      <h2 id="h-workflow">The workflow</h2>
+      <p>Seven stages, each closed by one question. When the answer is no, work goes back one stage, not to a meeting.</p>
+    </div>
+    <div class="body">
+      <div class="track" role="tablist" aria-label="Stages of the workflow">
+        <button class="node" role="tab" id="tab-0" aria-selected="true" aria-controls="stage-0"><span class="num">0</span><span class="name">Frame</span></button>
+        <button class="node" role="tab" id="tab-1" aria-selected="false" aria-controls="stage-1" tabindex="-1"><span class="num">1</span><span class="name">Discover</span></button>
+        <button class="node" role="tab" id="tab-2" aria-selected="false" aria-controls="stage-2" tabindex="-1"><span class="num">2</span><span class="name">Decide</span></button>
+        <button class="node" role="tab" id="tab-3" aria-selected="false" aria-controls="stage-3" tabindex="-1"><span class="num">3</span><span class="name">Slice</span></button>
+        <button class="node" role="tab" id="tab-4" aria-selected="false" aria-controls="stage-4" tabindex="-1"><span class="num">4</span><span class="name">Write</span></button>
+        <button class="node" role="tab" id="tab-5" aria-selected="false" aria-controls="stage-5" tabindex="-1"><span class="num">5</span><span class="name">Build and verify</span></button>
+        <button class="node" role="tab" id="tab-6" aria-selected="false" aria-controls="stage-6" tabindex="-1"><span class="num">6</span><span class="name">Ship and learn</span></button>
+      </div>
+
+      <div class="panels">
+
+        <section class="panel is-active" role="tabpanel" id="stage-0" aria-labelledby="tab-0">
+          <p class="gate-label">Gate question</p>
+          <p class="gate">Can we say the number and the appetite in one sentence?</p>
+          <div class="panel-grid">
+            <div>
+              <h3>Purpose</h3>
+              <p>Decide whether this is worth time at all. One page, written before anyone opens a design tool: the problem in the words of the person who has it, who has it and how often, the evidence you have and the evidence you lack, the outcome and the number that would prove it, the appetite, and what you are not doing.</p>
+              <h3>Typical failure</h3>
+              <p>Skipping to the solution because a model made it easy to render one. The frame is what the prototype will be judged against.</p>
+            </div>
+            <dl class="facts">
+              <dt>Artifact</dt>
+              <dd>A one-page frame: problem, who, evidence, number, appetite, not-doing.</dd>
+              <dt>Skills</dt>
+              <dd><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/frame-the-problem"><code>frame-the-problem</code></a></dd>
+            </dl>
+          </div>
+          <div class="changed">
+            <h3>What changed in 2026</h3>
+            <dl class="triple">
+              <div><dt>Before</dt><dd>A slide with a vision.</dd></div>
+              <div><dt>Now</dt><dd>A page with a number and an appetite.</dd></div>
+              <div><dt>Why</dt><dd>Output is free. The frame is the judgment.</dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section class="panel" role="tabpanel" id="stage-1" aria-labelledby="tab-1">
+          <p class="gate-label">Gate question</p>
+          <p class="gate">What did we learn that changes the spec?</p>
+          <div class="panel-grid">
+            <div>
+              <h3>Purpose</h3>
+              <p>Learn before committing. Building to learn: prototypes, interviews, assumption tests, a throwaway agent that runs on last month's data. The point is to be wrong cheaply. Keep the notes short and dated, and separate what the prototype settled from what it could not settle: usually the edge cases, the failure modes, and the cost of being wrong in production.</p>
+              <h3>Typical failure</h3>
+              <p>The demo that convinces the room and skips straight to a ticket.</p>
+            </div>
+            <dl class="facts">
+              <dt>Artifact</dt>
+              <dd>Prototype notes, interview notes, assumption tests.</dd>
+              <dt>Skills</dt>
+              <dd><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/prototype-to-spec"><code>prototype-to-spec</code></a></dd>
+            </dl>
+          </div>
+          <div class="changed">
+            <h3>What changed in 2026</h3>
+            <dl class="triple">
+              <div><dt>Before</dt><dd>Mockups, then a long PRD.</dd></div>
+              <div><dt>Now</dt><dd>Working prototypes in hours. Product managers build their own.</dd></div>
+              <div><dt>Why</dt><dd>Cagan's building to learn. Affirm, Uber and Slack report the same practice.</dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section class="panel" role="tabpanel" id="stage-2" aria-labelledby="tab-2">
+          <p class="gate-label">Gate question</p>
+          <p class="gate">Could an engineer and a coding agent start without a meeting?</p>
+          <div class="panel-grid">
+            <div>
+              <h3>Purpose</h3>
+              <p>Record the decision. The PRD is short and gated: a capability map when the request bundles several testable capabilities, the goal and the success criterion with a number, the boundaries of autonomy for anything that acts on a person's behalf (Always, Ask first, Never), the data each capability reads and writes, an evals plan for every probabilistic behavior, and what is out of scope.</p>
+              <h3>Typical failure</h3>
+              <p>A ten-page document nobody reads, or a prototype standing in for a decision nobody made.</p>
+            </div>
+            <dl class="facts">
+              <dt>Artifact</dt>
+              <dd>A PRD in gated phases, with boundaries and an evals plan.</dd>
+              <dt>Skills</dt>
+              <dd><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/write-prd"><code>write-prd</code></a></dd>
+            </dl>
+          </div>
+          <div class="changed">
+            <h3>What changed in 2026</h3>
+            <dl class="triple">
+              <div><dt>Before</dt><dd>The PRD as the main document.</dd></div>
+              <div><dt>Now</dt><dd>A short alignment spec next to the prototype, with the boundaries of autonomy explicit.</dd></div>
+              <div><dt>Why</dt><dd>The ten-page PRD died. The decision record did not.</dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section class="panel" role="tabpanel" id="stage-3" aria-labelledby="tab-3">
+          <p class="gate-label">Gate question</p>
+          <p class="gate">Does every slice ship behavior someone can verify?</p>
+          <div class="panel-grid">
+            <div>
+              <h3>Purpose</h3>
+              <p>Make it buildable in small, verifiable pieces. Vertical slices, each crossing collect, decide, show and write, each shipping behavior a person can verify. Sizes XS to L. Above L you split, you do not estimate. Dependencies are declared and the schedule is derived from them, so there is one critical path and everyone can see it.</p>
+              <h3>Typical failure</h3>
+              <p>Horizontal layers ("build the data model", "build the API") that ship nothing for weeks.</p>
+            </div>
+            <dl class="facts">
+              <dt>Artifact</dt>
+              <dd>The decomposition and the execution plan.</dd>
+              <dt>Skills</dt>
+              <dd><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/decompose-spec"><code>decompose-spec</code></a>, <a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/execution-plan"><code>execution-plan</code></a></dd>
+            </dl>
+          </div>
+          <div class="changed">
+            <h3>What changed in 2026</h3>
+            <dl class="triple">
+              <div><dt>Before</dt><dd>Estimation first.</dd></div>
+              <div><dt>Now</dt><dd>Appetite first, then vertical slices.</dd></div>
+              <div><dt>Why</dt><dd>Shape Up. Small batches.</dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section class="panel" role="tabpanel" id="stage-4" aria-labelledby="tab-4">
+          <p class="gate-label">Gate question</p>
+          <p class="gate">Does each item pass the four-reader test?</p>
+          <div class="panel-grid">
+            <div>
+              <h3>Purpose</h3>
+              <p>Put it in the tracker so four readers can act. Epic for the outcome, Feature for the deliverable capability, User Story for the testable behavior. One fixed parent. The why written from the consequence of absence. Acceptance criteria an engineer can verify. For AI behavior, eval cases instead of deterministic criteria. For work an agent will execute, an agent brief with the verification command and the Never list.</p>
+              <h3>Typical failure</h3>
+              <p>Items that only their author understands.</p>
+            </div>
+            <dl class="facts">
+              <dt>Artifact</dt>
+              <dd>Epic, Feature, User Story, eval cases, agent brief.</dd>
+              <dt>Skills</dt>
+              <dd>
+                <a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/backlog-standard"><code>backlog-standard</code></a>,
+                <a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/epic-feature-story-templates"><code>epic-feature-story-templates</code></a>,
+                <a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/why-it-exists"><code>why-it-exists</code></a>,
+                <a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/user-story-writing"><code>user-story-writing</code></a>,
+                <a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/eval-cases"><code>eval-cases</code></a>,
+                <a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/agent-brief"><code>agent-brief</code></a>
+              </dd>
+            </dl>
+          </div>
+          <div class="changed">
+            <h3>What changed in 2026</h3>
+            <dl class="triple">
+              <div><dt>Before</dt><dd>One reader, the engineer.</dd></div>
+              <div><dt>Now</dt><dd>Four readers, one of them a coding agent.</dd></div>
+              <div><dt>Why</dt><dd>Spec-driven development. AGENTS.md as standing context.</dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section class="panel" role="tabpanel" id="stage-5" aria-labelledby="tab-5">
+          <p class="gate-label">Gate question</p>
+          <p class="gate">Threshold met on the held-out set, and zero never-cases?</p>
+          <div class="panel-grid">
+            <div>
+              <h3>Purpose</h3>
+              <p>Ship each slice to the agreed bar. Deterministic checks for the ordinary software around the model. Eval pass rate on the golden set for the probabilistic parts, in CI, before merge. Shadow mode before any agent acts on real records. Promotion up the autonomy ladder only on evidence.</p>
+              <h3>Typical failure</h3>
+              <p>A green pipeline and a feature that is right 92 times in 100 when the risk tier needed 99.</p>
+            </div>
+            <dl class="facts">
+              <dt>Artifact</dt>
+              <dd>Passing checks, the eval pass rate, shadow results.</dd>
+              <dt>Skills</dt>
+              <dd><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/sprint-planning"><code>sprint-planning</code></a>, <a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/eval-cases"><code>eval-cases</code></a></dd>
+            </dl>
+          </div>
+          <div class="changed">
+            <h3>What changed in 2026</h3>
+            <dl class="triple">
+              <div><dt>Before</dt><dd>Tests pass or fail.</dd></div>
+              <div><dt>Now</dt><dd>Evals: a threshold on a distribution, with guardrails for the tail.</dd></div>
+              <div><dt>Why</dt><dd>Probabilistic features. Torres and Pollick make the case.</dd></div>
+            </dl>
+          </div>
+        </section>
+
+        <section class="panel" role="tabpanel" id="stage-6" aria-labelledby="tab-6">
+          <p class="gate-label">Gate question</p>
+          <p class="gate">Did the number move? What do we delete?</p>
+          <div class="panel-grid">
+            <div>
+              <h3>Purpose</h3>
+              <p>Find out whether the number moved. Read it. Feed production failures back into the golden set. File defects as descriptions, not diagnoses. Snapshot the backlog with a cutoff and show the delta, including what was removed. Review with the sponsor by reading last week's commitments first. Publish the roadmap with its photo date.</p>
+              <h3>Typical failure</h3>
+              <p>Celebrating output. The only question that matters here is whether the number moved and what that tells the next frame.</p>
+            </div>
+            <dl class="facts">
+              <dt>Artifact</dt>
+              <dd>Snapshot, review deck, roadmap status, bug cards.</dd>
+              <dt>Skills</dt>
+              <dd>
+                <a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/weekly-backlog-snapshot"><code>weekly-backlog-snapshot</code></a>,
+                <a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/backlog-review-meeting"><code>backlog-review-meeting</code></a>,
+                <a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/roadmap-status"><code>roadmap-status</code></a>,
+                <a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/publish-roadmap"><code>publish-roadmap</code></a>,
+                <a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/bug-report"><code>bug-report</code></a>
+              </dd>
+            </dl>
+          </div>
+          <div class="changed">
+            <h3>What changed in 2026</h3>
+            <dl class="triple">
+              <div><dt>Before</dt><dd>Launch, then move on.</dd></div>
+              <div><dt>Now</dt><dd>Production failures feed the golden set. Autonomy is earned tier by tier.</dd></div>
+              <div><dt>Why</dt><dd>Continuous error analysis. Autonomy ladders.</dd></div>
+            </dl>
+          </div>
+        </section>
+
+      </div>
+
+      <ul class="loops" aria-label="The loops that send work back">
+        <li><strong>Defect loop</strong>A bug card links to the story whose behavior broke, never asserts a cause, and returns through Write.</li>
+        <li><strong>Eval loop</strong>Every production failure that matters becomes a golden-set case. The threshold is renegotiated with evidence, never silently.</li>
+        <li><strong>Learning loop</strong>The metric read at Ship and learn is the first line of the next frame.</li>
+        <li><strong>Cadence loop</strong>Weekly snapshot, weekly review, roadmap with a photo date.</li>
+      </ul>
+
+      <p class="poster-link"><a href="workflow-map.svg">The whole map on one page (SVG)</a></p>
+    </div>
+  </section>
+
+  <section class="block" id="readers" aria-labelledby="h-readers">
+    <div class="margin">
+      <h2 id="h-readers">Four readers</h2>
+      <p>A backlog item used to have one reader. Now it has four, and they read differently.</p>
+    </div>
+    <div class="body">
+      <ul class="readers">
+        <li><h3>Engineer</h3><p>What to build and how to verify it.</p></li>
+        <li><h3>Designer</h3><p>The person's situation and what is out of scope.</p></li>
+        <li><h3>Executive</h3><p>The why and the number, in one sentence, without jargon.</p></li>
+        <li><h3>Coding agent</h3><p>Explicit intent, explicit boundaries and an explicit way to check its own work. It cannot walk over to your desk.</p></li>
+      </ul>
+      <p class="test">The test of a good item: can each of the four act on it without a meeting?</p>
+    </div>
+  </section>
+
+  <section class="block" id="principles" aria-labelledby="h-principles">
+    <div class="margin">
+      <h2 id="h-principles">Twelve principles</h2>
+      <p>Each one gives the rule, what it prevents, where it lives in the method, and who is making the same argument now.</p>
+    </div>
+    <div class="body">
+      <ol class="principles">
+        <li>
+          <span class="n" aria-hidden="true">1</span>
+          <div>
+            <h3>Start from the number</h3>
+            <p>An initiative names the outcome and the number it will move before anyone builds. No number, no initiative. There is a question to investigate instead.</p>
+            <details>
+              <summary><span class="more">More</span><span class="less">Less</span></summary>
+              <dl>
+                <dt>Prevents</dt><dd>Output that feels like progress. Teams that used AI to accelerate their project model shipped more and improved nothing.</dd>
+                <dt>In this method</dt><dd><code>frame-the-problem</code> and <code>write-prd</code>: goal and success criterion with a number. The weekly review reads the number back.</dd>
+                <dt>Who is saying it</dt><dd>Cagan's AI productivity paradox: the problem was never speed, it was that the ideas were not worth building. Hilary Gridley: "it's never been easier to run 10 times faster in the wrong direction."</dd>
+              </dl>
+            </details>
+          </div>
+        </li>
+        <li>
+          <span class="n" aria-hidden="true">2</span>
+          <div>
+            <h3>Prototype to learn, spec to commit</h3>
+            <p>Build prototypes to find out whether something could work and whether anyone wants it. Write the spec to record the decision, the boundaries and the success criterion. A prototype's assumptions are not requirements until someone writes them down and signs them.</p>
+            <details>
+              <summary><span class="more">More</span><span class="less">Less</span></summary>
+              <dl>
+                <dt>Prevents</dt><dd>The prototype-as-spec failure: a convincing demo ships with its guesses intact, and the why is never written.</dd>
+                <dt>In this method</dt><dd><code>prototype-to-spec</code> lists what a prototype settles and what it cannot. <code>write-prd</code> is deliberately short.</dd>
+                <dt>Who is saying it</dt><dd>Cagan separates building to learn from building to earn. Aakash Gupta: the ten-page PRD died, the alignment PRD did not. Product managers at Affirm and Uber build their own prototypes. Lenny Rachitsky lists taste and judgment first among durable skills.</dd>
+              </dl>
+            </details>
+          </div>
+        </li>
+        <li>
+          <span class="n" aria-hidden="true">3</span>
+          <div>
+            <h3>Write the why from the consequence of absence</h3>
+            <p>The "why it exists" field starts with what happens if the item does not exist: to whom, how often, what it costs. If nothing happens, cut the item.</p>
+            <details>
+              <summary><span class="more">More</span><span class="less">Less</span></summary>
+              <dl>
+                <dt>Prevents</dt><dd>Justification by feature: "we need a filter because users want to filter."</dd>
+                <dt>In this method</dt><dd><code>why-it-exists</code>, mandatory on Epic, Feature and Story.</dd>
+                <dt>Who is saying it</dt><dd>Amazon's working-backwards practice, write the announcement first and then decide, is the older form of the same test.</dd>
+              </dl>
+            </details>
+          </div>
+        </li>
+        <li>
+          <span class="n" aria-hidden="true">4</span>
+          <div>
+            <h3>Pass the four-reader test</h3>
+            <p>An engineer, a designer, an executive and a coding agent must each be able to act on the item without a meeting. Direct sentences, one idea per item, no figurative language, no rule inside a rule.</p>
+            <details>
+              <summary><span class="more">More</span><span class="less">Less</span></summary>
+              <dl>
+                <dt>Prevents</dt><dd>The item only its author understands. The agent that fills gaps with guesses.</dd>
+                <dt>In this method</dt><dd><code>user-story-writing</code>, seven rules. <code>agent-brief</code>.</dd>
+                <dt>Who is saying it</dt><dd>Linear writes plain-language issues and calls user stories an anti-pattern; the shared point is clarity for the reader. Spec-driven development makes the spec the agent's persistent context.</dd>
+              </dl>
+            </details>
+          </div>
+        </li>
+        <li>
+          <span class="n" aria-hidden="true">5</span>
+          <div>
+            <h3>Vertical slices; appetite before estimate</h3>
+            <p>Every slice crosses the stack and ships behavior a person can verify. Decide the appetite, the time you are willing to spend, before you estimate. Above size L you split; you do not estimate.</p>
+            <details>
+              <summary><span class="more">More</span><span class="less">Less</span></summary>
+              <dl>
+                <dt>Prevents</dt><dd>Layers that ship nothing. Estimates that become promises.</dd>
+                <dt>In this method</dt><dd><code>decompose-spec</code>, <code>execution-plan</code>.</dd>
+                <dt>Who is saying it</dt><dd>Basecamp's Shape Up (appetite, scope hammering). DORA's findings on small batches. Cagan's building-to-earn phase expects commercial quality per slice, not a demo.</dd>
+              </dl>
+            </details>
+          </div>
+        </li>
+        <li>
+          <span class="n" aria-hidden="true">6</span>
+          <div>
+            <h3>Structure serves navigation, not ceremony</h3>
+            <p>Three levels, one fixed parent, dependencies as relations, effort in Story Points. Enabler work has no persona and does not invent one. Any section that does not help one of the four readers gets deleted.</p>
+            <details>
+              <summary><span class="more">More</span><span class="less">Less</span></summary>
+              <dl>
+                <dt>Prevents</dt><dd>Fake users. Template filling. A backlog nobody can query.</dd>
+                <dt>In this method</dt><dd><code>backlog-standard</code>, <code>epic-feature-story-templates</code>.</dd>
+                <dt>Who is saying it</dt><dd>Linear's minimal required fields (title, team, status). The sections here exist because four audiences and a weekly snapshot read them, not for their own sake.</dd>
+              </dl>
+            </details>
+          </div>
+        </li>
+        <li>
+          <span class="n" aria-hidden="true">7</span>
+          <div>
+            <h3>For AI behavior, the acceptance criterion is an eval</h3>
+            <p>When the behavior is probabilistic, acceptance is a threshold on a distribution: a golden set from real inputs, a scoring method, a pass rate agreed before the build, and negative cases that say what it must never do. If you cannot write the eval, the item is not ready.</p>
+            <details>
+              <summary><span class="more">More</span><span class="less">Less</span></summary>
+              <dl>
+                <dt>Prevents</dt><dd>The feature that meets every criterion, passes CI, is right 92 times in 100, and becomes the top source of support tickets two weeks later.</dd>
+                <dt>In this method</dt><dd><code>eval-cases</code>. <code>write-prd</code> requires an evals plan for AI parts. The Definition of Ready includes it.</dd>
+                <dt>Who is saying it</dt><dd>Teresa Torres: defining correctness "is the product team's job"; prefer code assertions, then golden sets, then a model as judge. Rick Pollick: "Acceptance is no longer a checkbox; it is a threshold on a distribution." Critical Path: if you can't write the eval, you can't ship the feature.</dd>
+              </dl>
+            </details>
+          </div>
+        </li>
+        <li>
+          <span class="n" aria-hidden="true">8</span>
+          <div>
+            <h3>Autonomy is earned, tier by tier</h3>
+            <p>Observe, alert, propose, act with review, act alone. Promotion by evals on a held-out set and by shadow time, never by enthusiasm. Irreversible actions stay capped until the owner accepts the cost of an error in writing.</p>
+            <details>
+              <summary><span class="more">More</span><span class="less">Less</span></summary>
+              <dl>
+                <dt>Prevents</dt><dd>The agent that sends the email on day one.</dd>
+                <dt>In this method</dt><dd>Boundaries Always, Ask first and Never in every spec. The ladder itself lives in <a href="https://github.com/Benyoumen/agent-design-principles">agent-design-principles</a>, skill <code>autonomy-tiers-and-evals</code>.</dd>
+                <dt>Who is saying it</dt><dd>Pollick on runtime guardrails for the tail. Torres on error analysis as a continuous habit. Microsoft's HAX guidelines and Google's PAIR guidebook on keeping people in control.</dd>
+              </dl>
+            </details>
+          </div>
+        </li>
+        <li>
+          <span class="n" aria-hidden="true">9</span>
+          <div>
+            <h3>Bugs describe, they do not diagnose</h3>
+            <p>A bug card records what the person saw, what the source said, what was expected, and where. It never asserts a cause. It links to the story whose behavior broke and asks for the origin of the data to be verified.</p>
+            <details>
+              <summary><span class="more">More</span><span class="less">Less</span></summary>
+              <dl>
+                <dt>Prevents</dt><dd>Fixing the hypothesis instead of the defect. Blame.</dd>
+                <dt>In this method</dt><dd><code>bug-report</code>.</dd>
+                <dt>Who is saying it</dt><dd>Standard incident practice. It matters more with AI features because the cause is often a data or prompt input nobody checked.</dd>
+              </dl>
+            </details>
+          </div>
+        </li>
+        <li>
+          <span class="n" aria-hidden="true">10</span>
+          <div>
+            <h3>A roadmap is a dated photo, not a promise</h3>
+            <p>Snapshot the backlog weekly with a cutoff, show the delta, and open the review with last week's commitments. The roadmap carries its photo date on every page.</p>
+            <details>
+              <summary><span class="more">More</span><span class="less">Less</span></summary>
+              <dl>
+                <dt>Prevents</dt><dd>Roadmaps that promise dates no one re-derived. Reviews that re-litigate instead of advance.</dd>
+                <dt>In this method</dt><dd><code>weekly-backlog-snapshot</code>, <code>backlog-review-meeting</code>, <code>roadmap-status</code>, <code>publish-roadmap</code>.</dd>
+                <dt>Who is saying it</dt><dd>Cagan's 2026 essays on predictable roadmaps versus outcomes. Linear on keeping product discussion at the feature level, not in the task.</dd>
+              </dl>
+            </details>
+          </div>
+        </li>
+        <li>
+          <span class="n" aria-hidden="true">11</span>
+          <div>
+            <h3>Write for the agent in the room</h3>
+            <p>Assume a coding agent will read the item and act on it. Give it the why, the acceptance criteria as verifiable checks, the Never list, and the verification command. Keep standing conventions in AGENTS.md or CLAUDE.md, not in people's heads.</p>
+            <details>
+              <summary><span class="more">More</span><span class="less">Less</span></summary>
+              <dl>
+                <dt>Prevents</dt><dd>The agent that builds the wrong thing well.</dd>
+                <dt>In this method</dt><dd><code>agent-brief</code>. The repository's own <a href="https://github.com/Benyoumen/backlog-writing-system/blob/main/AGENTS.md">AGENTS.md</a> shows how the skills compose for an agent.</dd>
+                <dt>Who is saying it</dt><dd>Spec-driven development: GitHub Spec Kit, Kiro's steering files, Claude Code's CLAUDE.md. Lenny Rachitsky: "First AI came for coding, next it's coming for deciding what to code."</dd>
+              </dl>
+            </details>
+          </div>
+        </li>
+        <li>
+          <span class="n" aria-hidden="true">12</span>
+          <div>
+            <h3>Volume is not progress: delete nine</h3>
+            <p>When the model offers ten PRDs, ten prototypes or a hundred tickets, pick one and delete nine. Measure the backlog by what it removed this week as well as what it added.</p>
+            <details>
+              <summary><span class="more">More</span><span class="less">Less</span></summary>
+              <dl>
+                <dt>Prevents</dt><dd>The noise AI makes free: more documents, more tickets, more updates, no better decisions.</dd>
+                <dt>In this method</dt><dd>The weekly snapshot reports items removed. The review deck has a line for what was cut.</dd>
+                <dt>Who is saying it</dt><dd>Practitioner pushback in 2026 surveys of product managers. Chip Huyen, quoted by Cagan: "AI makes building easier, but the hardest part remains knowing what to build."</dd>
+              </dl>
+            </details>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="skills" aria-labelledby="h-skills">
+    <div class="margin">
+      <h2 id="h-skills">Eighteen skills</h2>
+      <p>Each skill is a folder with a SKILL.md that an AI coding assistant can load, and plain Markdown anyone can read.</p>
+    </div>
+    <div class="body">
+      <table class="skills">
+        <thead>
+          <tr><th scope="col">Skill</th><th scope="col">What it does</th></tr>
+        </thead>
+        <tbody>
+          <tr class="group"><th scope="rowgroup" colspan="2">Write the items</th></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/backlog-standard"><code>backlog-standard</code></a></td><td>The standard: hierarchy, fixed parent, Story Points, Predecessor and Successor relations, Definition of Ready and Done.</td></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/epic-feature-story-templates"><code>epic-feature-story-templates</code></a></td><td>Epic (11 sections), Feature (15), User Story (9), and what each section must contain.</td></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/why-it-exists"><code>why-it-exists</code></a></td><td>The why field: starts from the consequence of the item not existing, in plain language.</td></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/user-story-writing"><code>user-story-writing</code></a></td><td>Seven writing rules so a story needs no rules inside rules.</td></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/work-item-card"><code>work-item-card</code></a></td><td>A five-second card for a task or a follow-up.</td></tr>
+        </tbody>
+        <tbody>
+          <tr class="group"><th scope="rowgroup" colspan="2">Plan and decompose</th></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/write-prd"><code>write-prd</code></a></td><td>The spec before any card or code, in gated phases.</td></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/decompose-spec"><code>decompose-spec</code></a></td><td>Vertical slices with acceptance, verification, dependency and size.</td></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/execution-plan"><code>execution-plan</code></a></td><td>Spec to ready-to-load items, phases and a schedule derived from dependencies.</td></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/bug-report"><code>bug-report</code></a></td><td>Lean bug cards that describe what happened and never assert a cause.</td></tr>
+        </tbody>
+        <tbody>
+          <tr class="group"><th scope="rowgroup" colspan="2">Run the cadence</th></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/sprint-planning"><code>sprint-planning</code></a></td><td>The planning layer: owner, points and sprint written back to the tracker.</td></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/weekly-backlog-snapshot"><code>weekly-backlog-snapshot</code></a></td><td>A living document plus a frozen weekly snapshot with deltas.</td></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/backlog-review-meeting"><code>backlog-review-meeting</code></a></td><td>The weekly sponsor review, with two mandatory anchors.</td></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/roadmap-status"><code>roadmap-status</code></a></td><td>The roadmap at the depth requested, from executive view to drill-down.</td></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/publish-roadmap"><code>publish-roadmap</code></a></td><td>Stakeholder formats from one source, versioned.</td></tr>
+        </tbody>
+        <tbody>
+          <tr class="group"><th scope="rowgroup" colspan="2">AI era</th></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/frame-the-problem"><code>frame-the-problem</code></a></td><td>One page before any design tool: the problem, who has it, the evidence, the number, the appetite, what you are not doing.</td></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/prototype-to-spec"><code>prototype-to-spec</code></a></td><td>What a prototype settled and what it cannot, so a demo never becomes a ticket.</td></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/eval-cases"><code>eval-cases</code></a></td><td>Acceptance criteria for AI behavior: golden set, scoring method, threshold, never-cases.</td></tr>
+          <tr><td><a href="https://github.com/Benyoumen/backlog-writing-system/tree/main/skills/agent-brief"><code>agent-brief</code></a></td><td>An item a coding agent can build: the why, verifiable checks, the Never list, the verification command.</td></tr>
+        </tbody>
+      </table>
+      <p class="skills-note">Templates, the complete Acme example and the reasoning are in the <a href="https://github.com/Benyoumen/backlog-writing-system">repository</a>.</p>
+    </div>
+  </section>
+
+  <section class="block" id="sources" aria-labelledby="h-sources">
+    <div class="margin">
+      <h2 id="h-sources">Sources</h2>
+      <p>Read in October 2026. Most are practitioner essays, not studies. The method takes their arguments, not their numbers.</p>
+    </div>
+    <div class="body">
+      <ul class="sources">
+        <li>Marty Cagan, <a href="https://www.svpg.com/the-ai-productivity-paradox/">The AI Productivity Paradox</a>, SVPG, July 2026. Also <a href="https://www.svpg.com/ai-product-management-2-years-in/">AI Product Management 2 Years In</a> and <a href="https://www.svpg.com/the-product-operating-model/">The Product Operating Model</a>.</li>
+        <li>Teresa Torres, <a href="https://www.producttalk.org/ai-evals/">AI Evals: A Hands-On Guide for Product Teams</a>, Product Talk, September 2026.</li>
+        <li>Rick Pollick, <a href="https://rickpollick.com/blog/evals-are-the-new-acceptance-criteria">Evals Are the New Acceptance Criteria</a>, June 2026.</li>
+        <li>Critical Path, <a href="https://buttondown.com/critical-path/archive/if-you-cant-write-the-eval-you-cant-ship-the-ai/">If you can't write the eval, you can't ship the AI feature</a>.</li>
+        <li>Chen Ye Zhu, <a href="https://chenyezhu.com/writing/golden-eval-set-prd-genai-system/">Golden Eval Sets: Behavioral Product Specs for Production GenAI</a>.</li>
+        <li>Aakash Gupta, <a href="https://aakashgupta.medium.com/ai-killed-the-10-page-prd-but-the-prd-isnt-dead-8801efe44b36">AI killed the 10 page PRD. But the PRD isn't dead</a> and <a href="https://www.news.aakashg.com/p/ai-product-operating-model">The AI Product Operating Model</a>.</li>
+        <li>Lenny Rachitsky, <a href="https://x.com/lennysan/status/2010884315794849901">the ten skills for the age of AI</a> (January 2026) and <a href="https://x.com/lennysan/status/2024299332904849545">"First AI came for coding, next it's coming for deciding what to code"</a>.</li>
+        <li>Linear, <a href="https://linear.app/method/write-issues-not-user-stories">Write issues, not user stories</a> and the <a href="https://linear.app/docs/linear-method">Linear Method</a>.</li>
+        <li>Product School, <a href="https://productschool.com/blog/product-fundamentals/product-management-trends">Product Management Trends: 11 Shifts Shaping 2026</a>.</li>
+        <li>LogRocket, <a href="https://blog.logrocket.com/product-management/prd-alternatives-modern-product-teams/">Is the PRD dead?</a> and <a href="https://stories.logrocket.com/p/thought-leadership-how-we-replaced-prds-ai-prototypes">How we replaced PRDs with AI prototypes</a>.</li>
+        <li>Uber Engineering, <a href="https://www.uber.com/gr/el/blog/ai-prototyping">AI prototyping</a>.</li>
+        <li>David Haberlah, <a href="https://medium.com/@haberlah/what-638-practitioner-voices-reveal-about-pms-ai-transformation-7d2fd16be10d">What 638 practitioner voices reveal about PMs' AI transformation</a>.</li>
+        <li>Spec-driven development: <a href="https://dev.to/krlz/spec-driven-development-in-2026-what-it-is-the-tooling-and-how-teams-actually-use-it-2fk2">Spec-Driven Development in 2026</a>, <a href="https://omidsaffari.com/blog/spec-driven-development">GitHub Spec Kit and Kiro</a>, <a href="https://kiro.dev/">Kiro</a>.</li>
+        <li>Basecamp, <a href="https://basecamp.com/shapeup">Shape Up</a>. DORA, <a href="https://dora.dev">research on software delivery</a>.</li>
+        <li>Microsoft, <a href="https://www.microsoft.com/en-us/haxtoolkit/">HAX Toolkit</a>. Google, <a href="https://pair.withgoogle.com/guidebook/">People + AI Guidebook</a>.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <p>Benjamin Tayar, 2026. MIT.</p>
+  <p><a href="https://github.com/Benyoumen">github.com/Benyoumen</a></p>
+</footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>

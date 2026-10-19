@@ -22,7 +22,7 @@ All items belong to the fictional Acme Field Sales Assistant. Each pair shows th
 >
 > **Technical details:** Latency under 2 seconds at the 95th percentile and cost per run are tracked as non-functional requirements. The language model is a decided platform choice.
 >
-> **Estimate:** 34. Basis: sum of the Features, estimated by the developers.
+> **Estimate:** 31. Basis: sum of the four Features, estimated by the developers.
 
 ### What changed
 
@@ -49,7 +49,7 @@ All items belong to the fictional Acme Field Sales Assistant. Each pair shows th
 
 ### After
 
-> **Title:** ACME-E01-F01 - Draft a follow-up email from the meeting notes
+> **Title:** ACME-E01-F02 - Draft a follow-up email from the meeting notes
 >
 > **Why it exists:** Today the rep writes each follow-up email after the fact, usually in the evening. Meetings from the morning get an answer a day later, and some customers never get one.
 >
@@ -93,7 +93,7 @@ This item is split, then cut.
 
 **Kept as a story (Enabler):**
 
-> **Title:** ACME-E01-F01-US00 - Store each draft until the rep approves or discards it
+> **Title:** ACME-E01-F02-US04 - Store each draft until the rep approves or discards it
 >
 > **Type:** Enabler
 >

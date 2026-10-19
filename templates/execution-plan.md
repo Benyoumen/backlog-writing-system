@@ -14,6 +14,7 @@ Version: <n> | Sources: <product spec, tech spec, open-questions list> | Start d
 | Total effort (days) | <n> |
 | Critical path (days) | <n> |
 | Phases | <n> |
+| Appetite (from the frame) | <n weeks of n people; state the gap if the effort overruns it> |
 
 Pending decisions by phase: <list or see chapter 8>
 

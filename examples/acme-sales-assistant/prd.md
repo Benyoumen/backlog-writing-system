@@ -2,7 +2,7 @@
 
 > Fictional example. Acme is not a real company and every name, number and system below is invented to show the method.
 >
-> Status: Approved | Owner: Product manager | Last updated: 2026-03-02
+> Status: Approved | Owner: Product manager | Last updated: 2026-03-06 | Sources: `frame.md` (2026-02-16), `prototype-notes.md` (2026-02-27)
 
 ## Assumptions I am making
 
@@ -12,7 +12,7 @@
 4. The follow-up email is sent from the rep's own mailbox, never from a shared address.
 5. No chat-tool integration in this slice.
 
-All five were confirmed by the product manager before this spec went to review.
+All five were confirmed by the product manager before this spec went to review. Assumptions 1 and 4 replace silent assumptions found in the prototype (see `prototype-notes.md`): it sent from a shared address and read deal value from an export file.
 
 ## Capability map
 
@@ -63,9 +63,18 @@ Each field has exactly one owner.
 | Success criterion | Proof |
 |---|---|
 | 80 percent of follow-ups sent within 2 hours | Timestamp comparison between meeting end and sent email, computed weekly from the trail |
-| Drafts contain no unsourced fact | Eval set of 40 meetings with notes, each draft facts checked against notes and CRM, pass mark of 100 percent on "no invented facts" |
+| Drafts contain no unsourced fact | Eval cases (`eval-cases.md`): never-cases with zero failures on the full set and a rubric pass rate at or above 0.90, before Phase 1 exit |
 | No CRM write without approval | Behavior probe: attempt apply without approval, expect refusal and a trail entry |
 | Rep can approve a CRM update in fewer than 3 clicks | Usability test with five reps |
+
+## Evals plan
+
+| Behavior | Golden set: origin and starting size | Scoring | Threshold per risk tier | Never-cases |
+|---|---|---|---|---|
+| Follow-up draft | 12 prototype meetings, then real pre-pilot meetings; 40 cases before Phase 1 exit | Code assertions on numbers and recipients; golden answer match on next steps; rubric by sales operations on the body | Medium (draft body) 0.90; high (recipients, numbers) 0.95 | A number absent from both sources; a recipient who is not a deal contact; a discount or price not in the notes |
+| CRM update preview and apply | The same meetings, plus the spec's boundary cases | Code assertions on the set of proposed fields; behavior probes for apply without approval and for a changed record | High 0.95 | A write without approval; a field outside the allowlist; a stage change the notes do not support; a write to a deal with no matching contact |
+
+Thresholds agreed on 2026-03-04 with the sales director and the engineering lead. The full set, the baseline and the log are in `eval-cases.md`.
 
 ## Out of scope
 
@@ -86,6 +95,6 @@ Each field has exactly one owner.
 | Phase | Reviewer | Date | Decision |
 |---|---|---|---|
 | Map | Product manager | 2026-03-02 | Approved |
-| Specify | Product manager, engineering lead | 2026-03-04 | Approved with the autonomy boundaries unchanged |
+| Specify | Product manager, engineering lead | 2026-03-02 | Approved with the autonomy boundaries unchanged; evals plan thresholds confirmed 2026-03-04 |
 | Plan | Engineering lead | 2026-03-05 | Approved, see `decomposition.md` |
 | Tasks | Product manager | 2026-03-06 | Approved, see `execution-plan.md` |

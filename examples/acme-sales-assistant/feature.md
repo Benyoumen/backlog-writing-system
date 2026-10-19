@@ -1,6 +1,6 @@
-# ACME-E01-F01 - Draft a follow-up email from the meeting notes
+# ACME-E01-F02 - Draft a follow-up email from the meeting notes
 
-Type: Feature. Parent: ACME-E01. Children: ACME-E01-F01-US01, ACME-E01-F01-US02.
+Type: Feature. Parent: ACME-E01. Children: ACME-E01-F02-US01 to ACME-E01-F02-US04.
 
 All values below are illustrative, for a fictional company.
 
@@ -17,7 +17,7 @@ Give the rep a ready draft within minutes of a meeting ending, so that approving
 More meetings are followed up within one working day. This moves the first metric of ACME-E01 directly.
 
 ## 5. Expected behavior
-When a meeting ends and the rep has saved notes, the agent prepares a draft email to the meeting attendees. The draft refers to the topics discussed, the agreed next steps and the dates mentioned. The agent shows the rep the draft and the notes it used. The rep edits, approves or discards it. The agent never sends an email by itself.
+When a meeting ends and the rep has saved notes, the agent prepares a draft email to the meeting attendees who are contacts on the deal. The draft refers to the topics discussed, the agreed next steps and the dates mentioned. The agent shows the rep the draft and the notes it used. The rep edits, approves or discards it. The agent never sends an email by itself.
 
 ## 6. Acceptance criteria
 1. Given a meeting with saved notes has ended, when the rep opens the assistant, then a draft for that meeting is listed.
@@ -28,8 +28,8 @@ When a meeting ends and the rep has saved notes, the agent prepares a draft emai
 6. Given the meeting has no saved notes, when the rep opens the assistant, then no draft is created and the assistant asks for notes.
 
 ## 7. Scope and limits
-In: draft creation, source display, edit, approve, discard.
-Out: logging the outcome in the CRM (ACME-E01-F02), phone calls, attachments and languages other than English.
+In: draft creation, source display, storage until approval, edit, approve, discard, send.
+Out: the CRM update (ACME-E01-F03), the activity trail (ACME-E01-F04), phone calls, attachments and languages other than English.
 
 ## 8. Business rules
 - A draft uses only facts from the rep's notes and the CRM record of the opportunity.
@@ -41,14 +41,14 @@ Out: logging the outcome in the CRM (ACME-E01-F02), phone calls, attachments and
 |---|---|---|
 | Meeting end time and attendees | Calendar | Yes |
 | Meeting notes | Notes tool | Yes |
-| Opportunity name, stage and owner | CRM | Yes |
+| Opportunity name, stage, value and owner | CRM | Yes |
 
 ## 10. Dependencies
-Predecessors: calendar access granted (ACME-E01-D01).
-Successors: ACME-E01-F02 reads the approved email to log the outcome.
+Predecessors: ACME-E01-F01 (the list of finished meetings the draft starts from); calendar access granted (ACME-E01-D01).
+Successors: ACME-E01-F04 records what was sent, applied and ignored.
 
 ## 11. Non-functional requirements
-- A draft appears within five minutes of the rep saving the notes.
+- A draft appears within fifteen minutes of the rep saving the notes (the notes tool returns notes up to ten minutes after a meeting; finding A2 in the execution plan).
 - Notes and drafts are visible only to the rep who owns the meeting.
 - Every draft logs the input, the output, the model version, the user and the time, and is kept for 12 months.
 
@@ -57,17 +57,18 @@ Successors: ACME-E01-F02 reads the approved email to log the outcome.
 - Fallback: when the draft cannot be created, the rep sees a message and can write the email manually.
 - Autonomy guardrail: no email is sent without explicit approval.
 - Auditability: all drafts are logged as described in the non-functional requirements.
-- Evaluation method: sales operations reviews 30 randomly chosen drafts each week against a written checklist.
+- Evaluation method: the eval cases in `eval-cases.md` (golden set from real meetings, never-cases with zero tolerance, threshold 0.90 for the draft body and 0.95 for anything that reaches the customer), run before each phase exit, plus 30 randomly chosen drafts reviewed each week by sales operations against the rubric.
 
 ## 13. Open items and decisions
 | Question | Owner | Decide by |
 |---|---|---|
-| Should drafts include the rep's signature block? | Sales director | Before first release |
+| Should drafts include the rep's signature block? | Sales director | Before Phase 1 exit |
 | Which mailbox provider do reps use? | Sales operations | Before sprint planning |
+| Does language detection enter Phase 3? | Sponsor | 2026-04-20 |
 
 ## 14. Traceability
-Source: product brief, section "Follow-up after meetings" (link in the tracker).
+Source: `prd.md`, capability follow-up-draft; `prototype-notes.md`, settled items on the draft and the fact list (links in the tracker).
 
 ## 15. Estimate
-Effort: 21
-Basis: estimated by the developers during sprint planning.
+Effort: 11
+Basis: sum of the points of its four stories (3, 3, 3, 2), set by the developers at sprint planning on 2026-03-09.

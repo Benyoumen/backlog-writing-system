@@ -1,6 +1,6 @@
 # Decomposition: Acme Field Sales Assistant
 
-> Fictional example. Input: `prd.md` in this folder. Method: `skills/decompose-spec`.
+> Fictional example. Input: `prd.md` in this folder; appetite from `frame.md`. Method: `skills/decompose-spec`. Approved 2026-03-05.
 
 ## Dependency graph
 
@@ -99,8 +99,10 @@ Two slices reach the write layer, US03 (email) and US05 (CRM). Both are slices o
 
 Acme has no tracker history yet, so every duration in `execution-plan.md` is declared by the engineering lead and labeled `declared`. After eight closed stories of a size, replace the declared number with p50 for planning and p80 for commitment.
 
+Appetite check: the frame allows six weeks of two people. The declared critical path is 13 working days, which leaves room inside the appetite for the checkpoints, the pilot, and the margin that declared numbers usually need.
+
 ## Index of cards
 
 | Slice | Card |
 |---|---|
-| US01 to US07 | Created in the tracker from `execution-plan.md`. The ids live there, not in this file. |
+| US01 to US07 | Created in the tracker from `execution-plan.md` on 2026-03-09. The ids live there, not in this file. The mapping from slice ids to tracker codes is in this folder's `README.md`. |

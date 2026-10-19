@@ -30,6 +30,10 @@ Sorted: Done, Decided, In progress, Not started. One row per commitment. Open qu
 
 Ceilings: 6 cards per slide, grid of 3, no card over two lines.
 
+## n-2. What we cut (required, one line)
+
+Cut this week: <items removed, with the reason, from the snapshot's Removed this week section>. "Nothing was cut this week" is a valid line and is still shown.
+
 ## n-1. Updated schedule (required, anchor 2, always second to last)
 
 - Today line: <meeting date>
@@ -50,6 +54,7 @@ These return as next week's Actions summary.
 
 - [ ] Previous week's folder untouched
 - [ ] Every last-week commitment has a status
+- [ ] What we cut is present, one line
 - [ ] Schedule is second to last, subtitles match bars
 - [ ] No invented content, no person names outside allowed cases
 - [ ] Every label survives a cold read

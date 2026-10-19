@@ -52,6 +52,14 @@ Each field has exactly one owner.
 |---|---|
 | <criterion> | <proof> |
 
+## Evals plan (one block per probabilistic behavior)
+
+| Behavior | Golden set: origin and starting size | Scoring | Threshold per risk tier | Never-cases |
+|---|---|---|---|---|
+| <draft, extraction, classification, agent action> | <real inputs, anonymized; 20 to 50 to start> | <code assertion / golden answer / rubric / model judge> | <low / medium / high> | <what it must never do, zero tolerance> |
+
+The full set lives in the eval cases file (see `templates/eval-cases.md`). No evals plan, no Specify gate for an AI behavior.
+
 ## Out of scope
 
 - <what we will not do in this slice, and why>

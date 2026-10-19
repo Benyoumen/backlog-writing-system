@@ -42,7 +42,7 @@ Successors: <items waiting on this one, as relations.>
 <Performance, security, retention, audit, availability. Logging and audit trails belong here, not in stories.>
 
 ## 12. Evaluation criteria
-<Quality of the capability as a whole, with a number and a window. Name the method and the owner. If the Feature involves AI, cover quality, fallback, autonomy guardrail, auditability and evaluation method.>
+<Quality of the capability as a whole, with a number and a window. Name the method and the owner. If the Feature involves AI, cover quality, fallback, autonomy guardrail, auditability and evaluation method, and link the eval cases file (templates/eval-cases.md): golden set, scoring, threshold per risk tier, never-cases.>
 
 ## 13. Open items and decisions
 | Question | Owner | Decide by |

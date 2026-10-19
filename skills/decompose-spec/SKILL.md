@@ -1,23 +1,38 @@
 ---
 name: decompose-spec
-description: Break an approved spec into small, verifiable tasks cut as vertical slices, ordered by dependency, each with an acceptance criterion, a named verification, a declared dependency and a size from XS to L. Anything above L is split, not estimated. Use when a spec exists but no plan does, when an item looks too big to start, when someone asks how long it will take, or when work can be run in parallel.
+description: Breaks an approved spec into small, verifiable tasks cut as vertical slices, ordered by dependency, each with an acceptance criterion, a named verification, a declared dependency and a size from XS to L. Anything above L is split, not estimated, and the whole fits inside the appetite set in the frame. Use when a spec exists but no plan does, when an item looks too big to start, when someone asks how long it will take, or when work can run in parallel.
+license: MIT
+metadata:
+  version: "1.1"
+  author: Benjamin Tayar
+  method: backlog-writing-system
 ---
 
-# decompose-spec: from spec to tasks with a defensible schedule
+# Decompose the spec
 
-## Why this exists
+> A good split is the difference between a team that moves and a team that stalls. Every task fits one focused work session, is verifiable on its own, and leaves the system working when it ends.
 
-A good split is the difference between a team that moves and a team that stalls. Every task must fit one focused work session, be verifiable on its own, and leave the system working when it ends.
+## When to use
 
-Input: an approved spec (see `write-prd`). Output: a plan document with the dependency graph, and task cards in your tracker (Jira, Azure DevOps, Linear or similar). The tracker is the list of record. The plan keeps an index of card ids, never a second copy of the list.
+- A spec is approved and no plan exists.
+- An item looks too big to start.
+- Someone asks how long it will take.
+- Work could run in parallel and nobody has drawn what depends on what.
 
-## Step 1. Read before writing
+## Inputs
 
-Read the spec, the current board, any mockup, the data sources, and what already exists in the codebase. Existing patterns are constraints, and reusing them is cheaper than inventing new ones. Do not write a single card in this step.
+- The approved spec (`write-prd`).
+- The appetite from the frame: the time the sponsor is willing to spend.
+- The current board, any mockup, the data sources, and what already exists in the code base. Existing patterns are constraints, and reusing them is cheaper than inventing new ones.
+- Your tracker's history of closed items, for sizes and durations.
 
-## Step 2. Draw the dependency graph
+Output: a plan document with the dependency graph, and task cards in your tracker (Jira, Azure DevOps, Linear or similar). The tracker is the list of record. The plan keeps an index of card ids, never a second copy of the list.
 
-Draw what depends on what, foundation first. Example for the Acme Field Sales Assistant:
+## Procedure
+
+1. Read before writing: the spec, the board, the mockups, the data sources, the code base. Do not write a single card in this step.
+2. Read the appetite. The decomposition must fit inside it. If it cannot, cut scope with the product manager before sizing anything; never stretch the appetite to fit the scope.
+3. Draw the dependency graph, foundation first. Example for the Acme Field Sales Assistant:
 
 ```
 Meeting and notes data
@@ -37,27 +52,8 @@ Meeting and notes data
 
 Execution order follows the graph from the bottom up. Foundation first. Highest risk first, within what the foundation allows: if something is going to fail, it should fail in week one.
 
-## Step 3. Cut vertical, never horizontal
-
-Wrong (horizontal slices):
-
-1. Model all the data
-2. Build all the screens
-3. Build all the writes
-4. Wire everything together
-
-Nothing works end to end until step 4, and step 4 always runs late.
-
-Right (vertical slices):
-
-1. The rep sees today's finished meetings with their notes (data + screen)
-2. The rep sees a drafted follow-up and the facts it used (rule + screen)
-3. The rep edits and sends the draft (screen + email write)
-4. The manager sees what was sent and what was ignored (trail + screen)
-
-Each slice delivers behavior you can demo in a meeting. In a system with an AI agent, at least one slice must cross all four layers: **collect, decide, present, write**. A slice that stops before the write never proves the autonomy contract, which is the part users distrust most.
-
-## Step 4. Write each task
+4. Cut vertical, never horizontal. Wrong (horizontal): model all the data; build all the screens; build all the writes; wire everything together. Nothing works end to end until the last step, and the last step always runs late. Right (vertical): the rep sees today's finished meetings with their notes (data and screen); the rep sees a drafted follow-up and the facts it used (rule and screen); the rep edits and sends the draft (screen and email write); the manager sees what was sent and what was ignored (trail and screen). Each slice delivers behavior you can demo in a meeting. In a system with an AI agent, at least one slice must cross all four layers: collect, decide, present, write. A slice that stops before the write never proves the autonomy contract, which is the part users distrust most.
+5. Write each task:
 
 | Element | Where it goes in the tracker |
 |---|---|
@@ -70,7 +66,7 @@ Each slice delivers behavior you can demo in a meeting. In a system with an AI a
 
 A number in prose cannot be summed. A number in a field can.
 
-## Step 5. Size, and when to split
+6. Size, and split when needed:
 
 | Size | Files touched | Points | Example |
 |---|---|---|---|
@@ -78,26 +74,12 @@ A number in prose cannot be summed. A number in a field can.
 | S | 1 to 2 | 2 | one endpoint, one new field on a screen |
 | M | 3 to 5 | 3 | one whole vertical slice |
 | L | 5 to 8 | 5 | slice with an integration and a new screen |
-| XL | 8 or more | none | **not estimated: split** |
+| XL | 8 or more | none | not estimated: split |
 
 Split when: it exceeds one focused session; the acceptance criterion does not fit in three bullets; it touches two independent subsystems; the title contains "and".
 
-## Step 6. Time from history, not opinion
-
-Take the dates from your own tracker history: for each closed item of the same type, measure creation to done in working days. Report **p50** (the planning number) and **p80** (the commitment number). The gap between them is the margin, and it exists because the slowest observed case is always slower than the typical one.
-
-Rules:
-
-- With fewer than 8 closed comparable items, refuse to give a measured number. Mark the estimate `declared` and say who declared it.
-- Label every number `measured`, `partial` or `declared`.
-- If size fields are mostly empty, the forecast falls back to item type. The fix is to fill the size field on every story that enters a sprint.
-
-## Step 7. Order and checkpoints
-
-1. Dependency satisfied: foundation first.
-2. Each task leaves the system working.
-3. A checkpoint every 2 or 3 tasks, with a review or acceptance stage in the board before anything is marked done.
-4. High risk early.
+7. Take time from history, not opinion. For each closed item of the same type, measure creation to done in working days. Report p50 (the planning number) and p80 (the commitment number). The gap between them is the margin, and it exists because the slowest observed case is always slower than the typical one. With fewer than 8 closed comparable items, refuse to give a measured number: mark the estimate `declared` and say who declared it. Label every number `measured`, `partial` or `declared`. If size fields are mostly empty, the forecast falls back to item type; the fix is to fill the size field on every story that enters a sprint.
+8. Order and checkpoints: dependency satisfied, foundation first; each task leaves the system working; a checkpoint every 2 or 3 tasks, with a review or acceptance stage in the board before anything is marked done; high risk early.
 
 ```markdown
 ### Checkpoint: after tasks 1 to 3
@@ -106,15 +88,16 @@ Rules:
 - [ ] The PM saw it and approved before the next task started
 ```
 
-## Plan template
-
-Use `templates/execution-plan.md` for the full plan, or this short form:
+9. Write the plan with `templates/execution-plan.md`, or this short form:
 
 ```markdown
 # Plan: <feature>
 
 ## In one sentence
 <What this delivers and for whom.>
+
+## Appetite
+<From the frame. The slices below fit inside it.>
 
 ## Slices
 ### Phase 1: foundation
@@ -131,12 +114,17 @@ Use `templates/execution-plan.md` for the full plan, or this short form:
 - <what depends on the PM or tech lead>
 ```
 
-## Rules for existing work
+## Rules
 
+- Appetite before estimate. The appetite is an input; the estimate is checked against it. When they disagree, scope moves, not the appetite.
+- Vertical, never horizontal. At least one slice reaches the write layer.
+- No task is XL. Above L you split; you do not estimate.
+- Dependencies live in the tracker's link field, not in prose.
+- Every number carries a label: `measured`, `partial` or `declared`.
 - Never rewrite a plan that still has open tasks. Those tasks may be in progress in another session. Stop and ask.
 - Never mass-close or delete cards from another plan to make room.
 
-## Rationalizations to reject
+Rationalizations to reject:
 
 | Excuse | Reality |
 |---|---|
@@ -145,19 +133,33 @@ Use `templates/execution-plan.md` for the full plan, or this short form:
 | "Planning is overhead." | Planning is the task. Executing without a plan is typing. |
 | "I keep it all in my head." | Sessions end, context is finite, and the next person has no access to your head. |
 | "I know the estimate from experience." | Compute it from history and compare. If they match, good. If not, you just measured your bias. |
+| "We will make the appetite bigger." | Then the frame is wrong and goes back to the sponsor. The plan does not decide that. |
 
 ## Checklist
 
-- [ ] Every task has a verifiable acceptance criterion
-- [ ] Every task names the proof that verifies it
-- [ ] Dependencies are in the tracker's link field, not in prose
-- [ ] No task is XL
-- [ ] The cut is vertical, and at least one slice reaches the write layer
-- [ ] There is a checkpoint between phases
-- [ ] Time comes from history with a label, or is declared and marked declared
-- [ ] The plan holds an index of card ids, not a second task list
-- [ ] No plan with open tasks was overwritten
+- [ ] The decomposition fits inside the appetite, or scope was cut with the PM before sizing.
+- [ ] Every task has a verifiable acceptance criterion.
+- [ ] Every task names the proof that verifies it.
+- [ ] Dependencies are in the tracker's link field, not in prose.
+- [ ] No task is XL.
+- [ ] The cut is vertical, and at least one slice reaches the write layer.
+- [ ] There is a checkpoint between phases.
+- [ ] Time comes from history with a label, or is declared and marked declared.
+- [ ] The plan holds an index of card ids, not a second task list.
+- [ ] No plan with open tasks was overwritten.
+
+## Example
+
+Weak: "Task 1: data model. Task 2: all the API endpoints. Task 3: all the screens. Task 4: integrate. Estimate: 6 weeks, we have done this before."
+
+Corrected: "Appetite: six weeks of two people (frame). Slices: US01 the rep sees finished meetings with notes (M, 3); US02 the rep sees a draft with its facts (M, 3); US03 the rep edits and sends (M, 3, reaches the write layer); US04 the rep sees a CRM preview (M, 3); US05 approved update applied (L, 5, write layer). Dependencies as links. Durations labeled `declared` because fewer than 8 comparable items are closed. Critical path 13 working days, inside the appetite." (Illustrative; the full decomposition is in `../../examples/acme-sales-assistant/decomposition.md`.)
 
 ## Definition of done
 
 The plan is done when a developer who was not in the conversation can pick the first task, finish it in one session, prove it with the named verification, and know which task unlocks next, without asking anyone.
+
+## Related
+
+- Before: [`write-prd`](../write-prd/SKILL.md), [`frame-the-problem`](../frame-the-problem/SKILL.md) for the appetite. After: [`execution-plan`](../execution-plan/SKILL.md), [`backlog-standard`](../backlog-standard/SKILL.md).
+- Why: [principle 5, vertical slices, appetite before estimate](../../docs/principles.md#5-vertical-slices-appetite-before-estimate); [the delivery flow](../../docs/delivery-flow.md).
+- Template: [`execution-plan.md`](../../templates/execution-plan.md). Example: [`decomposition.md`](../../examples/acme-sales-assistant/decomposition.md).

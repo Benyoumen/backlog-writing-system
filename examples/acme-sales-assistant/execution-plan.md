@@ -1,6 +1,6 @@
 # Execution plan: Acme Field Sales Assistant, follow-up after customer meetings
 
-> Fictional example. Version 1 | Sources: `prd.md`, `decomposition.md` | Start date: Monday, day 1 of the plan
+> Fictional example. Version 1, approved 2026-03-06 | Sources: `prd.md`, `decomposition.md`, appetite from `frame.md` | Start date: Monday 2026-03-09, day 1 of the plan
 
 ## 1. Summary
 
@@ -14,6 +14,7 @@
 | Total effort (days, declared) | 21 |
 | Critical path (days) | 13 |
 | Phases | 3 |
+| Appetite (from the frame) | 6 weeks of 2 people; 21 effort days over two tracks fits inside it |
 
 Pending decisions: see chapter 8.
 
@@ -82,7 +83,7 @@ gantt
     US05 :b2, 6, 5
 ```
 
-Assumptions: two developers, five working days per week, checkpoints happen inside the stories' last day, no holidays counted.
+Assumptions: two parallel tracks (a schedule assumption, not a staffing promise), five working days per week, checkpoints happen inside the stories' last day, no holidays counted. Derived calendar from the typed start date: day 6 is 2026-03-16, day 11 is 2026-03-23, day 13 is 2026-03-25.
 
 ## 4. Items by epic
 
@@ -264,7 +265,7 @@ Assumptions: two developers, five working days per week, checkpoints happen insi
 
 ## 9. In the tracker
 
-Order of creation: the epic, then Features 1.1 to 1.4, then US01 to US07, then dependency links, then iteration assignment by phase.
+Order of creation: the epic, then Features 1.1 to 1.4, then US01 to US07, then dependency links, then iteration assignment by phase. The tracker assigns codes at creation (ACME-E01-F01 to F04 and their stories); the mapping from slice ids to codes is kept in the numbering register and shown in this folder's `README.md`.
 
 ## Gates run before sharing
 

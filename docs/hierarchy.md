@@ -25,6 +25,7 @@ flowchart TD
 - A User Story is always the child of a Feature. Never of an Epic.
 - Dependencies are relations (dotted line), not sentences in a description.
 - A parent does not close while a child is open.
+- For a probabilistic behavior, the acceptance criteria are eval cases in a linked file. No eval cases, not Ready.
 
 ## Where each piece of information lives
 
@@ -36,6 +37,8 @@ flowchart LR
     G["Acceptance criteria<br/>(Story)"] --> N["Native Acceptance Criteria field"]
     H["Acceptance criteria<br/>(Epic, Feature)"] --> D
     I["Definition of Done"] --> T["Team standard, inherited"]
+    J["Eval cases<br/>(AI behavior)"] --> V["Eval file, linked from the<br/>Acceptance Criteria field"]
+    K["Agent brief<br/>(story an agent builds)"] --> W["Brief file, linked from<br/>Technical notes"]
 ```
 
 ## What each level answers

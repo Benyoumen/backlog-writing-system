@@ -33,6 +33,14 @@ Version: <x.y> | Date: <YYYY-MM-DD> | Cutoff week: <NN>
 |---|---|---|---|
 | <ID> | <title> | <Create / Update> | <yes / no> |
 
+## Removed this week
+
+| ID | Title | Reason | Where the content went |
+|---|---|---|---|
+| <ID> | <title> | <cut, split away, out of scope, retired> | <another item, a non-functional requirement, an open decision, nowhere> |
+
+"Nothing removed this week" is a valid entry and is still written.
+
 ## Version history
 
-- v<x.y> (<YYYY-MM-DD>): <short sentences on what changed>
+- v<x.y> (<YYYY-MM-DD>): <short sentences on what changed, added and removed>

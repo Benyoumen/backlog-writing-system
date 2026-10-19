@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="720" viewBox="0 0 1400 720" role="img" aria-labelledby="wm-title wm-desc">
+<title id="wm-title">Backlog Writing System: seven stages, seven gates</title>
+<desc id="wm-desc">Seven stages from Frame to Ship and learn, with the gate question under each arrow, and four loops: eval, defect, learning and cadence.</desc>
+<defs>
+<marker id="ink" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#1B2621"/></marker>
+<marker id="red" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 Z" fill="#B4372F"/></marker>
+</defs>
+<rect width="1400" height="720" fill="#F4F7F1"/>
+<rect x="0.5" y="0.5" width="1399" height="719" fill="none" stroke="#C9D3CA"/>
+<g font-family="Segoe UI, Helvetica, Arial, sans-serif" fill="#1B2621">
+
+<text x="60" y="52" font-size="28" font-weight="700">Backlog Writing System: seven stages, seven gates</text>
+<text x="1340" y="52" font-size="18" fill="#4A5852" text-anchor="end">benyoumen.github.io/backlog-writing-system</text>
+
+<!-- Row 1: stages 0 to 3 -->
+<g>
+<rect x="60" y="90" width="220" height="180" rx="6" fill="#FFFFFF" stroke="#1B2621" stroke-width="1.5"/>
+<circle cx="90" cy="120" r="16" fill="#1B2621"/>
+<text x="90" y="126" font-size="18" font-weight="700" fill="#F4F7F1" text-anchor="middle">0</text>
+<text x="74" y="168" font-size="21" font-weight="600">Frame</text>
+<line x1="74" y1="182" x2="266" y2="182" stroke="#C9D3CA"/>
+<text x="74" y="206" font-size="18" fill="#3A4842">One page: problem,</text>
+<text x="74" y="229" font-size="18" fill="#3A4842">evidence, number,</text>
+<text x="74" y="252" font-size="18" fill="#3A4842">appetite, not doing</text>
+</g>
+<g>
+<rect x="413" y="90" width="220" height="180" rx="6" fill="#FFFFFF" stroke="#1B2621" stroke-width="1.5"/>
+<circle cx="443" cy="120" r="16" fill="#1B2621"/>
+<text x="443" y="126" font-size="18" font-weight="700" fill="#F4F7F1" text-anchor="middle">1</text>
+<text x="427" y="168" font-size="21" font-weight="600">Discover</text>
+<line x1="427" y1="182" x2="619" y2="182" stroke="#C9D3CA"/>
+<text x="427" y="206" font-size="18" fill="#3A4842">Prototype notes,</text>
+<text x="427" y="229" font-size="18" fill="#3A4842">interview notes,</text>
+<text x="427" y="252" font-size="18" fill="#3A4842">assumption tests</text>
+</g>
+<g>
+<rect x="766" y="90" width="220" height="180" rx="6" fill="#FFFFFF" stroke="#1B2621" stroke-width="1.5"/>
+<circle cx="796" cy="120" r="16" fill="#1B2621"/>
+<text x="796" y="126" font-size="18" font-weight="700" fill="#F4F7F1" text-anchor="middle">2</text>
+<text x="780" y="168" font-size="21" font-weight="600">Decide: the spec</text>
+<line x1="780" y1="182" x2="972" y2="182" stroke="#C9D3CA"/>
+<text x="780" y="206" font-size="18" fill="#3A4842">Short PRD with</text>
+<text x="780" y="229" font-size="18" fill="#3A4842">Always, Ask, Never</text>
+<text x="780" y="252" font-size="18" fill="#3A4842">and an evals plan</text>
+</g>
+<g>
+<rect x="1119" y="90" width="220" height="180" rx="6" fill="#FFFFFF" stroke="#1B2621" stroke-width="1.5"/>
+<circle cx="1149" cy="120" r="16" fill="#1B2621"/>
+<text x="1149" y="126" font-size="18" font-weight="700" fill="#F4F7F1" text-anchor="middle">3</text>
+<text x="1133" y="168" font-size="21" font-weight="600">Slice</text>
+<line x1="1133" y1="182" x2="1325" y2="182" stroke="#C9D3CA"/>
+<text x="1133" y="206" font-size="18" fill="#3A4842">Vertical slices,</text>
+<text x="1133" y="229" font-size="18" fill="#3A4842">sizes XS to L,</text>
+<text x="1133" y="252" font-size="18" fill="#3A4842">critical path</text>
+</g>
+
+<!-- Row 1 arrows and gates -->
+<path d="M280,130 H412" stroke="#1B2621" stroke-width="2" fill="none" marker-end="url(#ink)"/>
+<text x="346.5" y="160" font-size="18" text-anchor="middle">number and</text>
+<text x="346.5" y="183" font-size="18" text-anchor="middle">appetite</text>
+<path d="M633,130 H765" stroke="#1B2621" stroke-width="2" fill="none" marker-end="url(#ink)"/>
+<text x="699.5" y="160" font-size="18" text-anchor="middle">what we</text>
+<text x="699.5" y="183" font-size="18" text-anchor="middle">learned</text>
+<path d="M986,130 H1118" stroke="#1B2621" stroke-width="2" fill="none" marker-end="url(#ink)"/>
+<text x="1052.5" y="160" font-size="18" text-anchor="middle">start</text>
+<text x="1052.5" y="183" font-size="18" text-anchor="middle">without</text>
+<text x="1052.5" y="206" font-size="18" text-anchor="middle">a meeting</text>
+
+<!-- Stage 3 to stage 4 -->
+<path d="M1229,270 V300 H170 V348" stroke="#1B2621" stroke-width="2" fill="none" marker-end="url(#ink)"/>
+<text x="700" y="292" font-size="18" text-anchor="middle">every slice ships behavior</text>
+
+<!-- Eval loop return: golden set back into Build and verify -->
+<path d="M1300,350 V318 H523 V348" stroke="#B4372F" stroke-width="2" stroke-dasharray="7 5" fill="none" marker-end="url(#red)"/>
+<text x="850" y="338" font-size="18" fill="#B4372F" text-anchor="middle">eval loop: production failures become golden-set cases</text>
+
+<!-- Row 2: stages 4 to 6 -->
+<g>
+<rect x="60" y="350" width="220" height="180" rx="6" fill="#FFFFFF" stroke="#1B2621" stroke-width="1.5"/>
+<circle cx="90" cy="380" r="16" fill="#1B2621"/>
+<text x="90" y="386" font-size="18" font-weight="700" fill="#F4F7F1" text-anchor="middle">4</text>
+<text x="74" y="428" font-size="21" font-weight="600">Write the items</text>
+<line x1="74" y1="442" x2="266" y2="442" stroke="#C9D3CA"/>
+<text x="74" y="466" font-size="18" fill="#3A4842">Epic, Feature,</text>
+<text x="74" y="489" font-size="18" fill="#3A4842">Story, eval cases,</text>
+<text x="74" y="512" font-size="18" fill="#3A4842">agent brief</text>
+</g>
+<g>
+<rect x="413" y="350" width="220" height="180" rx="6" fill="#FFFFFF" stroke="#1B2621" stroke-width="1.5"/>
+<circle cx="443" cy="380" r="16" fill="#1B2621"/>
+<text x="443" y="386" font-size="18" font-weight="700" fill="#F4F7F1" text-anchor="middle">5</text>
+<text x="427" y="428" font-size="21" font-weight="600">Build and verify</text>
+<line x1="427" y1="442" x2="619" y2="442" stroke="#C9D3CA"/>
+<text x="427" y="466" font-size="18" fill="#3A4842">Checks in CI,</text>
+<text x="427" y="489" font-size="18" fill="#3A4842">eval pass rate,</text>
+<text x="427" y="512" font-size="18" fill="#3A4842">shadow results</text>
+</g>
+<g>
+<rect x="766" y="350" width="220" height="180" rx="6" fill="#FFFFFF" stroke="#1B2621" stroke-width="1.5"/>
+<circle cx="796" cy="380" r="16" fill="#1B2621"/>
+<text x="796" y="386" font-size="18" font-weight="700" fill="#F4F7F1" text-anchor="middle">6</text>
+<text x="780" y="428" font-size="21" font-weight="600">Ship and learn</text>
+<line x1="780" y1="442" x2="972" y2="442" stroke="#C9D3CA"/>
+<text x="780" y="466" font-size="18" fill="#3A4842">Metric read, bug</text>
+<text x="780" y="489" font-size="18" fill="#3A4842">cards, snapshot,</text>
+<text x="780" y="512" font-size="18" fill="#3A4842">review, roadmap</text>
+</g>
+
+<!-- Row 2 arrows and gates -->
+<path d="M280,390 H412" stroke="#1B2621" stroke-width="2" fill="none" marker-end="url(#ink)"/>
+<text x="346.5" y="420" font-size="18" text-anchor="middle">four-reader</text>
+<text x="346.5" y="443" font-size="18" text-anchor="middle">test</text>
+<path d="M633,390 H765" stroke="#1B2621" stroke-width="2" fill="none" marker-end="url(#ink)"/>
+<text x="699.5" y="420" font-size="18" text-anchor="middle">threshold</text>
+<text x="699.5" y="443" font-size="18" text-anchor="middle">met, zero</text>
+<text x="699.5" y="466" font-size="18" text-anchor="middle">never-cases</text>
+
+<!-- Loop nodes fed by Ship and learn -->
+<path d="M986,377 H1117" stroke="#B4372F" stroke-width="2" stroke-dasharray="7 5" fill="none" marker-end="url(#red)"/>
+<path d="M986,440 H1117" stroke="#B4372F" stroke-width="2" stroke-dasharray="7 5" fill="none" marker-end="url(#red)"/>
+<path d="M986,503 H1117" stroke="#B4372F" stroke-width="2" stroke-dasharray="7 5" fill="none" marker-end="url(#red)"/>
+<g>
+<rect x="1119" y="350" width="220" height="54" rx="6" fill="#FFFFFF" stroke="#B4372F" stroke-width="1.5"/>
+<text x="1133" y="373" font-size="18" font-weight="600">Golden set</text>
+<text x="1133" y="395" font-size="18" fill="#4A5852">eval loop</text>
+<rect x="1119" y="413" width="220" height="54" rx="6" fill="#FFFFFF" stroke="#B4372F" stroke-width="1.5"/>
+<text x="1133" y="436" font-size="18" font-weight="600">Bug card</text>
+<text x="1133" y="458" font-size="18" fill="#4A5852">defect loop</text>
+<rect x="1119" y="476" width="220" height="54" rx="6" fill="#FFFFFF" stroke="#B4372F" stroke-width="1.5"/>
+<text x="1133" y="499" font-size="18" font-weight="600">Snapshot and review</text>
+<text x="1133" y="521" font-size="18" fill="#4A5852">cadence loop</text>
+</g>
+
+<!-- Learning loop: the metric is the first line of the next frame -->
+<path d="M876,530 V600 H36 V180 H58" stroke="#B4372F" stroke-width="2" stroke-dasharray="7 5" fill="none" marker-end="url(#red)"/>
+<text x="456" y="590" font-size="18" fill="#B4372F" text-anchor="middle">learning loop: metric vs the number</text>
+
+<!-- Defect loop: the fix returns through Write -->
+<path d="M1339,440 H1366 V640 H170 V532" stroke="#B4372F" stroke-width="2" stroke-dasharray="7 5" fill="none" marker-end="url(#red)"/>
+<text x="760" y="664" font-size="18" fill="#B4372F" text-anchor="middle">defect loop: a bug card links to its story and returns through Write</text>
+
+<text x="700" y="700" font-size="18" text-anchor="middle">Each gate is one question. When the answer is no, work goes back one stage, not to a meeting.</text>
+</g>
+</svg>
