@@ -2,17 +2,9 @@
 
 How the process skills connect, from an idea to a closed bug.
 
-```mermaid
-flowchart LR
-    A["Frame the problem<br/>the number and the time budget"] --> B["Learn with a prototype"]
-    B --> C["Write the spec"]
-    C --> D["Slice and sequence<br/>Now / Next / Later"]
-    D --> E["Write the items"]
-    E --> F["Build and check each slice"]
-    F --> G["Measure the result"]
-    G -. "a defect becomes a card and a test" .-> E
-    G -. "a wrong assumption goes back to the spec" .-> C
-```
+<p align="center"><img src="https://benyoumen.github.io/Benyoumen/assets/repos/backlog-writing-system/diagrams/docs-delivery-flow-1.svg" alt="Diagram: Delivery flow" width="627"></p>
+
+<sub>Diagram source: <a href="../assets/diagrams/docs-delivery-flow-1.mmd">docs-delivery-flow-1.mmd</a></sub>
 
 *Seven steps, each ending with a review by the product manager before the next starts. Two loops: a defect found in use becomes a card linked to the story it broke, and a test before it becomes a fix; a defect that shows the spec was wrong goes back to the spec, not straight to a fix. The success criterion is read against the spec when the last phase ships.*
 

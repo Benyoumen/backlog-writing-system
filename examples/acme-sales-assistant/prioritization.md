@@ -29,14 +29,9 @@ The ROI score on its own would put F01 fourth and F04 third. The chain puts F01 
 | F05 Manager weekly digest | F04 | |
 | F06 Drafts in a second language | F02 | |
 
-```mermaid
-flowchart LR
-    A["The list of finished meetings<br/>low value alone, built first"] --> B["The drafted follow-up email<br/>the main time saving"]
-    A --> C["The CRM update, approved by the rep<br/>keeps the forecast honest"]
-    B --> D["The trail: what was sent, applied, ignored<br/>how the result is measured"]
-    C --> D
-    D -.-> E["Manager weekly digest<br/>Next, when the trail has data"]
-```
+<p align="center"><img src="https://benyoumen.github.io/Benyoumen/assets/repos/backlog-writing-system/diagrams/examples-acme-sales-assistant-prioritization-1.svg" alt="Diagram: 2. The enabling chain" width="880"></p>
+
+<sub>Diagram source: <a href="../../assets/diagrams/examples-acme-sales-assistant-prioritization-1.mmd">examples-acme-sales-assistant-prioritization-1.mmd</a></sub>
 
 *Read it from the right: the value sits in the draft and the CRM update. Neither exists without the meeting list, so the meeting list goes first.*
 

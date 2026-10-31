@@ -18,10 +18,9 @@ Relations only. No dependency points to a later band or wave. No cycle. Implied 
 |---|---|---|
 | | | |
 
-```mermaid
-flowchart LR
-    A["<enabling Feature>"] --> B["<valuable Feature>"]
-```
+<p align="center"><img src="https://benyoumen.github.io/Benyoumen/assets/repos/backlog-writing-system/diagrams/templates-now-next-later-board-1.svg" alt="Diagram: 2. The enabling chain" width="446"></p>
+
+<sub>Diagram source: <a href="../assets/diagrams/templates-now-next-later-board-1.mmd">templates-now-next-later-board-1.mmd</a></sub>
 
 Go-live set (wave 1): <the smallest set of Features that makes the first valuable outcome usable in production, in dependency order>
 

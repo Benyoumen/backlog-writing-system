@@ -48,14 +48,9 @@ Here is the part that makes the method work. Take the highest-ROI Feature placed
 
 The rule: **a Now Feature pulls its whole chain into Now, and the pulled items carry an explicit inherited priority** ("Now, enabling F1"). Inherited priority is visible on the card and in the board, so nobody later asks why a low-impact feature is being built first.
 
-```mermaid
-flowchart LR
-    A["F01 The list of finished meetings<br/>low value alone, built first"] --> B["F02 The drafted follow-up email<br/>the main time saving"]
-    A --> C["F03 The CRM update, approved by the rep<br/>keeps the forecast honest"]
-    B --> D["F04 The trail: sent, applied, ignored<br/>how the result is measured"]
-    C --> D
-    D -.-> E["F05 Manager weekly digest<br/>Next, when the trail has data"]
-```
+<p align="center"><img src="https://benyoumen.github.io/Benyoumen/assets/repos/backlog-writing-system/diagrams/docs-prioritization-1.svg" alt="Diagram: 3. The enabling chain" width="880"></p>
+
+<sub>Diagram source: <a href="../assets/diagrams/docs-prioritization-1.mmd">docs-prioritization-1.mmd</a></sub>
 
 *Read it from the right: the value sits in the draft and the CRM update. Neither exists without the meeting list, so the meeting list goes first.*
 

@@ -1,4 +1,4 @@
-![Backlog Writing System](assets/banner.svg)
+![Backlog Writing System](https://benyoumen.github.io/Benyoumen/assets/repos/backlog-writing-system/assets/banner.svg)
 
 # Backlog Writing System
 
@@ -46,7 +46,7 @@ Open the example: [the backlog document](https://benyoumen.github.io/backlog-wri
 
 ## The workflow
 
-![Workflow map: seven stages, seven gates, four loops](assets/workflow-map.svg)
+![Workflow map: seven stages, seven gates, four loops](https://benyoumen.github.io/Benyoumen/assets/repos/backlog-writing-system/assets/workflow-map.svg)
 
 Each gate is one question. When the answer is no, the work goes back one stage, not to a meeting.
 

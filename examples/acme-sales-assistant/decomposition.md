@@ -4,21 +4,9 @@
 
 ## Dependency graph
 
-```mermaid
-flowchart TD
-    US01[US01 Meetings with notes]
-    US02[US02 Draft follow-up]
-    US03[US03 Edit and send]
-    US04[US04 CRM update preview]
-    US05[US05 Apply approved update]
-    US06[US06 Block unmatched contact]
-    US07[US07 Manager activity view]
-    US01 --> US02 --> US03
-    US01 --> US04 --> US05
-    US04 --> US06
-    US03 --> US07
-    US05 --> US07
-```
+<p align="center"><img src="https://benyoumen.github.io/Benyoumen/assets/repos/backlog-writing-system/diagrams/examples-acme-sales-assistant-decomposition-1.svg" alt="Diagram: Dependency graph" width="777"></p>
+
+<sub>Diagram source: <a href="../../assets/diagrams/examples-acme-sales-assistant-decomposition-1.mmd">examples-acme-sales-assistant-decomposition-1.mmd</a></sub>
 
 Foundation first: US01. Highest risk first within what the foundation allows: US04 and US05 carry the CRM write, so they start as soon as US01 is done, not after the email path.
 

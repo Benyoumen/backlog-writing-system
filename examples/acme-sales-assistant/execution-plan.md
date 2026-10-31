@@ -68,20 +68,9 @@ Two parallel tracks, working days. All durations are declared by the engineering
 
 Critical path: US01, US04, US05, US07, which is 3 + 3 + 5 + 2 = 13 days. Total effort 21 days over two tracks.
 
-```mermaid
-gantt
-    dateFormat  X
-    axisFormat  %s
-    section Track A
-    US01 :a1, 0, 3
-    US02 :a2, 3, 3
-    US03 :a3, 6, 3
-    US06 :a4, 9, 2
-    US07 :a5, 11, 2
-    section Track B
-    US04 :b1, 3, 3
-    US05 :b2, 6, 5
-```
+<p align="center"><img src="https://benyoumen.github.io/Benyoumen/assets/repos/backlog-writing-system/diagrams/examples-acme-sales-assistant-execution-plan-1.svg" alt="Diagram: 3. Schedule" width="784"></p>
+
+<sub>Diagram source: <a href="../../assets/diagrams/examples-acme-sales-assistant-execution-plan-1.mmd">examples-acme-sales-assistant-execution-plan-1.mmd</a></sub>
 
 Assumptions: two parallel tracks (a schedule assumption, not a staffing promise), five working days per week, checkpoints happen inside the stories' last day, no holidays counted. Derived calendar from the typed start date: day 6 is 2026-03-16, day 11 is 2026-03-23, day 13 is 2026-03-25.
 

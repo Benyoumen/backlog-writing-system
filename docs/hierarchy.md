@@ -2,21 +2,9 @@
 
 A three-level backlog, with one fixed parent rule and clear places for effort, dependencies and acceptance.
 
-```mermaid
-flowchart TD
-    E["Epic<br/>what changes for the business"]
-    F1["Feature<br/>what a person can newly do"]
-    F2["Feature<br/>what a person can newly do"]
-    S1["Story<br/>one behavior we can test"]
-    S2["Story<br/>one behavior we can test"]
-    S3["Groundwork story<br/>no persona, something the product needs"]
-    E --> F1
-    E --> F2
-    F1 --> S1
-    F1 --> S2
-    F2 --> S3
-    S3 -. "must be done first" .-> S2
-```
+<p align="center"><img src="https://benyoumen.github.io/Benyoumen/assets/repos/backlog-writing-system/diagrams/docs-hierarchy-1.svg" alt="Diagram: Backlog hierarchy" width="586"></p>
+
+<sub>Diagram source: <a href="../assets/diagrams/docs-hierarchy-1.mmd">docs-hierarchy-1.mmd</a></sub>
 
 *Three levels, one parent each. The dotted line is a dependency: the groundwork story must finish before the other one starts. The Epic has 11 sections, a Feature 15, a Story 9.*
 
@@ -29,12 +17,9 @@ flowchart TD
 
 ## Where each piece of information lives
 
-```mermaid
-flowchart LR
-    A["Why it exists, scope, rules"] --> D["The card's text"]
-    B["How big it is"] --> P["A number field, so it can be added up"]
-    C["What must be done first"] --> R["A link between the two cards"]
-```
+<p align="center"><img src="https://benyoumen.github.io/Benyoumen/assets/repos/backlog-writing-system/diagrams/docs-hierarchy-2.svg" alt="Diagram: Where each piece of information lives" width="547"></p>
+
+<sub>Diagram source: <a href="../assets/diagrams/docs-hierarchy-2.mmd">docs-hierarchy-2.mmd</a></sub>
 
 *Three things never live in prose: the size goes in a number field, a dependency is a link between cards, and the Definition of Done is the team's standard, inherited by every card. Acceptance criteria go in the tracker's own field on a Story and in the text on an Epic or Feature. For AI behavior, the acceptance criteria are the eval file linked from the card; for a story a coding agent builds, the brief is linked from the technical notes.*
 
@@ -48,13 +33,8 @@ flowchart LR
 
 ## Flow of a new batch
 
-```mermaid
-flowchart LR
-    A["Read the source"] --> B["Draw the tree"]
-    B --> C["Write one family at a time"]
-    C --> D["A person reviews every item"]
-    D --> E["Upload one card and look at it"]
-    E --> F["Upload the rest, record the decisions"]
-```
+<p align="center"><img src="https://benyoumen.github.io/Benyoumen/assets/repos/backlog-writing-system/diagrams/docs-hierarchy-3.svg" alt="Diagram: Flow of a new batch" width="264"></p>
+
+<sub>Diagram source: <a href="../assets/diagrams/docs-hierarchy-3.mmd">docs-hierarchy-3.mmd</a></sub>
 
 *Nothing generated goes to the board unread. Codes are reserved before writing, vocabulary is harmonized across families, and the one card uploaded first is checked on the screen before the batch follows.*

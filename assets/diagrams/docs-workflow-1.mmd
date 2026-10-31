@@ -1,0 +1,10 @@
+flowchart TD
+    F["0 Frame<br/>the number and the time budget"] --> D["1 Discover<br/>learn with a prototype"]
+    D --> S["2 Decide<br/>write the spec"]
+    S --> L["3 Slice and sequence<br/>Now / Next / Later"]
+    L --> W["4 Write<br/>items four readers can act on"]
+    W --> B["5 Build and verify<br/>evals as the bar"]
+    B --> H["6 Ship and learn<br/>did the number move?"]
+    H -. "what we learned" .-> F
+    H -. "a failure becomes a test" .-> B
+    H -. "a defect becomes a card" .-> W

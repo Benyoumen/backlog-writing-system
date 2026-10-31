@@ -2,18 +2,9 @@
 
 Stages are not phases of a waterfall. They are the questions a team must answer in order, and the loops that send work back. Each gate is one question. When the answer is no, the work goes back one stage, not to a meeting.
 
-```mermaid
-flowchart LR
-    F["0 Frame<br/>the number and the time budget"] --> D["1 Discover<br/>learn with a prototype"]
-    D --> S["2 Decide<br/>write the spec"]
-    S --> L["3 Slice and sequence<br/>Now / Next / Later"]
-    L --> W["4 Write<br/>items four readers can act on"]
-    W --> B["5 Build and verify<br/>evals as the bar"]
-    B --> H["6 Ship and learn<br/>did the number move?"]
-    H -. "what we learned" .-> F
-    H -. "a failure becomes a test" .-> B
-    H -. "a defect becomes a card" .-> W
-```
+<p align="center"><img src="https://benyoumen.github.io/Benyoumen/assets/repos/backlog-writing-system/diagrams/docs-workflow-1.svg" alt="Diagram: The workflow: seven stages, seven gates" width="512"></p>
+
+<sub>Diagram source: <a href="../assets/diagrams/docs-workflow-1.mmd">docs-workflow-1.mmd</a></sub>
 
 *Seven stages. Each arrow is a gate with one question. When the answer is no, the work goes back one stage, not to a meeting. The dotted lines are the loops: what was learned opens the next frame, a production failure becomes a test case before a fix, a defect becomes a card linked to the story it broke.*
 

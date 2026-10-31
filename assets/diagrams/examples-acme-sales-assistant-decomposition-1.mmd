@@ -1,0 +1,13 @@
+flowchart TD
+    US01[US01 Meetings with notes]
+    US02[US02 Draft follow-up]
+    US03[US03 Edit and send]
+    US04[US04 CRM update preview]
+    US05[US05 Apply approved update]
+    US06[US06 Block unmatched contact]
+    US07[US07 Manager activity view]
+    US01 --> US02 --> US03
+    US01 --> US04 --> US05
+    US04 --> US06
+    US03 --> US07
+    US05 --> US07
